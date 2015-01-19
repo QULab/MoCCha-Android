@@ -24,3 +24,5 @@ proguard/
 
 # Log Files
 *.log
+/Moccha-Android/nbandroid/
+/Moccha-Android/private/
