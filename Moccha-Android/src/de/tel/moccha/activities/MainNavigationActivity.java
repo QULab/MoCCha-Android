@@ -29,6 +29,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import de.tel.moccha.activities.fragments.WelcomeFragment;
 
 /**
  * Represents the main navigation activity with a navigation drawer. On the left
@@ -191,6 +192,7 @@ public class MainNavigationActivity extends FragmentActivity {
      * Contains all existing main fragments.
      */
     private final Fragment fragments[] = { //TODO add fragments
+                                           new WelcomeFragment() 
                                            };
 
     @Override
