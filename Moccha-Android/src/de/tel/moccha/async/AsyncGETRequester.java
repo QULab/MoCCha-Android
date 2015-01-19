@@ -141,8 +141,10 @@ public class AsyncGETRequester extends AsyncTask<GetRequestInfo, Void, List<JSON
         Header responseEtag = response.getFirstHeader(HEADER_ETAG);
         if (responseEtag != null) {
           String newEtag = responseEtag.getValue();
-          if (newEtag != null &&
-              !newEtag.equalsIgnoreCase(get.getFirstHeader(HEADER_IF_NONE_MATCH).getValue())) {
+          Header ifNoneMatchHeader = get.getFirstHeader(HEADER_IF_NONE_MATCH);
+          if (newEtag != null
+                  && (ifNoneMatchHeader == null
+                  || !newEtag.equalsIgnoreCase(ifNoneMatchHeader.getValue()))) {
             job.handleNewEtag(get.getURI().toString(), newEtag);
           }
         }
