@@ -17,9 +17,11 @@ package de.tel.moccha.async;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.GZIPInputStream;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -131,7 +133,8 @@ public class AsyncGETRequester extends AsyncTask<GetRequestInfo, Void, List<JSON
           HttpEntity entity = response.getEntity();
           if (entity != null && entity.getContentType().getValue().contains(CONTENT_TYPE)) {
             try {
-              JSONObject object = new JSONObject(EntityUtils.toString(entity));
+              String jsonStr = extractEntityContent(entity);
+              JSONObject object = new JSONObject(jsonStr);
               result.add(object);
             } catch (JSONException ex) {
               Log.e(AsyncGETRequester.class.getName(), EXECEPTION_LOG_MSG, ex);
@@ -153,6 +156,42 @@ public class AsyncGETRequester extends AsyncTask<GetRequestInfo, Void, List<JSON
       Log.e(AsyncGETRequester.class.getName(), EXECEPTION_LOG_MSG, ex);
       job.doExeptionHandling(ex);
     }
+  }
+
+  /**
+   * Extracts the http entity and returns the content as string.
+   * If the entity is encoded with gzip the zip will be decoded.
+   * 
+   * @param entity  the entity which will be extracted
+   * @return the entity content as string
+   */
+  private String extractEntityContent(HttpEntity entity) {
+    String content = "";
+    GZIPInputStream zis = null;
+    try {
+      if (entity.getContentEncoding().getValue().contains("gzip")) {
+        byte str[] = new byte[1024];
+        zis = new GZIPInputStream(new BufferedInputStream(entity.getContent()));
+        StringBuilder builder = new StringBuilder();
+        int decompressedSize;
+        while ((decompressedSize = zis.read(str, 0, str.length)) != -1 ) {
+          builder.append(new String(str, 0, decompressedSize, HTTP.UTF_8));
+        }
+        content = builder.toString();
+      } else {
+        content = EntityUtils.toString(entity, HTTP.UTF_8);
+      }
+    } catch (IOException ex) {
+      Log.e(AsyncGETRequester.class.getName(), IOException.class.getName(), ex);
+    } finally {
+      try {
+        if (zis != null)
+          zis.close();
+      } catch (IOException ex) {
+        Log.e(AsyncGETRequester.class.getName(), IOException.class.getName(), ex);
+      }
+    }
+    return content;
   }
 
   @Override
