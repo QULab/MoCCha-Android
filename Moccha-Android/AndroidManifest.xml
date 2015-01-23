@@ -28,7 +28,7 @@ limitations under the License.
                  android:allowBackup="false">
       
     <activity
-      android:name=".SplashActivity"
+      android:name=".MoCChaSplashAcitivty"
       android:screenOrientation="portrait"
       android:label="@string/app_name"
       android:theme="@android:style/Theme.Black.NoTitleBar">
@@ -38,7 +38,7 @@ limitations under the License.
       </intent-filter>
     </activity>
     <activity
-      android:name=".MainNavigationActivity"
+      android:name=".MoCChaMainNavigationActivity"
       android:screenOrientation="portrait"
       android:label="@string/app_name">
     </activity>
