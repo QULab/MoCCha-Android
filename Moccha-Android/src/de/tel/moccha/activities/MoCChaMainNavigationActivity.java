@@ -15,8 +15,11 @@
  */
 package de.tel.moccha.activities;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import de.tel.moccha.activities.fragments.CanteenListFragment;
 import de.tel.moccha.activities.fragments.WelcomeFragment;
+import de.zell.android.util.PropertiesProvider;
 import de.zell.android.util.activities.MainNavigationActivity;
 
 /**
@@ -31,9 +34,26 @@ import de.zell.android.util.activities.MainNavigationActivity;
  */
 public class MoCChaMainNavigationActivity extends MainNavigationActivity {
 
-  private Fragment[] fragments = { new WelcomeFragment()};
-  private String[] fragmentNames = {"Welcome"};
   
+  public static final PropertiesProvider propProvider = PropertiesProvider.getInstance();
+  
+  static {
+    PropertiesProvider.setPropertyFile(MoCChaMainNavigationActivity.class,
+            "moccha.properties");
+  }
+  private Fragment[] fragments = {new WelcomeFragment(), createCanteenListFragment()};
+  private String[] fragmentNames = {"Welcome", "Canteens"};
+
+  
+
+  protected Fragment createCanteenListFragment() {
+    Fragment fragment = new CanteenListFragment();
+    Bundle args = new Bundle();
+    args.putString(CanteenListFragment.ARG_CANTEENS_URL, propProvider.getProperty("canteens.url"));
+    fragment.setArguments(args);
+    return fragment;
+  }
+
   @Override
   protected Fragment[] getNavigationFragments() {
     return fragments;
@@ -47,6 +67,4 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
   @Override
   protected void startSearch(String query) {
   }
-  
-  
 }
