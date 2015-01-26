@@ -21,9 +21,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 import de.tel.moccha.activities.R;
-import de.zell.android.util.PropertiesProvider;
 
 /**
  * Represents the Fragment for the welcome page.
@@ -37,14 +35,6 @@ public class WelcomeFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
           Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_welcome, container, false);
-    
-    PropertiesProvider.setPropertyFile("/../../../tel/moccha/activties/fragments/moccha.properties");
-    PropertiesProvider propProvider = PropertiesProvider.getInstance();
-    Toast.makeText(getActivity(),
-                   propProvider.getProperty("canteens.url"),
-                   Toast.LENGTH_LONG).show();
-   
-           
     return rootView;
   }
 }
