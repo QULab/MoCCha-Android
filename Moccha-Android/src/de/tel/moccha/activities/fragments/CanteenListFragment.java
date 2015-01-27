@@ -23,7 +23,9 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 import de.tel.moccha.entities.Canteen;
+import de.tel.moccha.util.MoCChaEntitySectionListAdapter;
 import de.zell.android.util.EntityListAdapter;
+import de.zell.android.util.EntitySectionListAdapter;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
 import java.util.ArrayList;
@@ -88,32 +90,14 @@ public class CanteenListFragment extends ListFragment {
 
 
     loadCanteens();
-    setListAdapter(new EntityListAdapter((List) canteens, getActivity()));
+    setListAdapter(new MoCChaEntitySectionListAdapter(getActivity()));
   }
 
   @Override
   public void onListItemClick(ListView l, View v, int position, long id) {
     super.onListItemClick(l, v, position, id);
-    Fragment frg = null;
-    Bundle args = new Bundle();
-    Toast.makeText(getActivity(), canteens.get(position).toString(), Toast.LENGTH_LONG).show();
-//
-//    if (frg != null) {
-//      frg.setArguments(args);
-//      FragmentManager mgr = ((FragmentActivity) getActivity()).getSupportFragmentManager();
-//      Fragment old = mgr.findFragmentById(R.id.content_frame);
-//
-//      FragmentTransaction trx = mgr.beginTransaction();
-//      if (old != null) {
-//        trx.remove(old);
-//      }
-//
-//      trx.add(R.id.content_frame, frg)
-//              .addToBackStack(null) //TODO
-//              .commit();
-//
-//    }
-//    
+    Toast.makeText(getActivity(), getListAdapter().getItem(position).toString(), Toast.LENGTH_LONG).show();
+
   }
 
   protected void loadCanteens() {
@@ -141,8 +125,8 @@ public class CanteenListFragment extends ListFragment {
           Log.e(CanteenListFragment.class.getName(), ex.getMessage(), ex);
         }
 
-        EntityListAdapter adapter = (EntityListAdapter) getListAdapter();
-        adapter.setResults(canteens);
+        EntitySectionListAdapter adapter = (EntitySectionListAdapter) getListAdapter();
+        adapter.setEntities((List) canteens);
         adapter.notifyDataSetChanged();
       }
 
