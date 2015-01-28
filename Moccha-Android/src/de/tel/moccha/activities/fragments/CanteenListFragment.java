@@ -15,19 +15,17 @@
  */
 package de.tel.moccha.activities.fragments;
 
-import android.os.Bundle;
-import android.support.v4.app.ListFragment;
+import android.content.Context;
 import android.util.Log;
-import android.view.View;
-import android.widget.ListView;
 import android.widget.Toast;
 import de.tel.moccha.activities.fragments.adapters.CanteenSectionListAdapter;
 import de.tel.moccha.entities.Canteen;
-import de.zell.android.util.EntitySectionListAdapter;
+import de.zell.android.util.adapters.EntitySectionListAdapter;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
+import de.zell.android.util.db.Entity;
+import de.zell.android.util.fragments.EntityListFragment;
 import java.util.ArrayList;
-import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,7 +34,7 @@ import org.json.JSONObject;
  *
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class CanteenListFragment extends ListFragment {
+public class CanteenListFragment extends EntityListFragment {
 
   public static final String JSON_CANTEENS_KEY = "canteens";
   public static final String JSON_CANTEEN_ID_KEY = "id";
@@ -45,64 +43,23 @@ public class CanteenListFragment extends ListFragment {
   public static final String JSON_CANTEEN_UNI_KEY = "university";
   public static final String JSON_CANTEEN_LONG_KEY = "longitude";
   public static final String JSON_CANTEEN_LAT_KEY = "latitude";
-  
-  
-  private int index = -1;
-  private int top = 0;
-  public static final String ARG_CANTEENS_URL = "canteens.url";
-  private static final String TAG_CANTEENS_CONTENT = "canteens.content";
-  private ArrayList<Canteen> canteens = new ArrayList<Canteen>();
-  private String uri;
 
   @Override
-  public void onResume() {
-    super.onResume();
-    if (index != -1) {
-      this.getListView().setSelectionFromTop(index, top);
-    }
+  protected void onEntityClick(Entity e) {
+    Toast.makeText(getActivity(), e.getID().toString(), Toast.LENGTH_LONG).show();
   }
 
   @Override
-  public void onPause() {
-    super.onPause();
-    index = this.getListView().getFirstVisiblePosition();
-    View v = this.getListView().getChildAt(0);
-    top = (v == null) ? 0 : v.getTop();
+  protected void onSectionClick(Object o) {
+    Toast.makeText(getActivity(), o.toString(), Toast.LENGTH_LONG).show();
   }
 
   @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-
-    if (null == savedInstanceState) {
-      savedInstanceState = getArguments();
-    }
-
-    if (null != savedInstanceState) {
-      canteens = (ArrayList<Canteen>) savedInstanceState.getSerializable(TAG_CANTEENS_CONTENT);
-    }
-
-    if (null == canteens) {
-      uri = (String) savedInstanceState.getSerializable(ARG_CANTEENS_URL);
-    }
-
-
-    loadCanteens();
-    setListAdapter(new CanteenSectionListAdapter(getActivity()));
-  }
-
-  @Override
-  public void onListItemClick(ListView l, View v, int position, long id) {
-    super.onListItemClick(l, v, position, id);
-    Toast.makeText(getActivity(), getListAdapter().getItem(position).toString(), Toast.LENGTH_LONG).show();
-
-  }
-
-  protected void loadCanteens() {
+  protected void loadEntities() {
     AsyncGETRequester request = new AsyncGETRequester(new AsyncGETRequester.PostExecuteJob() {
       public void doJob(JSONObject response) {
-        if (canteens == null)
-          canteens = new ArrayList<Canteen>();
+        if (entities == null)
+          entities = new ArrayList<Entity>();
         
         try {
           //TODO remove String keys
@@ -116,7 +73,7 @@ public class CanteenListFragment extends ListFragment {
                     obj.getString(JSON_CANTEEN_UNI_KEY),
                     obj.getLong(JSON_CANTEEN_LONG_KEY),
                     obj.getLong(JSON_CANTEEN_LAT_KEY));
-            canteens.add(canteen);
+            entities.add(canteen);
           }
 
         } catch (JSONException ex) {
@@ -124,7 +81,7 @@ public class CanteenListFragment extends ListFragment {
         }
 
         EntitySectionListAdapter adapter = (EntitySectionListAdapter) getListAdapter();
-        adapter.setEntities((List) canteens);
+        adapter.setEntities(entities);
         adapter.notifyDataSetChanged();
       }
 
@@ -137,13 +94,13 @@ public class CanteenListFragment extends ListFragment {
       }
     });
 
-    GetRequestInfo info = new GetRequestInfo(uri, null);
+    GetRequestInfo info = new GetRequestInfo(getURL(), null);
     request.execute(info);
   }
 
   @Override
-  public void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    outState.putSerializable(TAG_CANTEENS_CONTENT, canteens);
+  protected EntitySectionListAdapter getEntityListAdapter(Context ctx) {
+    return new CanteenSectionListAdapter(ctx);
   }
+
 }

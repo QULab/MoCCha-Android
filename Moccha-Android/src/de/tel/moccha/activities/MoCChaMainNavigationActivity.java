@@ -21,6 +21,7 @@ import de.tel.moccha.activities.fragments.CanteenListFragment;
 import de.tel.moccha.activities.fragments.WelcomeFragment;
 import de.zell.android.util.PropertiesProvider;
 import de.zell.android.util.activities.MainNavigationActivity;
+import de.zell.android.util.fragments.EntityListFragment;
 
 /**
  * Represents the main navigation activity with a navigation drawer. On the left
@@ -49,7 +50,7 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
   protected Fragment createCanteenListFragment() {
     Fragment fragment = new CanteenListFragment();
     Bundle args = new Bundle();
-    args.putString(CanteenListFragment.ARG_CANTEENS_URL, propProvider.getProperty("canteens.url"));
+    args.putString(EntityListFragment.ARG_ENTITIES_URL, propProvider.getProperty("canteens.url"));
     fragment.setArguments(args);
     return fragment;
   }

@@ -21,8 +21,8 @@ import android.widget.TextView;
 import de.tel.moccha.entities.Canteen;
 import de.tel.moccha.util.CanteenComparator;
 import de.zell.android.util.EntityComparator;
-import de.zell.android.util.EntitySectionListAdapter;
 import de.zell.android.util.R;
+import de.zell.android.util.adapters.EntitySectionListAdapter;
 import de.zell.android.util.db.Entity;
 
 /**
