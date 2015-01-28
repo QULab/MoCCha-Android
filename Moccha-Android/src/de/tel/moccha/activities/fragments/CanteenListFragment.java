@@ -16,15 +16,13 @@
 package de.tel.moccha.activities.fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
+import de.tel.moccha.activities.fragments.adapters.CanteenSectionListAdapter;
 import de.tel.moccha.entities.Canteen;
-import de.tel.moccha.util.MoCChaEntitySectionListAdapter;
-import de.zell.android.util.EntityListAdapter;
 import de.zell.android.util.EntitySectionListAdapter;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
@@ -90,7 +88,7 @@ public class CanteenListFragment extends ListFragment {
 
 
     loadCanteens();
-    setListAdapter(new MoCChaEntitySectionListAdapter(getActivity()));
+    setListAdapter(new CanteenSectionListAdapter(getActivity()));
   }
 
   @Override
