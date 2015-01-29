@@ -20,7 +20,7 @@ import android.util.Log;
 import android.widget.Toast;
 import de.tel.moccha.activities.fragments.adapters.CanteenSectionListAdapter;
 import de.tel.moccha.entities.Canteen;
-import de.zell.android.util.adapters.EntitySectionListAdapter;
+import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
 import de.zell.android.util.db.Entity;
@@ -80,7 +80,7 @@ public class CanteenListFragment extends EntityListFragment {
           Log.e(CanteenListFragment.class.getName(), ex.getMessage(), ex);
         }
 
-        EntitySectionListAdapter adapter = (EntitySectionListAdapter) getListAdapter();
+        EntityListAdapter adapter = (EntityListAdapter) getListAdapter();
         adapter.setEntities(entities);
         adapter.notifyDataSetChanged();
       }
@@ -99,7 +99,7 @@ public class CanteenListFragment extends EntityListFragment {
   }
 
   @Override
-  protected EntitySectionListAdapter getEntityListAdapter(Context ctx) {
+  protected EntityListAdapter getEntityListAdapter(Context ctx) {
     return new CanteenSectionListAdapter(ctx);
   }
 

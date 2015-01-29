@@ -22,7 +22,7 @@ import de.tel.moccha.entities.Canteen;
 import de.tel.moccha.util.CanteenComparator;
 import de.zell.android.util.EntityComparator;
 import de.zell.android.util.R;
-import de.zell.android.util.adapters.EntitySectionListAdapter;
+import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
 
 /**
@@ -30,7 +30,7 @@ import de.zell.android.util.db.Entity;
  *
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class CanteenSectionListAdapter extends EntitySectionListAdapter {
+public class CanteenSectionListAdapter extends EntityListAdapter {
 
   public CanteenSectionListAdapter(Context c) {
     super(c);
