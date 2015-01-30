@@ -28,9 +28,7 @@ public class Additive implements Entity<Integer> {
   @JSONElement(name="name")
   private String name;
 
-  public Additive(Integer ID, String name) {
-    this.ID = ID;
-    this.name = name;
+  public Additive() {
   }
 
   public Integer getID() {

@@ -26,23 +26,20 @@ import java.util.Date;
 public class Dish implements Entity<String> {
   
   @JSONElement(name="date")
-  private Date date;
+  private String date;
   @JSONElement(name="name")
   private String name;
   @JSONElement(name="price")
   private String price;
 
-  public Dish(Date date, String name, String price) {
-    this.date = date;
-    this.name = name;
-    this.price = price;
+  public Dish() {
   }
 
-  public Date getDate() {
+  public String getDate() {
     return date;
   }
 
-  public void setDate(Date date) {
+  public void setDate(String date) {
     this.date = date;
   }
 

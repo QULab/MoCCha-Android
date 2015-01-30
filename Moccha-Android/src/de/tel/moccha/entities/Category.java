@@ -31,9 +31,7 @@ public class Category implements Entity<String> {
   @JSONElement(name="name")
   private String name;
 
-  public Category(List<Dish> dishes, String name) {
-    this.dishes = dishes;
-    this.name = name;
+  public Category() {
   }
 
   public List<Dish> getDishes() {
