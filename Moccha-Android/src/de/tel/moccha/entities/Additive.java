@@ -16,13 +16,16 @@
 package de.tel.moccha.entities;
 
 import de.zell.android.util.db.Entity;
+import de.zell.android.util.json.JSONElement;
 
 /**
  *
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class Additive implements Entity<Integer> {
+  @JSONElement(name="additiveID")
   private Integer ID;
+  @JSONElement(name="name")
   private String name;
 
   public Additive(Integer ID, String name) {

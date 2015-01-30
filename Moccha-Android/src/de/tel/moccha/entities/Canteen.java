@@ -16,6 +16,7 @@
 package de.tel.moccha.entities;
 
 import de.zell.android.util.db.Entity;
+import de.zell.android.util.json.JSONElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,45 +26,34 @@ import java.util.List;
  */
 public class Canteen implements Entity<Integer> {
 
+  @JSONElement(name="id")
   private Integer ID;
+  @JSONElement(name="title")
   private String title;
+  @JSONElement(name="url")
   private String uri;
+  @JSONElement(name="university")
   private String university;
-  private Long longitude;
-  private Long latitude;
-  
-  
+  @JSONElement(name="longitude")
+  private Double longitude;
+  @JSONElement(name="latitude")
+  private Double latitude;
+  @JSONElement(name="canteens")
   private String canteensUri;
+  @JSONElement(name="address")
   private String address;
+  @JSONElement(name="fax")
   private String fax;
+  @JSONElement(name="openingHours")
   private String openingHours;
+  @JSONElement(name="phone")
   private String phone;
+  @JSONElement(name="categories")
   private List<Category> categories;
 
-  public Canteen(Integer ID, String title, String uri, String university, Long longitude, Long latitude) {
-    this.ID = ID;
-    this.title = title;
-    this.uri = uri;
-    this.university = university;
-    this.longitude = longitude;
-    this.latitude = latitude;
+  public Canteen() {
   }
   
-  public Canteen(Integer ID, String title, String uri, String university, Long longitude, Long latitude, String canteensUri, String address, String fax, String openingHours, String phone, List<Category> categories) {
-    this.ID = ID;
-    this.title = title;
-    this.uri = uri;
-    this.university = university;
-    this.longitude = longitude;
-    this.latitude = latitude;
-    this.canteensUri = canteensUri;
-    this.address = address;
-    this.fax = fax;
-    this.openingHours = openingHours;
-    this.phone = phone;
-    this.categories = categories;
-  }
-
   public String getTableName() {
     return Canteen.class.getName();
   }
@@ -96,19 +86,19 @@ public class Canteen implements Entity<Integer> {
     this.university = university;
   }
 
-  public Long getLongitude() {
+  public Double getLongitude() {
     return longitude;
   }
 
-  public void setLongitude(Long longitude) {
+  public void setLongitude(Double longitude) {
     this.longitude = longitude;
   }
 
-  public Long getLatitude() {
+  public Double getLatitude() {
     return latitude;
   }
 
-  public void setLatitude(Long latitude) {
+  public void setLatitude(Double latitude) {
     this.latitude = latitude;
   }
 

@@ -16,6 +16,7 @@
 package de.tel.moccha.entities;
 
 import de.zell.android.util.db.Entity;
+import de.zell.android.util.json.JSONElement;
 import java.util.Date;
 
 /**
@@ -24,8 +25,11 @@ import java.util.Date;
  */
 public class Dish implements Entity<String> {
   
+  @JSONElement(name="date")
   private Date date;
+  @JSONElement(name="name")
   private String name;
+  @JSONElement(name="price")
   private String price;
 
   public Dish(Date date, String name, String price) {

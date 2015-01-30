@@ -16,6 +16,7 @@
 package de.tel.moccha.entities;
 
 import de.zell.android.util.db.Entity;
+import de.zell.android.util.json.JSONElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,10 @@ import java.util.List;
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class Category implements Entity<String> {
+  
+  @JSONElement(name="dishes")
   private List<Dish> dishes;
+  @JSONElement(name="name")
   private String name;
 
   public Category(List<Dish> dishes, String name) {
