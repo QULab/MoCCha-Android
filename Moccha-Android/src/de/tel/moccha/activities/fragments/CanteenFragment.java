@@ -31,7 +31,7 @@ import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
 import de.zell.android.util.fragments.EntityListFragment;
 import de.zell.android.util.fragments.FragmentReplacer;
-import de.zell.android.util.json.JSONElementParser;
+import de.zell.android.util.json.JSONUnmarshaller;
 import java.util.List;
 import org.json.JSONObject;
 
@@ -77,7 +77,7 @@ public class CanteenFragment extends Fragment {
     AsyncGETRequester get = new AsyncGETRequester(new AsyncGETRequester.PostExecuteJob() {
 
       public void doJob(JSONObject response) {
-        c = JSONElementParser.parseJSON(response, Canteen.class);
+        c = JSONUnmarshaller.unmarshall(response, Canteen.class);
         showCanteen(c);
       }
 

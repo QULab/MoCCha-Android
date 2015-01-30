@@ -29,7 +29,7 @@ import de.zell.android.util.async.GetRequestInfo;
 import de.zell.android.util.db.Entity;
 import de.zell.android.util.fragments.EntityListFragment;
 import de.zell.android.util.fragments.FragmentReplacer;
-import de.zell.android.util.json.JSONElementParser;
+import de.zell.android.util.json.JSONUnmarshaller;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,7 +73,7 @@ public class CanteenListFragment extends EntityListFragment {
           int len = cs.length();
           for (int i = 0; i < len; i++) {
             JSONObject obj = cs.getJSONObject(i);
-            entities.add(JSONElementParser.parseJSON(obj, Canteen.class));
+            entities.add(JSONUnmarshaller.unmarshall(obj, Canteen.class));
           }
 
         } catch (JSONException ex) {
