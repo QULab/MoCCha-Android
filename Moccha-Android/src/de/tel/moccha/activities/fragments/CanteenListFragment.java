@@ -16,15 +16,19 @@
 package de.tel.moccha.activities.fragments;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.widget.Toast;
 import de.tel.moccha.activities.fragments.adapters.CanteenSectionListAdapter;
 import de.tel.moccha.entities.Canteen;
+import de.zell.android.util.json.JSONElementParser;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
 import de.zell.android.util.db.Entity;
 import de.zell.android.util.fragments.EntityListFragment;
+import de.zell.android.util.fragments.FragmentReplacer;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,15 +41,16 @@ import org.json.JSONObject;
 public class CanteenListFragment extends EntityListFragment {
 
   public static final String JSON_CANTEENS_KEY = "canteens";
-  public static final String JSON_CANTEEN_ID_KEY = "id";
-  public static final String JSON_CANTEEN_TITLE_KEY = "title";
-  public static final String JSON_CANTEEN_URI_KEY = "uri";
-  public static final String JSON_CANTEEN_UNI_KEY = "university";
-  public static final String JSON_CANTEEN_LONG_KEY = "longitude";
-  public static final String JSON_CANTEEN_LAT_KEY = "latitude";
-
   @Override
   protected void onEntityClick(Entity e) {
+    Canteen c = (Canteen) e;
+    Bundle b = new Bundle();
+    b.putString(CanteenFragment.ARG_CANTEEN_URL, c.getUri());
+    Fragment frg = new CanteenFragment();
+    frg.setArguments(b);
+    FragmentReplacer.replace(getActivity().getSupportFragmentManager(),
+                             frg,
+                             FragmentReplacer.MAIN_CONTENT);
     Toast.makeText(getActivity(), e.getID().toString(), Toast.LENGTH_LONG).show();
   }
 
@@ -67,13 +72,7 @@ public class CanteenListFragment extends EntityListFragment {
           int len = cs.length();
           for (int i = 0; i < len; i++) {
             JSONObject obj = cs.getJSONObject(i);
-            Canteen canteen = new Canteen(obj.getInt(JSON_CANTEEN_ID_KEY),
-                    obj.getString(JSON_CANTEEN_TITLE_KEY),
-                    obj.getString(JSON_CANTEEN_URI_KEY),
-                    obj.getString(JSON_CANTEEN_UNI_KEY),
-                    obj.getLong(JSON_CANTEEN_LONG_KEY),
-                    obj.getLong(JSON_CANTEEN_LAT_KEY));
-            entities.add(canteen);
+            entities.add(JSONElementParser.parseJSON(obj, Canteen.class));
           }
 
         } catch (JSONException ex) {
