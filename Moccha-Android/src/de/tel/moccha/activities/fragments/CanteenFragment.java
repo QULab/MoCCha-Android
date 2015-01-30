@@ -17,11 +17,15 @@ package de.tel.moccha.activities.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.Canteen;
+import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
 import de.zell.android.util.json.JSONElementParser;
@@ -61,17 +65,16 @@ public class CanteenFragment extends Fragment {
     if (c == null) {
       url = savedInstanceState.getString(ARG_CANTEEN_URL);
       loadCanteen();
-    }
-    
-    
+    } else
+      showCanteen(c);
   }
   
   public void loadCanteen() {
-    new AsyncGETRequester(new AsyncGETRequester.PostExecuteJob() {
+    AsyncGETRequester get = new AsyncGETRequester(new AsyncGETRequester.PostExecuteJob() {
 
       public void doJob(JSONObject response) {
         c = JSONElementParser.parseJSON(response, Canteen.class);
-        getActivity().setTitle(c.getTitle());
+        showCanteen(c);
       }
 
       public void doExeptionHandling(Throwable t) {
@@ -81,11 +84,33 @@ public class CanteenFragment extends Fragment {
       public void handleNewEtag(String url, String newEtag) {
         //TODO
       }
-    }).execute(new GetRequestInfo(url, null));
+    });
+   get.showProgress(((MainNavigationActivity) getActivity()).getProgressBar());
+   get.execute(new GetRequestInfo(url, null));
   }
   
-  private void setView() {
+  private void showCanteen(Canteen c) {
+    if (c == null)
+      return;
     
+    getActivity().setTitle(c.getTitle());
+    View root = this.getView();
+    getTextView(root, R.id.canteen_address)
+            .setText(getFormatedString(R.string.canteen_address, c.getAddress()));
+    getTextView(root, R.id.canteen_fax)
+            .setText(getFormatedString(R.string.canteen_fax, c.getFax()));
+    getTextView(root, R.id.canteen_phone)
+            .setText(getFormatedString(R.string.canteen_phone, c.getPhone()));
+    getTextView(root, R.id.canteen_opening_hours)
+            .setText(getFormatedString(R.string.canteen_opening_hours, c.getOpeningHours()));
+  }
+  
+  private TextView getTextView(View root, int id) {
+    return ((TextView) root.findViewById(id));
+  } 
+  
+  private Spanned getFormatedString(int id, Object ... value) {
+    return Html.fromHtml(String.format(getString(id), value));
   }
 
   @Override

@@ -22,13 +22,14 @@ import android.util.Log;
 import android.widget.Toast;
 import de.tel.moccha.activities.fragments.adapters.CanteenSectionListAdapter;
 import de.tel.moccha.entities.Canteen;
-import de.zell.android.util.json.JSONElementParser;
+import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
 import de.zell.android.util.db.Entity;
 import de.zell.android.util.fragments.EntityListFragment;
 import de.zell.android.util.fragments.FragmentReplacer;
+import de.zell.android.util.json.JSONElementParser;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -92,7 +93,7 @@ public class CanteenListFragment extends EntityListFragment {
         //TODO
       }
     });
-
+    request.showProgress(((MainNavigationActivity) getActivity()).getProgressBar());
     GetRequestInfo info = new GetRequestInfo(getURL(), null);
     request.execute(info);
   }
