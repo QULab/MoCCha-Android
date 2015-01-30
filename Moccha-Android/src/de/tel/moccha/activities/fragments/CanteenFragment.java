@@ -25,10 +25,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.Canteen;
+import de.tel.moccha.entities.Category;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
+import de.zell.android.util.fragments.EntityListFragment;
+import de.zell.android.util.fragments.FragmentReplacer;
 import de.zell.android.util.json.JSONElementParser;
+import java.util.List;
 import org.json.JSONObject;
 
 /**
@@ -103,6 +107,14 @@ public class CanteenFragment extends Fragment {
             .setText(getFormatedString(R.string.canteen_phone, c.getPhone()));
     getTextView(root, R.id.canteen_opening_hours)
             .setText(getFormatedString(R.string.canteen_opening_hours, c.getOpeningHours()));
+    
+    Bundle args = new Bundle();
+    List<Category> categories = c.getCategories();
+    args.putSerializable(EntityListFragment.ARG_ENTITIES,
+                         categories.toArray(new Category[categories.size()]));
+    Fragment frg = new CategoryListFragment();
+    frg.setArguments(args);
+    FragmentReplacer.replace(getActivity().getSupportFragmentManager(), frg, R.id.canteen_diet, false);
   }
   
   private TextView getTextView(View root, int id) {
