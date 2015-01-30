@@ -36,4 +36,13 @@
     <string name="welcome_text">Welcome to the MoCCha application.</string>
     <string name="welcome_intro">Short Introduction</string>
     
+    <!--CANTEEN FRAG-->
+    <string name="canteen_header_info">Info</string>
+    <string name="canteen_address">Address: %1$s</string>
+    <string name="canteen_phone">Phone: %1$s</string>
+    <string name="canteen_fax">Fax: %1$s</string>
+    
+    <string name="canteen_opening_hours">Opening hours: %1$s</string>
+    <string name="canteen_header_diet">Diet</string>
+    
 </resources>
