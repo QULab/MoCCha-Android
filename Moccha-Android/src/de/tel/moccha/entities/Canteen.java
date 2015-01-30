@@ -30,7 +30,7 @@ public class Canteen implements Entity<Integer> {
   private Integer ID;
   @JSONElement(name="title")
   private String title;
-  @JSONElement(name="url")
+  @JSONElement(name="uri")
   private String uri;
   @JSONElement(name="university")
   private String university;
