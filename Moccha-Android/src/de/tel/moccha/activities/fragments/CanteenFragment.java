@@ -36,7 +36,8 @@ import java.util.List;
 import org.json.JSONObject;
 
 /**
- *
+ * Represents the CateenFragment which shows the information for a canteen.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class CanteenFragment extends Fragment {
@@ -51,7 +52,14 @@ public class CanteenFragment extends Fragment {
    */
   private static final String TAG_CANTEEN = "canteen";
   
+  /**
+   * The url of the canteen entity.
+   */
   private String url;
+  
+  /**
+   * The canteen object which contains the canteen informations.
+   */
   private Canteen c;
   
   @Override
@@ -73,6 +81,10 @@ public class CanteenFragment extends Fragment {
       showCanteen(c);
   }
   
+  /**
+   * Loads the canteen information from the canteen resource which
+   * is identified via the url.
+   */
   public void loadCanteen() {
     AsyncGETRequester get = new AsyncGETRequester(new AsyncGETRequester.PostExecuteJob() {
 
@@ -93,6 +105,11 @@ public class CanteenFragment extends Fragment {
    get.execute(new GetRequestInfo(url, null));
   }
   
+  /**
+   * Shows the canteen informations in the views which are available in the fragment.
+   * 
+   * @param c the canteen object which contains the informations
+   */
   private void showCanteen(Canteen c) {
     if (c == null)
       return;
@@ -117,12 +134,26 @@ public class CanteenFragment extends Fragment {
     FragmentReplacer.replace(getActivity().getSupportFragmentManager(), frg, R.id.canteen_diet, false);
   }
   
+  /**
+   * Returns the text view for the given id from the root view.
+   * 
+   * @param root the root view
+   * @param id the id which identifies the view
+   * @return the corresponding view
+   */
   private TextView getTextView(View root, int id) {
     return ((TextView) root.findViewById(id));
   } 
   
-  private Spanned getFormatedString(int id, Object ... value) {
-    return Html.fromHtml(String.format(getString(id), value));
+  /**
+   * Returns the formated string for the string xml id and the given values.
+   * 
+   * @param id the id which identifies the string
+   * @param values the values for the string
+   * @return the formated string
+   */
+  private Spanned getFormatedString(int id, Object ... values) {
+    return Html.fromHtml(String.format(getString(id), values));
   }
 
   @Override

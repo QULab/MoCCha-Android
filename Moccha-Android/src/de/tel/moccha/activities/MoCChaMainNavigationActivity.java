@@ -35,19 +35,47 @@ import de.zell.android.util.fragments.EntityListFragment;
  */
 public class MoCChaMainNavigationActivity extends MainNavigationActivity {
 
-  
+  /**
+   * The name of the properties file.
+   */
   public static final String PROP_FILE = "moccha.properties";
+
+  /**
+   * The properties provider instance, to read the property file.
+   */
   public static final PropertiesProvider propProvider = PropertiesProvider.getInstance();
+
+  /**
+   * The property key for the canteen url.
+   */
   public static final String PROP_KEY_CANTEEN_URL = "canteen.url";
-  
+
+  /**
+   * Static initializer to initialize the properties provider with the moccha
+   * properties file.
+   */
   static {
     PropertiesProvider.setPropertyFile(MoCChaMainNavigationActivity.class, PROP_FILE);
   }
+
+  /**
+   * The fragments which should be placed in the center if selected the
+   * corresponding name is selected in the navigation drawer.
+   */
   private final Fragment[] fragments = {new WelcomeFragment(), createCanteenListFragment()};
+
+  /**
+   * The available fragments which can be selected, the names are shown in the
+   * left menu of the navigation drawer.
+   */
   private final String[] fragmentNames = {"Welcome", "Canteens"};
 
-  
-
+  /**
+   * Creates a fragment object for the canteen list fragment, with the
+   * correct canteen URL as argument.
+   * 
+   * @return the canteen list fragment
+   */
   protected Fragment createCanteenListFragment() {
     Fragment fragment = new CanteenListFragment();
     Bundle args = new Bundle();

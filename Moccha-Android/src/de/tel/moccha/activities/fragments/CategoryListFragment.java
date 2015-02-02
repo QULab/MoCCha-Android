@@ -23,7 +23,9 @@ import de.zell.android.util.db.Entity;
 import de.zell.android.util.fragments.EntityListFragment;
 
 /**
- *
+ * Represents the category list fragment which shows the categories for a
+ * canteen.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class CategoryListFragment extends EntityListFragment {

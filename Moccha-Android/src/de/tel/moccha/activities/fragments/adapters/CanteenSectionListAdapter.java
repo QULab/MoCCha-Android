@@ -26,7 +26,7 @@ import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
 
 /**
- * The ItemAdapter to display each single result of the search in the ListView.
+ * The ItemAdapter to display the canteens in the ListView.
  *
  * @author Christopher Zell <zelldon91@googlemail.com>
  */

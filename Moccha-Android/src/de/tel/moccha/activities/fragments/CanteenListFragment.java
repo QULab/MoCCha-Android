@@ -36,12 +36,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- *
+ * Represents the canteen list fragment which shows the existing canteens.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class CanteenListFragment extends EntityListFragment {
 
+  /**
+   * The json key to extract the canteens json array.
+   */
   public static final String JSON_CANTEENS_KEY = "canteens";
+  
   @Override
   protected void onEntityClick(Entity e) {
     Canteen c = (Canteen) e;

@@ -18,7 +18,6 @@ package de.tel.moccha.activities.fragments.adapters;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
-import de.tel.moccha.entities.Canteen;
 import de.tel.moccha.entities.Category;
 import de.tel.moccha.util.CategoryComperator;
 import de.zell.android.util.EntityComparator;
@@ -27,7 +26,8 @@ import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
 
 /**
- *
+ * The ItemAdapter to display the categories of the canteen in the ListView.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class CategoryListAdapter extends EntityListAdapter {

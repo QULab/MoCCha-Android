@@ -25,6 +25,9 @@ import de.zell.android.util.activities.SplashActivity;
  */
 public class MoCChaSplashAcitivty extends SplashActivity {
 
+  /**
+   * The constant which contains the time for the splash screen.
+   */
   private static final long SPLASH_TIME = 2500l;
   @Override
   protected Class getMainClass() {
