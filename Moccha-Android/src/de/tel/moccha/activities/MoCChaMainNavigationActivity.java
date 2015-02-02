@@ -36,21 +36,22 @@ import de.zell.android.util.fragments.EntityListFragment;
 public class MoCChaMainNavigationActivity extends MainNavigationActivity {
 
   
+  public static final String PROP_FILE = "moccha.properties";
   public static final PropertiesProvider propProvider = PropertiesProvider.getInstance();
+  public static final String PROP_KEY_CANTEEN_URL = "canteen.url";
   
   static {
-    PropertiesProvider.setPropertyFile(MoCChaMainNavigationActivity.class,
-            "moccha.properties");
+    PropertiesProvider.setPropertyFile(MoCChaMainNavigationActivity.class, PROP_FILE);
   }
-  private Fragment[] fragments = {new WelcomeFragment(), createCanteenListFragment()};
-  private String[] fragmentNames = {"Welcome", "Canteens"};
+  private final Fragment[] fragments = {new WelcomeFragment(), createCanteenListFragment()};
+  private final String[] fragmentNames = {"Welcome", "Canteens"};
 
   
 
   protected Fragment createCanteenListFragment() {
     Fragment fragment = new CanteenListFragment();
     Bundle args = new Bundle();
-    args.putString(EntityListFragment.ARG_ENTITIES_URL, propProvider.getProperty("canteens.url"));
+    args.putString(EntityListFragment.ARG_ENTITIES_URL, propProvider.getProperty(PROP_KEY_CANTEEN_URL));
     fragment.setArguments(args);
     return fragment;
   }
