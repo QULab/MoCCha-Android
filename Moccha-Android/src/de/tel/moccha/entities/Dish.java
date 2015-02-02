@@ -17,10 +17,12 @@ package de.tel.moccha.entities;
 
 import de.zell.android.util.db.Entity;
 import de.zell.android.util.json.JSONElement;
-import java.util.Date;
+import java.util.List;
 
 /**
- *
+ * Represents a dish which contains a name, date, price and the 
+ * additives.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class Dish implements Entity<String> {
@@ -31,6 +33,8 @@ public class Dish implements Entity<String> {
   private String name;
   @JSONElement(name="price")
   private String price;
+  @JSONElement(name = "additives")
+  private List<Additive> additives;
 
   public Dish() {
   }
@@ -59,6 +63,14 @@ public class Dish implements Entity<String> {
     this.price = price;
   }
 
+  public List<Additive> getAdditives() {
+    return additives;
+  }
+
+  public void setAdditives(List<Additive> additives) {
+    this.additives = additives;
+  }
+  
   public String getID() {
     return getName();
   }

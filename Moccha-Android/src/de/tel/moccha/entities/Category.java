@@ -21,7 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Represents a dish category, for example main menu.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class Category implements Entity<String> {

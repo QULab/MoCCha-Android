@@ -19,7 +19,8 @@ import de.zell.android.util.db.Entity;
 import de.zell.android.util.json.JSONElement;
 
 /**
- *
+ * Represents an additive for a dish. Contains the id and a name.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class Additive implements Entity<Integer> {

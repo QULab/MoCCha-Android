@@ -21,7 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Represents a canteen which contains the place informations (long, lat, address etc.)
+ * and also the category informations like main menu, desert etc.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class Canteen implements Entity<Integer> {
