@@ -76,7 +76,7 @@ public class Dish implements Entity<String> {
   }
 
   public String getTableName() {
-    throw new UnsupportedOperationException("Not supported yet.");
+    return Dish.class.getName();
   }
   
   
