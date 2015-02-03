@@ -48,7 +48,7 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
   /**
    * The property key for the canteen url.
    */
-  public static final String PROP_KEY_CANTEEN_URL = "canteen.url";
+  public static final String PROP_KEY_CANTEEN_URL = "canteens.url";
 
   /**
    * Static initializer to initialize the properties provider with the moccha
