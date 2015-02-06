@@ -19,24 +19,32 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.Category;
 import de.tel.moccha.entities.Dish;
 import de.zell.android.util.fragments.EntityListFragment;
 import de.zell.android.util.fragments.EntityViewPagerFragment;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- *
+ * Represents the pager for the week days to show the dishes for a given
+ * category for each day.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class CategoryFragment extends EntityViewPagerFragment {
+public class DayCategoryPagerFragment extends EntityViewPagerFragment {
 
   private final HashMap<String, List<Dish>> dates = new HashMap<String, List<Dish>>();
   private final List<String> days = new ArrayList<String>();
+  private String[] weekDays = new String[7];
 
   @Override
   protected void loadEntity() {
@@ -62,15 +70,18 @@ public class CategoryFragment extends EntityViewPagerFragment {
       }
     }
     Collections.sort(days);
+    weekDays = getResources().getStringArray(R.array.week_days);
   }
 
   /**
    * The FragmentPagerAdapter for the days of a category.
    */
   public class DayCategoryPager extends FragmentPagerAdapter {
-
+    private final Calendar cal = Calendar.getInstance();
+    private final SimpleDateFormat format;
     public DayCategoryPager(FragmentManager fm) {
       super(fm);
+      this.format = new SimpleDateFormat(getResources().getString(R.string.time_pattern));
     }
 
     @Override
@@ -93,7 +104,12 @@ public class CategoryFragment extends EntityViewPagerFragment {
 
     @Override
     public CharSequence getPageTitle(int position) {
-      return days.get(position);
+      try {
+        cal.setTime(format.parse(days.get(position)));
+      } catch (ParseException ex) {
+        Logger.getLogger(DayCategoryPagerFragment.class.getName()).log(Level.SEVERE, null, ex);
+      }
+      return weekDays[(cal.get(Calendar.DAY_OF_WEEK) - 1) % weekDays.length];
     }
   }
 }

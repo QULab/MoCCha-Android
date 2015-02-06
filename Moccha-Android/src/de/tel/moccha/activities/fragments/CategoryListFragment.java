@@ -39,7 +39,7 @@ public class CategoryListFragment extends EntityListFragment {
   protected void onEntityClick(Entity e) {
     Bundle args = new Bundle();
     args.putSerializable(EntityViewPagerFragment.ARG_ENITY, e);
-    Fragment frg = new CategoryFragment();
+    Fragment frg = new DayCategoryPagerFragment();
     frg.setArguments(args);
     FragmentReplacer.replace(getActivity().getSupportFragmentManager(),
                              frg, R.id.canteen_diet);

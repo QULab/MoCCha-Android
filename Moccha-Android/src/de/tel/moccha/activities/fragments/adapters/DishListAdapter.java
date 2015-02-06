@@ -13,38 +13,44 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.tel.moccha.activities.fragments;
+package de.tel.moccha.activities.fragments.adapters;
 
 import android.content.Context;
-import de.tel.moccha.activities.fragments.adapters.DishListAdapter;
+import android.view.View;
+import android.widget.TextView;
+import de.tel.moccha.entities.Dish;
+import de.zell.android.util.R;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
-import de.zell.android.util.fragments.EntityListFragment;
 
 /**
- * Represents the dish list fragment which shows the dishes in a list view.
+ * The ItemAdapter to display the dishes in the ListView.
  * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class DishListFragment extends EntityListFragment {
+public class DishListAdapter extends EntityListAdapter {
 
-  @Override
-  protected void onEntityClick(Entity e) {
-    //entity
+  public DishListAdapter(Context c) {
+    super(c);
   }
 
   @Override
-  protected void onSectionClick(Object o) {
-    //sec
+  protected void setEntityView(View row, int pos) {
+    Dish d = (Dish) entities.get(pos);
+    if (d != null) {
+      TextView title = (TextView) row.findViewById(R.id.entity_title);
+      title.setText(d.getName());
+      title.setVisibility(View.VISIBLE);
+      TextView desc = (TextView) row.findViewById(R.id.entity_description);
+      desc.setText(d.getPrice());
+      desc.setVisibility(View.VISIBLE);
+    }
+
   }
 
   @Override
-  protected void loadEntities() {
-    //nothing todo
+  protected String getSection(Entity e) {
+    return "Dishes";
   }
 
-  @Override
-  protected EntityListAdapter getEntityListAdapter(Context ctx) {
-    return new DishListAdapter(ctx);
-  }
 }
