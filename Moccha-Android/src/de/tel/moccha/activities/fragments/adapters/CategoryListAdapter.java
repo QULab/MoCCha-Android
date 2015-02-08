@@ -19,15 +19,17 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 import de.tel.moccha.entities.Category;
+import de.tel.moccha.entities.Dish;
 import de.tel.moccha.util.CategoryComperator;
 import de.zell.android.util.EntityComparator;
-import de.zell.android.util.R;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * The ItemAdapter to display the categories of the canteen in the ListView.
- * 
+ *
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class CategoryListAdapter extends EntityListAdapter {
@@ -35,10 +37,24 @@ public class CategoryListAdapter extends EntityListAdapter {
   public CategoryListAdapter(Context c) {
     super(c);
   }
-  
+
   @Override
   protected EntityComparator getComparator() {
     return new CategoryComperator();
+  }
+
+  @Override
+  public void setEntities(List<Entity> entities) {
+    int count = 0;
+    Collections.sort(entities, getComparator());
+    for (Entity e : entities) {
+      Category c = (Category) e;
+      sections.put(count++, c.getName());
+      List<Dish> dishes = c.getDishes();
+      for (Dish d : dishes) {
+        this.entities.put(count++, d);
+      }
+    }
   }
 
   @Override
@@ -48,16 +64,15 @@ public class CategoryListAdapter extends EntityListAdapter {
 
   @Override
   protected void setEntityView(View row, int pos) {
-    Category c = (Category) entities.get(pos);
-    if (c != null) {
-      TextView title = (TextView) row.findViewById(R.id.entity_title);
-      title.setText(c.getName());
+    Dish d = (Dish) entities.get(pos);
+    if (d != null) {
+      TextView title = (TextView) row.findViewById(de.zell.android.util.R.id.entity_title);
+      title.setText(d.getName());
       title.setVisibility(View.VISIBLE);
-      TextView desc = (TextView) row.findViewById(R.id.entity_description);
-      desc.setText("Dishes: " + c.getDishes().size());
+      TextView desc = (TextView) row.findViewById(de.zell.android.util.R.id.entity_description);
+      desc.setText(d.getPrice());
       desc.setVisibility(View.VISIBLE);
     }
-
   }
-  
+
 }
