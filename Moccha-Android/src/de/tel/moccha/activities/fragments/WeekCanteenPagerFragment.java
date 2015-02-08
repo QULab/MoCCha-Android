@@ -19,7 +19,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 import de.tel.moccha.activities.R;
+import de.tel.moccha.entities.Canteen;
 import de.tel.moccha.entities.Category;
 import de.tel.moccha.entities.Dish;
 import de.zell.android.util.fragments.EntityListFragment;
@@ -28,22 +30,19 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- * Represents the pager for the week days to show the dishes for a given
- * category for each day.
- * 
+ * Represents the pager for the week days, to show the diets for each day for a
+ * given canteen.
+ *
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class DayCategoryPagerFragment extends EntityViewPagerFragment {
+public class WeekCanteenPagerFragment extends EntityViewPagerFragment {
 
-  private final HashMap<String, List<Dish>> dates = new HashMap<String, List<Dish>>();
-  private final List<String> days = new ArrayList<String>();
+  private List<Category> categories;
+  private HashMap<String, List<Category>> dailyCategories;
   private String[] weekDays = new String[7];
 
   @Override
@@ -58,58 +57,71 @@ public class DayCategoryPagerFragment extends EntityViewPagerFragment {
 
   @Override
   protected void extractEntityInformation() {
-    List<Dish> ds = ((Category) entity).getDishes();
-    for (Dish d : ds) {
-      if (dates.containsKey(d.getDate())) {
-        dates.get(d.getDate()).add(d);
-      } else {
-        List<Dish> dateDishes = new ArrayList<Dish>();
-        days.add(d.getDate());
-        dateDishes.add(d);
-        dates.put(d.getDate(), dateDishes);
+    Canteen canteen = (Canteen) entity;
+    categories = canteen.getCategories();
+    weekDays = getResources().getStringArray(R.array.week_days);
+
+    final Calendar cal = Calendar.getInstance();
+    final SimpleDateFormat format = new SimpleDateFormat(getResources().getString(R.string.time_pattern));
+
+    if (categories != null) {
+      dailyCategories = new HashMap<String, List<Category>>();
+      for (int i = 0; i < weekDays.length; i++) {
+        String day = weekDays[i];
+        List<Category> cs = new ArrayList<Category>();
+        for (Category c : categories) {
+          List<Dish> dishes = c.getDishes();
+          Category dayICategory = new Category();
+          dayICategory.setName(c.getName());
+          for (Dish d : dishes) {
+            try {
+              cal.setTime(format.parse(d.getDate()));
+            } catch (ParseException ex) {
+              Log.e(WeekCanteenPagerFragment.class.getName(), ex.getMessage(), ex);
+            }
+            if (i == (cal.get(Calendar.DAY_OF_WEEK) - 2)) {
+              dayICategory.addDish(d);
+            }
+          }
+          if (dayICategory.getDishes() != null)
+            cs.add(dayICategory);
+        }
+        dailyCategories.put(day, cs);
       }
     }
-    Collections.sort(days);
-    weekDays = getResources().getStringArray(R.array.week_days);
   }
 
   /**
    * The FragmentPagerAdapter for the days of a category.
    */
   public class DayCategoryPager extends FragmentPagerAdapter {
-    private final Calendar cal = Calendar.getInstance();
-    private final SimpleDateFormat format;
+
     public DayCategoryPager(FragmentManager fm) {
       super(fm);
-      this.format = new SimpleDateFormat(getResources().getString(R.string.time_pattern));
     }
 
     @Override
     public int getCount() {
-      return days.size();
+      return dailyCategories.size();
     }
 
     //get Item basically calls the subFragments using the newInstance method
     @Override
     public Fragment getItem(int position) {
       Bundle args = new Bundle();
-      List<Dish> dishes = dates.get(days.get(position));
-      if (dishes != null)
+      List<Category> cs = dailyCategories.get(weekDays[position]);
+      if (dailyCategories != null) {
         args.putSerializable(EntityListFragment.ARG_ENTITIES,
-                              dishes.toArray(new Dish[dishes.size()]));
-      Fragment frg = new DishListFragment();
+                cs.toArray(new Category[cs.size()]));
+      }
+      Fragment frg = new CategoryListFragment();
       frg.setArguments(args);
       return frg;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-      try {
-        cal.setTime(format.parse(days.get(position)));
-      } catch (ParseException ex) {
-        Logger.getLogger(DayCategoryPagerFragment.class.getName()).log(Level.SEVERE, null, ex);
-      }
-      return weekDays[(cal.get(Calendar.DAY_OF_WEEK) - 1) % weekDays.length];
+      return weekDays[position];
     }
   }
 }

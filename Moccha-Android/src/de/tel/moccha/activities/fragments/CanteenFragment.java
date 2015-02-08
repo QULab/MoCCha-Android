@@ -25,14 +25,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.Canteen;
-import de.tel.moccha.entities.Category;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
-import de.zell.android.util.fragments.EntityListFragment;
+import de.zell.android.util.fragments.EntityViewPagerFragment;
 import de.zell.android.util.fragments.FragmentReplacer;
 import de.zell.android.util.json.JSONUnmarshaller;
-import java.util.List;
 import org.json.JSONObject;
 
 /**
@@ -126,10 +124,8 @@ public class CanteenFragment extends Fragment {
             .setText(getFormatedString(R.string.canteen_opening_hours, c.getOpeningHours()));
     
     Bundle args = new Bundle();
-    List<Category> categories = c.getCategories();
-    args.putSerializable(EntityListFragment.ARG_ENTITIES,
-                         categories.toArray(new Category[categories.size()]));
-    Fragment frg = new CategoryListFragment();
+    args.putSerializable(EntityViewPagerFragment.ARG_ENITY, c);
+    Fragment frg = new WeekCanteenPagerFragment();
     frg.setArguments(args);
     FragmentReplacer.replace(getActivity().getSupportFragmentManager(), frg, R.id.canteen_diet, false);
   }

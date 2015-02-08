@@ -47,12 +47,12 @@
     <!--DayPagerFragment-->
     <string name="time_pattern">yyyy-MM-dd\'T\'HH:mm:ss</string>
     <string-array name="week_days">
-      <item>Sunday</item>
+      <!--<item>Sunday</item>-->
       <item>Monday</item>
       <item>Tuesday</item>
       <item>Wednesday</item>
       <item>Thursday</item>
       <item>Friday</item>
-      <item>Saturday</item>
+      <!--<item>Saturday</item>-->
     </string-array>
 </resources>
