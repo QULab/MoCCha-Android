@@ -16,16 +16,11 @@
 package de.tel.moccha.activities.fragments;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.widget.Toast;
-import de.tel.moccha.activities.R;
 import de.tel.moccha.activities.fragments.adapters.CategoryListAdapter;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
 import de.zell.android.util.fragments.EntityListFragment;
-import de.zell.android.util.fragments.EntityViewPagerFragment;
-import de.zell.android.util.fragments.FragmentReplacer;
 
 /**
  * Represents the category list fragment which shows the categories for a
@@ -37,12 +32,6 @@ public class CategoryListFragment extends EntityListFragment {
 
   @Override
   protected void onEntityClick(Entity e) {
-    Bundle args = new Bundle();
-    args.putSerializable(EntityViewPagerFragment.ARG_ENITY, e);
-    Fragment frg = new DayCategoryPagerFragment();
-    frg.setArguments(args);
-    FragmentReplacer.replace(getActivity().getSupportFragmentManager(),
-                             frg, R.id.canteen_diet);
     Toast.makeText(getActivity(), e.getTableName(), Toast.LENGTH_SHORT).show();
   }
 
