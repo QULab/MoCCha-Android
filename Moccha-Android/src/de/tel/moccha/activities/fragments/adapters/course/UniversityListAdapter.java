@@ -17,19 +17,20 @@ package de.tel.moccha.activities.fragments.adapters.course;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.TextView;
 import de.tel.moccha.activities.R;
+import de.tel.moccha.entities.course.University;
 import de.tel.moccha.util.UniversityComparator;
 import de.zell.android.util.EntityComparator;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
 
 /**
- *
+ * The entity list adapter to show the universities in the university list.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class UniversityListAdapter extends EntityListAdapter {
-
-  
   
   public UniversityListAdapter(Context c) {
     super(c);
@@ -42,18 +43,16 @@ public class UniversityListAdapter extends EntityListAdapter {
 
   @Override
   protected void setEntityView(View row, int pos) {
-    super.setEntityView(row, pos); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  protected void setSectionView(View row, int pos) {
-    super.setSectionView(row, pos); //To change body of generated methods, choose Tools | Templates.
+    University uni = (University) entities.get(pos);
+    if (uni != null) {
+      TextView title = (TextView) row.findViewById(de.zell.android.util.R.id.entity_title);
+      title.setText(uni.getName());
+      title.setVisibility(View.VISIBLE);
+    }
   }
 
   @Override
   protected String getSection(Entity e) {
     return context.getString(R.string.universityListHeader);
   }
-  
-  
 }
