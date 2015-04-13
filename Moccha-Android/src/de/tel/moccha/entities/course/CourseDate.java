@@ -29,16 +29,24 @@ public class CourseDate implements Entity<String> {
   private String day;
   @JSONElement(name = "iteration")
   private String iteration;
-  @JSONElement(name = "timeDay")
-  private String from;
+  @JSONElement(name = "timeFrom")
+  private String timeFrom;
   @JSONElement(name = "timeUntil")
+  private String timeUntil;
+
+  
+  @JSONElement(name = "from")
+  private String from;
+  @JSONElement(name = "until")
   private String until;
+  @JSONElement(name = "maxMembers")
+  private Integer maxMembers;
 
   public CourseDate() {
   }
-  
+
   public String getID() {
-    return getDay() + getFrom() + getUntil();
+    return from + " " +  until;
   }
 
   public String getTableName() {
@@ -61,6 +69,22 @@ public class CourseDate implements Entity<String> {
     this.iteration = iteration;
   }
 
+  public String getTimeFrom() {
+    return timeFrom;
+  }
+
+  public void setTimeFrom(String timeFrom) {
+    this.timeFrom = timeFrom;
+  }
+
+  public String getTimeUntil() {
+    return timeUntil;
+  }
+
+  public void setTimeUntil(String timeUntil) {
+    this.timeUntil = timeUntil;
+  }
+
   public String getFrom() {
     return from;
   }
@@ -76,5 +100,12 @@ public class CourseDate implements Entity<String> {
   public void setUntil(String until) {
     this.until = until;
   }
-  
+
+  public Integer getMaxMembers() {
+    return maxMembers;
+  }
+
+  public void setMaxMembers(Integer maxMembers) {
+    this.maxMembers = maxMembers;
+  }
 }
