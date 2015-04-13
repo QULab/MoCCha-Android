@@ -23,13 +23,10 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import de.tel.moccha.activities.R;
-import de.tel.moccha.entities.course.Course;
 import de.tel.moccha.entities.course.CourseCategory;
-import de.zell.android.util.SparseArray;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
-import de.zell.android.util.fragments.EntityListFragment;
 import de.zell.android.util.fragments.EntityViewPagerFragment;
 import de.zell.android.util.json.JSONUnmarshaller;
 import java.util.ArrayList;
@@ -66,7 +63,7 @@ public class MainCourseCategoryFragment extends EntityViewPagerFragment {
       }
 
       public void doExeptionHandling(Throwable t) {
-        Log.e(UniversityListFragment.class.getName(), t.getMessage(), t);
+        Log.e(MainCourseCategoryFragment.class.getName(), t.getMessage(), t);
       }
 
       public void handleNewEtag(String url, String newEtag) {
