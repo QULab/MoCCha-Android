@@ -124,4 +124,10 @@ public class WeekCanteenPagerFragment extends EntityViewPagerFragment {
       return weekDays[position];
     }
   }
+
+  @Override
+  protected void restoreInstance(Bundle values) {
+    // do nothing
+  }
+  
 }

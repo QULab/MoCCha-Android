@@ -124,7 +124,7 @@ public class CanteenFragment extends Fragment {
             .setText(getFormatedString(R.string.canteen_opening_hours, c.getOpeningHours()));
     
     Bundle args = new Bundle();
-    args.putSerializable(EntityViewPagerFragment.ARG_ENITY, c);
+    args.putSerializable(EntityViewPagerFragment.ARG_ENTITY, c);
     Fragment frg = new WeekCanteenPagerFragment();
     frg.setArguments(args);
     FragmentReplacer.replace(getActivity().getSupportFragmentManager(), frg, R.id.canteen_diet, false);
