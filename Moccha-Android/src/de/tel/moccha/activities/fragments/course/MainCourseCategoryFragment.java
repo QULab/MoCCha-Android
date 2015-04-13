@@ -21,6 +21,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.View;
 import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.course.CourseCategory;
 import de.zell.android.util.activities.MainNavigationActivity;
@@ -45,7 +46,12 @@ public class MainCourseCategoryFragment extends EntityViewPagerFragment {
     AsyncGETRequester request = new AsyncGETRequester(new AsyncGETRequester.PostExecuteJob() {
       public void doJob(JSONObject response) {
           entity = JSONUnmarshaller.unmarshall(response, CourseCategory.class);
-          ((ViewPager) getView().findViewById(R.id.tab_viewPager)).getAdapter().notifyDataSetChanged();
+          View root = getView();
+          if (root != null) {
+            ViewPager pager = (ViewPager) root.findViewById(R.id.tab_viewPager);
+            if (pager != null)
+              pager.getAdapter().notifyDataSetChanged();
+          }
       }
 
       public void doExeptionHandling(Throwable t) {
