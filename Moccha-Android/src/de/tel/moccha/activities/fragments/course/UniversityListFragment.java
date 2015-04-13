@@ -53,7 +53,7 @@ public class UniversityListFragment extends EntityListFragment {
   protected void onEntityClick(Entity e) {
     University u = (University) e;
     Bundle b = new Bundle();
-    b.putString(CanteenFragment.ARG_CANTEEN_URL, u.getUrl());
+    b.putString(MainCourseCategoryFragment.ARG_ENTITY_URL, u.getUrl());
     Fragment frg = new MainCourseCategoryFragment();
     frg.setArguments(b);
     FragmentReplacer.replace(getActivity().getSupportFragmentManager(),
