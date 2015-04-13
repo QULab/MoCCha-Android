@@ -21,7 +21,6 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.widget.Toast;
 import de.tel.moccha.activities.fragments.adapters.course.UniversityListAdapter;
-import de.tel.moccha.activities.fragments.canteen.CanteenFragment;
 import de.tel.moccha.entities.course.University;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.adapters.EntityListAdapter;
