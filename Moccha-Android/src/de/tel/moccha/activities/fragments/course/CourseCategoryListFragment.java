@@ -21,14 +21,14 @@ import android.support.v4.app.Fragment;
 import android.widget.Toast;
 import de.tel.moccha.activities.fragments.adapters.course.CourseCategoryListAdapter;
 import de.tel.moccha.entities.course.CourseCategory;
-import de.tel.moccha.entities.course.University;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
 import de.zell.android.util.fragments.EntityListFragment;
 import de.zell.android.util.fragments.FragmentReplacer;
 
 /**
- *
+ * Represents the course category list fragment which shows the course of studies.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class CourseCategoryListFragment extends EntityListFragment {
