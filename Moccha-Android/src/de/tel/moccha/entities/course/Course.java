@@ -15,6 +15,7 @@
  */
 package de.tel.moccha.entities.course;
 
+import de.zell.android.util.db.Entity;
 import de.zell.android.util.json.JSONElement;
 import java.util.List;
 
@@ -23,7 +24,7 @@ import java.util.List;
  * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class Course {
+public class Course implements Entity<Integer> {
   
   @JSONElement(name = "kindOfEvent")
   private String kindOfEvent;
@@ -61,6 +62,14 @@ public class Course {
   private List<GroupDate> groupDates;
 
   public Course() {
+  }
+
+  public Integer getID() {
+    return getId();
+  }
+
+  public String getTableName() {
+    return Course.class.getName();
   }
 
   public String getKindOfEvent() {

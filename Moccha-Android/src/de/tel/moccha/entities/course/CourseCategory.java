@@ -15,6 +15,7 @@
  */
 package de.tel.moccha.entities.course;
 
+import de.zell.android.util.db.Entity;
 import de.zell.android.util.json.JSONElement;
 import java.util.List;
 
@@ -24,7 +25,7 @@ import java.util.List;
  * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class CourseCategory {
+public class CourseCategory implements Entity<String>{
   @JSONElement(name = "title")
   private String name;
   @JSONElement(name = "uri")
@@ -36,6 +37,14 @@ public class CourseCategory {
   
 
   public CourseCategory() {
+  }
+
+  public String getID() {
+    return getName();
+  }
+
+  public String getTableName() {
+    return CourseCategory.class.getName();
   }
 
   public String getName() {

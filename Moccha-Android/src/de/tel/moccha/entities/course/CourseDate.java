@@ -15,6 +15,7 @@
  */
 package de.tel.moccha.entities.course;
 
+import de.zell.android.util.db.Entity;
 import de.zell.android.util.json.JSONElement;
 
 /**
@@ -22,7 +23,7 @@ import de.zell.android.util.json.JSONElement;
  * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class CourseDate {
+public class CourseDate implements Entity<String> {
   
   @JSONElement(name = "day")
   private String day;
@@ -34,6 +35,14 @@ public class CourseDate {
   private String until;
 
   public CourseDate() {
+  }
+  
+  public String getID() {
+    return getDay() + getFrom() + getUntil();
+  }
+
+  public String getTableName() {
+    return CourseDate.class.getName();
   }
 
   public String getDay() {

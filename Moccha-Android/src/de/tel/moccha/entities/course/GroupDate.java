@@ -15,6 +15,7 @@
  */
 package de.tel.moccha.entities.course;
 
+import de.zell.android.util.db.Entity;
 import de.zell.android.util.json.JSONElement;
 import java.util.List;
 
@@ -23,13 +24,24 @@ import java.util.List;
  * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class GroupDate {
+public class GroupDate implements Entity<String> {
+  
   @JSONElement(name = "groupName")
   private String name;
   @JSONElement(name = "dates")
   private List<CourseDate> dates;
 
   public GroupDate() {
+  }
+  
+  
+
+  public String getID() {
+    return getName();
+  }
+
+  public String getTableName() {
+    return GroupDate.class.getName();
   }
 
   public String getName() {

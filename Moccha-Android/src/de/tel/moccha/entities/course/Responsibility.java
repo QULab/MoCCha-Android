@@ -15,6 +15,7 @@
  */
 package de.tel.moccha.entities.course;
 
+import de.zell.android.util.db.Entity;
 import de.zell.android.util.json.JSONElement;
 
 /**
@@ -22,7 +23,7 @@ import de.zell.android.util.json.JSONElement;
  * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class Responsibility {
+public class Responsibility implements Entity<String> {
   
   @JSONElement(name = "name")
   private String name;
@@ -30,6 +31,14 @@ public class Responsibility {
   private Person person;
 
   public Responsibility() {
+  }
+
+  public String getID() {
+    return getName();
+  }
+
+  public String getTableName() {
+    return Responsibility.class.getName();
   }
 
   public String getName() {
