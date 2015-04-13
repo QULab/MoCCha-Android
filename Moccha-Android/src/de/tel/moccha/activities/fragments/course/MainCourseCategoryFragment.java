@@ -23,13 +23,16 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import de.tel.moccha.activities.R;
+import de.tel.moccha.entities.course.Course;
 import de.tel.moccha.entities.course.CourseCategory;
+import de.zell.android.util.SparseArray;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
 import de.zell.android.util.fragments.EntityListFragment;
 import de.zell.android.util.fragments.EntityViewPagerFragment;
 import de.zell.android.util.json.JSONUnmarshaller;
+import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONObject;
 
@@ -41,11 +44,19 @@ import org.json.JSONObject;
  */
 public class MainCourseCategoryFragment extends EntityViewPagerFragment {
   
+  private final List<ContentList> content = new ArrayList<ContentList>();
+  
   @Override
   protected void loadEntity() {
     AsyncGETRequester request = new AsyncGETRequester(new AsyncGETRequester.PostExecuteJob() {
       public void doJob(JSONObject response) {
           entity = JSONUnmarshaller.unmarshall(response, CourseCategory.class);
+          CourseCategory courseCategory = (CourseCategory) entity;
+          if (courseCategory.getCategories() != null)
+            content.add(new ContentList(ContentCategories.CourseOfStudies, courseCategory.getCategories()));
+          if (courseCategory.getCourses() != null)
+            content.add(new ContentList(ContentCategories.Courses, courseCategory.getCourses()));
+          
           View root = getView();
           if (root != null) {
             ViewPager pager = (ViewPager) root.findViewById(R.id.tab_viewPager);
@@ -81,47 +92,30 @@ public class MainCourseCategoryFragment extends EntityViewPagerFragment {
    * The content page adapter which shows either the course of studies or courses.
    */
   private class ContentPagerAdapter extends FragmentPagerAdapter {
-
-    private final String[] titles;
     
     public ContentPagerAdapter(FragmentManager fm) {
       super(fm);
-      titles = getResources().getStringArray(R.array.courses_content_pages);
     }
     
     @Override
     public int getCount() {
-      int count = 0;
-      if (entity != null) {
-        CourseCategory content = (CourseCategory) entity;
-        if (content.getCategories() != null) 
-          count++;
-        if (content.getCourses() != null)
-          count++;
-      }
-      return count;
+      return content.size();
     }
 
     
     @Override
     public Fragment getItem(int i) {
-      if (i > 0 && entity != null)
+      if (entity == null)
         return null;
       
-      CourseCategory content = (CourseCategory) entity;
-      Fragment frg = new CourseCategoryListFragment();
-      List<CourseCategory> categories = content.getCategories();
-      if (categories != null) {
-        Bundle args = new Bundle();
-        args.putSerializable(EntityListFragment.ARG_ENTITIES, categories.toArray(new CourseCategory[categories.size()]));
-        frg.setArguments(args);
-      }
-      return frg; //if 0 categories - 1 courses
+      ContentList list = content.get(i);
+      return ListFragmentFactory.createListFragment(list.getCategory(), list.getContent());
     }
+    
 
     @Override
     public CharSequence getPageTitle(int position) {
-      return titles[position % titles.length];
+      return content.get(position).getCategory().toString();
     }
   }
 
