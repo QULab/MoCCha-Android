@@ -58,5 +58,14 @@
     
     
     <!--UNIVERSITY LIST--> 
-    <string name="universityListHeader">Universities</string>
+    <string name="university_list_header">Universities</string>
+    <!--Main courses category pager-->
+    <string-array name="courses_content_pages">
+      <item>Course of studies</item>
+      <item>Courses</item>
+    </string-array>
+    <!--CourseCategoryList-->
+    <string name="course_category_list_section_header">Course of studies</string>
+    <!--Course list-->
+    <string name="course_list_section_header">Courses</string>
 </resources>
