@@ -55,4 +55,8 @@
       <item>Friday</item>
       <!--<item>Saturday</item>-->
     </string-array>
+    
+    
+    <!--UNIVERSITY LIST--> 
+    <string name="universityListHeader">Universities</string>
 </resources>
