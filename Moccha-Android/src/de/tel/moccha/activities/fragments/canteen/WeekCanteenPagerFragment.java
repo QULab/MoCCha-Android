@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.tel.moccha.activities.fragments;
+package de.tel.moccha.activities.fragments.canteen;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,9 +21,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 import de.tel.moccha.activities.R;
-import de.tel.moccha.entities.Canteen;
-import de.tel.moccha.entities.Category;
-import de.tel.moccha.entities.Dish;
+import de.tel.moccha.entities.canteen.Canteen;
+import de.tel.moccha.entities.canteen.Category;
+import de.tel.moccha.entities.canteen.Dish;
 import de.zell.android.util.fragments.EntityListFragment;
 import de.zell.android.util.fragments.EntityViewPagerFragment;
 import java.text.ParseException;

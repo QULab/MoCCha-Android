@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.tel.moccha.activities.fragments;
+package de.tel.moccha.activities.fragments.canteen;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.widget.Toast;
-import de.tel.moccha.activities.fragments.adapters.CanteenSectionListAdapter;
-import de.tel.moccha.entities.Canteen;
+import de.tel.moccha.activities.fragments.adapters.canteen.CanteenSectionListAdapter;
+import de.tel.moccha.entities.canteen.Canteen;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.async.AsyncGETRequester;

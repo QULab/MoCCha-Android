@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.tel.moccha.activities.fragments.adapters;
+package de.tel.moccha.activities.fragments.adapters.canteen;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
-import de.tel.moccha.entities.Canteen;
+import de.tel.moccha.entities.canteen.Canteen;
 import de.tel.moccha.util.CanteenComparator;
 import de.zell.android.util.EntityComparator;
 import de.zell.android.util.R;

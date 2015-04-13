@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.tel.moccha.entities;
+package de.tel.moccha.entities.canteen;
 
 import de.zell.android.util.db.Entity;
 import de.zell.android.util.json.JSONElement;

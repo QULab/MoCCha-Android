@@ -17,7 +17,7 @@ package de.tel.moccha.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import de.tel.moccha.activities.fragments.CanteenListFragment;
+import de.tel.moccha.activities.fragments.canteen.CanteenListFragment;
 import de.tel.moccha.activities.fragments.WelcomeFragment;
 import de.zell.android.util.PropertiesProvider;
 import de.zell.android.util.activities.MainNavigationActivity;

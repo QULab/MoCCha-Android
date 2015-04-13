@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.tel.moccha.activities.fragments;
+package de.tel.moccha.activities.fragments.canteen;
 
 import android.content.Context;
-import de.tel.moccha.activities.fragments.adapters.DishListAdapter;
+import de.tel.moccha.activities.fragments.adapters.canteen.DishListAdapter;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
 import de.zell.android.util.fragments.EntityListFragment;

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.tel.moccha.activities.fragments;
+package de.tel.moccha.activities.fragments.canteen;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,7 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import de.tel.moccha.activities.R;
-import de.tel.moccha.entities.Canteen;
+import de.tel.moccha.entities.canteen.Canteen;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;

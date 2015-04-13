@@ -15,7 +15,7 @@
  */
 package de.tel.moccha.util;
 
-import de.tel.moccha.entities.Canteen;
+import de.tel.moccha.entities.canteen.Canteen;
 import de.zell.android.util.EntityComparator;
 import de.zell.android.util.db.Entity;
 
