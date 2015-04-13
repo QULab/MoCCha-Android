@@ -53,6 +53,6 @@ public class UniversityListAdapter extends EntityListAdapter {
 
   @Override
   protected String getSection(Entity e) {
-    return context.getString(R.string.universityListHeader);
+    return context.getString(R.string.university_list_header);
   }
 }
