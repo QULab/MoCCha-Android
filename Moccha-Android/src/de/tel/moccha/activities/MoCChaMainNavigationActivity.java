@@ -19,6 +19,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import de.tel.moccha.activities.fragments.canteen.CanteenListFragment;
 import de.tel.moccha.activities.fragments.WelcomeFragment;
+import de.tel.moccha.activities.fragments.course.MainCourseCategoryFragment;
+import de.tel.moccha.activities.fragments.course.UniversityListFragment;
 import de.zell.android.util.PropertiesProvider;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.fragments.EntityListFragment;
@@ -49,6 +51,11 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
    * The property key for the canteen url.
    */
   public static final String PROP_KEY_CANTEEN_URL = "canteens.url";
+  
+  /**
+   * The property key for the course url.
+   */
+  public static final String PROP_KEY_COURSE_URL = "courses.url";
 
   /**
    * Static initializer to initialize the properties provider with the moccha
@@ -62,13 +69,14 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
    * The fragments which should be placed in the center if selected the
    * corresponding name is selected in the navigation drawer.
    */
-  private final Fragment[] fragments = {new WelcomeFragment(), createCanteenListFragment()};
+  private final Fragment[] fragments = {new WelcomeFragment(), createCanteenListFragment(),
+                                        createUniversityFragment()};
 
   /**
    * The available fragments which can be selected, the names are shown in the
    * left menu of the navigation drawer.
    */
-  private final String[] fragmentNames = {"Welcome", "Canteens"};
+  private final String[] fragmentNames = {"Welcome", "Canteens", "Courses"};
 
   /**
    * Creates a fragment object for the canteen list fragment, with the
@@ -84,6 +92,20 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
     return fragment;
   }
 
+  /**
+   * Creates a fragment object for the university list fragment, with the
+   * correct university URL as argument.
+   * 
+   * @return the university list fragment
+   */
+  protected Fragment createUniversityFragment() {
+    Fragment fragment = new UniversityListFragment();
+    Bundle args = new Bundle();
+    args.putString(EntityListFragment.ARG_ENTITIES_URL, propProvider.getProperty(PROP_KEY_COURSE_URL));
+    fragment.setArguments(args);
+    return fragment;
+  }
+  
   @Override
   protected Fragment[] getNavigationFragments() {
     return fragments;
