@@ -51,7 +51,7 @@ public class Course implements Entity<Integer> {
   @JSONElement(name = "language")
   private String language;
   @JSONElement(name = "sws")
-  private Integer semesterWochenStunden;
+  private Double semesterWochenStunden;
   @JSONElement(name = "eventNumber")
   private String eventNumber;
   @JSONElement(name = "responsibilities")
@@ -152,11 +152,11 @@ public class Course implements Entity<Integer> {
     this.language = language;
   }
 
-  public Integer getSemesterWochenStunden() {
+  public Double getSemesterWochenStunden() {
     return semesterWochenStunden;
   }
 
-  public void setSemesterWochenStunden(Integer semesterWochenStunden) {
+  public void setSemesterWochenStunden(Double semesterWochenStunden) {
     this.semesterWochenStunden = semesterWochenStunden;
   }
 
