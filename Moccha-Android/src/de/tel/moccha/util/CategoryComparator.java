@@ -30,7 +30,12 @@ public class CategoryComparator extends EntityComparator {
 
   @Override
   public int compare(Entity arg0, Entity arg1) {
-    return ((Category) arg0).getName().compareTo(((Category) arg1).getName());
+    String firstName = ((Category) arg0).getName();
+    String secName = ((Category) arg1).getName();
+    if (firstName != null && secName != null)
+      return firstName.compareTo(secName);
+    else 
+      return -1;
   }
   
 }
