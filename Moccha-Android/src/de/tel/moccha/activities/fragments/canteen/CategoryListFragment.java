@@ -17,7 +17,7 @@ package de.tel.moccha.activities.fragments.canteen;
 
 import android.content.Context;
 import android.widget.Toast;
-import de.tel.moccha.activities.fragments.adapters.canteen.CategoryListAdapter;
+import de.tel.moccha.activities.fragments.adapters.canteen.CanteenCategoryListAdapter;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
 import de.zell.android.util.fragments.EntityListFragment;
@@ -47,7 +47,7 @@ public class CategoryListFragment extends EntityListFragment {
 
   @Override
   protected EntityListAdapter getEntityListAdapter(Context ctx) {
-    return new CategoryListAdapter(ctx);
+    return new CanteenCategoryListAdapter(ctx);
   }
   
   

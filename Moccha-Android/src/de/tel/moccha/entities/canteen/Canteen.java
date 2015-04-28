@@ -51,7 +51,7 @@ public class Canteen implements Entity<Integer> {
   @JSONElement(name="phone")
   private String phone;
   @JSONElement(name="categories")
-  private List<Category> categories;
+  private List<CanteenCategory> categories;
 
   public Canteen() {
   }
@@ -144,18 +144,18 @@ public class Canteen implements Entity<Integer> {
     this.phone = phone;
   }
 
-  public List<Category> getCategories() {
+  public List<CanteenCategory> getCategories() {
     return categories;
   }
 
-  public void setCategories(List<Category> categories) {
+  public void setCategories(List<CanteenCategory> categories) {
     this.categories = categories;
   }
   
   
-  public void addCategory(Category c) {
+  public void addCategory(CanteenCategory c) {
     if (categories == null)
-      categories = new ArrayList<Category>();
+      categories = new ArrayList<CanteenCategory>();
     
     categories.add(c);
   }

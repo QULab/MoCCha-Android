@@ -22,7 +22,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.canteen.Canteen;
-import de.tel.moccha.entities.canteen.Category;
+import de.tel.moccha.entities.canteen.CanteenCategory;
 import de.tel.moccha.entities.canteen.Dish;
 import de.zell.android.util.fragments.EntityListFragment;
 import de.zell.android.util.fragments.EntityViewPagerFragment;
@@ -41,8 +41,8 @@ import java.util.List;
  */
 public class WeekCanteenPagerFragment extends EntityViewPagerFragment {
 
-  private List<Category> categories;
-  private HashMap<String, List<Category>> dailyCategories;
+  private List<CanteenCategory> categories;
+  private HashMap<String, List<CanteenCategory>> dailyCategories;
   private String[] weekDays = new String[7];
 
   @Override
@@ -65,13 +65,13 @@ public class WeekCanteenPagerFragment extends EntityViewPagerFragment {
     final SimpleDateFormat format = new SimpleDateFormat(getResources().getString(R.string.time_pattern));
 
     if (categories != null) {
-      dailyCategories = new HashMap<String, List<Category>>();
+      dailyCategories = new HashMap<String, List<CanteenCategory>>();
       for (int i = 0; i < weekDays.length; i++) {
         String day = weekDays[i];
-        List<Category> cs = new ArrayList<Category>();
-        for (Category c : categories) {
+        List<CanteenCategory> cs = new ArrayList<CanteenCategory>();
+        for (CanteenCategory c : categories) {
           List<Dish> dishes = c.getDishes();
-          Category dayICategory = new Category();
+          CanteenCategory dayICategory = new CanteenCategory();
           dayICategory.setName(c.getName());
           for (Dish d : dishes) {
             try {
@@ -109,10 +109,10 @@ public class WeekCanteenPagerFragment extends EntityViewPagerFragment {
     @Override
     public Fragment getItem(int position) {
       Bundle args = new Bundle();
-      List<Category> cs = dailyCategories.get(weekDays[position]);
+      List<CanteenCategory> cs = dailyCategories.get(weekDays[position]);
       if (dailyCategories != null) {
         args.putSerializable(EntityListFragment.ARG_ENTITIES,
-                cs.toArray(new Category[cs.size()]));
+                cs.toArray(new CanteenCategory[cs.size()]));
       }
       Fragment frg = new CategoryListFragment();
       frg.setArguments(args);
