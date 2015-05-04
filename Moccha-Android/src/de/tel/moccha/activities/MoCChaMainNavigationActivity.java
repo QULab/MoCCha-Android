@@ -19,8 +19,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import de.tel.moccha.activities.fragments.canteen.CanteenListFragment;
 import de.tel.moccha.activities.fragments.WelcomeFragment;
-import de.tel.moccha.activities.fragments.course.MainCourseCategoryFragment;
 import de.tel.moccha.activities.fragments.CategoryListFragment;
+import de.tel.moccha.activities.fragments.course.UniversityListFragment;
 import de.zell.android.util.PropertiesProvider;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.fragments.EntityListFragment;
@@ -99,7 +99,7 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
    * @return the university list fragment
    */
   protected Fragment createUniversityFragment() {
-    Fragment fragment = new CategoryListFragment();
+    Fragment fragment = new UniversityListFragment();
     Bundle args = new Bundle();
     args.putString(EntityListFragment.ARG_ENTITIES_URL, propProvider.getProperty(PROP_KEY_COURSE_URL));
     fragment.setArguments(args);

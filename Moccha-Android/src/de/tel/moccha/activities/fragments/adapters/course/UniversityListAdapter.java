@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.tel.moccha.activities.fragments;
+package de.tel.moccha.activities.fragments.adapters.course;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.Category;
+import de.tel.moccha.entities.course.UniversityNameConverter;
 import de.tel.moccha.util.CategoryComparator;
 import de.zell.android.util.EntityComparator;
 import de.zell.android.util.adapters.EntityListAdapter;
@@ -30,9 +31,9 @@ import de.zell.android.util.db.Entity;
  * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class CategoryListAdapter extends EntityListAdapter {
+public class UniversityListAdapter extends EntityListAdapter {
   
-  public CategoryListAdapter(Context c) {
+  public UniversityListAdapter(Context c) {
     super(c);
   }
 
@@ -46,7 +47,7 @@ public class CategoryListAdapter extends EntityListAdapter {
     Category category = (Category) entities.get(pos);
     if (category != null) {
       TextView title = (TextView) row.findViewById(de.zell.android.util.R.id.entity_title);
-      title.setText(category.getName());
+      title.setText(UniversityNameConverter.getLongName(category.getName()));
       title.setVisibility(View.VISIBLE);
     }
   }

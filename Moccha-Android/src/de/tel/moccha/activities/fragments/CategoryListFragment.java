@@ -15,7 +15,6 @@
  */
 package de.tel.moccha.activities.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -43,7 +42,7 @@ import org.json.JSONObject;
  * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class CategoryListFragment extends EntityListFragment {
+public abstract class CategoryListFragment extends EntityListFragment {
 
   /**
    * The json key to extract the categories json array.
@@ -104,11 +103,5 @@ public class CategoryListFragment extends EntityListFragment {
     GetRequestInfo info = new GetRequestInfo(getURL(), null);
     request.execute(info);
   }
-
-  @Override
-  protected EntityListAdapter getEntityListAdapter(Context ctx) {
-    return new CategoryListAdapter(ctx);
-  }
-  
   
 }
