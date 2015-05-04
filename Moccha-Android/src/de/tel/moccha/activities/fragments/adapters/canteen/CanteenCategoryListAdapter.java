@@ -20,7 +20,6 @@ import android.view.View;
 import android.widget.TextView;
 import de.tel.moccha.entities.canteen.DishCategory;
 import de.tel.moccha.entities.canteen.Dish;
-import de.tel.moccha.util.CategoryComparator;
 import de.tel.moccha.util.DishCategoryComparator;
 import de.zell.android.util.EntityComparator;
 import de.zell.android.util.adapters.EntityListAdapter;
