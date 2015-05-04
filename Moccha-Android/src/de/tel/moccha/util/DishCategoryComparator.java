@@ -20,7 +20,10 @@ import de.zell.android.util.EntityComparator;
 import de.zell.android.util.db.Entity;
 
 /**
- *
+ * Represents the dish category comparator which is a sub class of the 
+ * entity comparator to compare entities.
+ * The comparator compares the names of the given dish categories.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class DishCategoryComparator extends EntityComparator {
