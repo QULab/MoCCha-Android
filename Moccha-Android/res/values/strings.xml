@@ -44,7 +44,7 @@
     
     <string name="canteen_opening_hours">Opening hours: %1$s</string>
     <string name="canteen_header_diet">Diet</string>
-    <string name="canteen_dish">%1$s&lt;sup&gt;&lt;small&gt;%2$s(*&lt;/small&gt;&lt;/sup&gt;
+    <string name="canteen_dish">%1$s&lt;sup&gt;&lt;small&gt;%2$s&lt;/small&gt;&lt;/sup&gt;
     </string>
     <!--DayPagerFragment-->
     <string name="time_pattern">yyyy-MM-dd\'T\'HH:mm:ss</string>
