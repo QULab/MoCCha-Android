@@ -21,36 +21,6 @@
               android:layout_height="wrap_content"
               android:orientation="vertical"
               android:layout_margin="15dp">
-
-    <!--INFO SECTION-->
-    <TextView
-            android:id="@+id/canteen_header_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/light_gray"
-            android:textSize="24sp"
-            android:text="@string/canteen_header_info" 
-            android:textColor="@color/black"
-            android:paddingLeft="5sp"/>
-    <TextView
-            android:id="@+id/canteen_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"/>
-    <TextView
-            android:id="@+id/canteen_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"/>
-    <TextView
-            android:id="@+id/canteen_fax"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"/>
-    <TextView
-            android:id="@+id/canteen_opening_hours"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
     <!--DIET SECTION-->
     <TextView
             android:id="@+id/canteen_header_diet"

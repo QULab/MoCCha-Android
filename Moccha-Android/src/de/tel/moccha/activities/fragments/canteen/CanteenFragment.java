@@ -16,20 +16,21 @@
 package de.tel.moccha.activities.fragments.canteen;
 
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.text.Html;
-import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.canteen.Canteen;
+import de.tel.moccha.util.StringFormatter;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
 import de.zell.android.util.fragments.EntityViewPagerFragment;
 import de.zell.android.util.fragments.FragmentReplacer;
+import de.zell.android.util.fragments.InfoMenuFragment;
 import de.zell.android.util.json.JSONUnmarshaller;
 import org.json.JSONObject;
 
@@ -38,7 +39,7 @@ import org.json.JSONObject;
  * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class CanteenFragment extends Fragment {
+public class CanteenFragment extends InfoMenuFragment {
 
   /**
    * The argument key of the fragment.
@@ -60,10 +61,21 @@ public class CanteenFragment extends Fragment {
    */
   private Canteen c;
   
+  /**
+   * Represents the canteen info dialog, which shows the details of the canteen.
+   */
+  private CanteenInfoDialogFragment info;
+  
+  /**
+   * The formatter which will be used to format the strings given by id.
+   */
+  private StringFormatter formatter;
+  
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
+    formatter = new StringFormatter(getActivity());
+    
     if (savedInstanceState == null) {
       savedInstanceState = getArguments();
     }
@@ -113,43 +125,26 @@ public class CanteenFragment extends Fragment {
       return;
     
     getActivity().setTitle(c.getTitle());
-    View root = this.getView();
-    getTextView(root, R.id.canteen_address)
-            .setText(getFormatedString(R.string.canteen_address, c.getAddress()));
-    getTextView(root, R.id.canteen_fax)
-            .setText(getFormatedString(R.string.canteen_fax, c.getFax()));
-    getTextView(root, R.id.canteen_phone)
-            .setText(getFormatedString(R.string.canteen_phone, c.getPhone()));
-    getTextView(root, R.id.canteen_opening_hours)
-            .setText(getFormatedString(R.string.canteen_opening_hours, c.getOpeningHours()));
-    
     Bundle args = new Bundle();
     args.putSerializable(EntityViewPagerFragment.ARG_ENTITY, c);
     Fragment frg = new WeekCanteenPagerFragment();
     frg.setArguments(args);
     FragmentReplacer.replace(getActivity().getSupportFragmentManager(), frg, R.id.canteen_diet, false);
+    
+    setInfoDialogArguments();
   }
   
   /**
-   * Returns the text view for the given id from the root view.
-   * 
-   * @param root the root view
-   * @param id the id which identifies the view
-   * @return the corresponding view
+   * Adds the initialized canteen as argument to the dialog fragment.
+   * So the info dialog can show the needed information.
    */
-  private TextView getTextView(View root, int id) {
-    return ((TextView) root.findViewById(id));
-  } 
-  
-  /**
-   * Returns the formated string for the string xml id and the given values.
-   * 
-   * @param id the id which identifies the string
-   * @param values the values for the string
-   * @return the formated string
-   */
-  private Spanned getFormatedString(int id, Object ... values) {
-    return Html.fromHtml(String.format(getString(id), values));
+  private void setInfoDialogArguments() {
+    if (c != null) {
+      Bundle args = new Bundle();
+      args.putSerializable(CanteenInfoDialogFragment.ARG_CANTEEN_INFO, c);
+      
+      getInfoDialog().setArguments(args);
+    }
   }
 
   @Override
@@ -164,4 +159,12 @@ public class CanteenFragment extends Fragment {
     super.onSaveInstanceState(outState);
     outState.putSerializable(TAG_CANTEEN, c);
   }
+
+  @Override
+  protected DialogFragment getInfoDialog() {
+    if (info == null)
+      info = new CanteenInfoDialogFragment();
+    return info;
+  }
+  
 }
