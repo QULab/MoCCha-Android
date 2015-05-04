@@ -41,7 +41,7 @@ limitations under the License.
       android:name=".MoCChaMainNavigationActivity"
       android:screenOrientation="portrait"
       android:label="@string/app_name"
-      android:theme="@android:style/Theme.Holo.Light">
+      android:theme="@style/Theme.MoCCha">
     </activity>
   </application>
 </manifest>
