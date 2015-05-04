@@ -57,12 +57,10 @@ public class CanteenListFragment extends EntityListFragment {
     FragmentReplacer.replace(getActivity().getSupportFragmentManager(),
                              frg,
                              FragmentReplacer.MAIN_CONTENT);
-    Toast.makeText(getActivity(), e.getID().toString(), Toast.LENGTH_LONG).show();
   }
 
   @Override
   protected void onSectionClick(Object o) {
-    Toast.makeText(getActivity(), o.toString(), Toast.LENGTH_LONG).show();
   }
 
   @Override

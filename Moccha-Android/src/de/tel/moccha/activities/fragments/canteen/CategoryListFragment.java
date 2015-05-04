@@ -32,12 +32,12 @@ public class CategoryListFragment extends EntityListFragment {
 
   @Override
   protected void onEntityClick(Entity e) {
-    Toast.makeText(getActivity(), e.getTableName(), Toast.LENGTH_SHORT).show();
+    //
   }
 
   @Override
   protected void onSectionClick(Object o) {
-    Toast.makeText(getActivity(), o.toString(), Toast.LENGTH_SHORT).show();
+    //
   }
 
   @Override
