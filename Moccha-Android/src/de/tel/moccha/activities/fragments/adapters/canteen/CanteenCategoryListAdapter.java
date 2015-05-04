@@ -18,9 +18,10 @@ package de.tel.moccha.activities.fragments.adapters.canteen;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
-import de.tel.moccha.entities.canteen.CanteenCategory;
+import de.tel.moccha.entities.canteen.DishCategory;
 import de.tel.moccha.entities.canteen.Dish;
 import de.tel.moccha.util.CategoryComparator;
+import de.tel.moccha.util.DishCategoryComparator;
 import de.zell.android.util.EntityComparator;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
@@ -40,7 +41,7 @@ public class CanteenCategoryListAdapter extends EntityListAdapter {
 
   @Override
   protected EntityComparator getComparator() {
-    return new CategoryComparator();
+    return new DishCategoryComparator();
   }
 
   @Override
@@ -48,7 +49,7 @@ public class CanteenCategoryListAdapter extends EntityListAdapter {
     int count = 0;
     Collections.sort(entities, getComparator());
     for (Entity e : entities) {
-      CanteenCategory c = (CanteenCategory) e;
+      DishCategory c = (DishCategory) e;
       sections.put(count++, c.getName());
       List<Dish> dishes = c.getDishes();
       for (Dish d : dishes) {
@@ -59,7 +60,7 @@ public class CanteenCategoryListAdapter extends EntityListAdapter {
 
   @Override
   protected String getSection(Entity e) {
-    return ((CanteenCategory) e).getName();
+    return ((DishCategory) e).getName();
   }
 
   @Override

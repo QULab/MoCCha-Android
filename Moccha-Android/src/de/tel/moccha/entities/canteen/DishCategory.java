@@ -15,7 +15,7 @@
  */
 package de.tel.moccha.entities.canteen;
 
-import de.tel.moccha.entities.Category;
+import de.zell.android.util.db.Entity;
 import de.zell.android.util.json.JSONElement;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +25,37 @@ import java.util.List;
  * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class CanteenCategory extends Category {
+public class DishCategory implements Entity<String> {
   
   @JSONElement(name="dishes")
   private List<Dish> dishes;
+  
+  /**
+   * The name of the category.
+   */
+  @JSONElement(name = "name")
+  private String name;
+  
 
-  public CanteenCategory() {
+  public DishCategory() {
   }
 
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+  
+  public String getID() {
+    return getName();
+  }
+
+  public String getTableName() {
+    return DishCategory.class.getName();
+  }
+  
   public List<Dish> getDishes() {
     return dishes;
   }
@@ -40,7 +63,6 @@ public class CanteenCategory extends Category {
   public void setDishes(List<Dish> dishes) {
     this.dishes = dishes;
   }
-  
   
   public void addDish(Dish d) {
     if (dishes == null)
