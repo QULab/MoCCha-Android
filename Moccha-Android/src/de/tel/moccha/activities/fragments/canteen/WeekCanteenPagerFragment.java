@@ -114,7 +114,7 @@ public class WeekCanteenPagerFragment extends EntityViewPagerFragment {
         args.putSerializable(EntityListFragment.ARG_ENTITIES,
                 cs.toArray(new DishCategory[cs.size()]));
       }
-      Fragment frg = new CategoryListFragment();
+      Fragment frg = new DishListFragment();
       frg.setArguments(args);
       return frg;
     }
