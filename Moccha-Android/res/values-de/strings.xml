@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  
+  Copyright 2014 Quality and Usability Lab, Telekom Innvation Laboratories, TU Berlin..
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+  
+<resources>
+    <string name="app_name">MoCCha</string>
+    <string-array name="applications">
+        <item>Willkommen</item>
+        <item>Kantinen</item>
+        <item>Kurse</item>
+    </string-array>
+    <string name="drawer_open">Öffne Navigator</string>
+    <string name="drawer_close">Schliesse Navigator</string>
+    <string name="action_websearch">Suche</string>
+    <string name="progress">Bitte warten&#8230;</string>
+
+    <string name="ok">OK</string>
+
+    <!--SPLASH SCREEN-->
+    <string name="splash_descr">Der Splash-screen.</string>
+    
+    
+    <!--WELCOME SCREEN-->
+    <string name="welcome_text">Willkommen zur MoCCha Anwendung.</string>
+    <string name="welcome_intro">Kurze Einführung</string>
+    
+    <!--CANTEEN FRAG-->
+    <string name="canteen_header_info">Info</string>
+    <string name="canteen_address">Adresse: %1$s</string>
+    <string name="canteen_phone">Telefon: %1$s</string>
+    <string name="canteen_fax">Fax: %1$s</string>
+    
+    <string name="canteen_opening_hours">Öffnungszeiten: %1$s</string>
+    <string name="canteen_header_diet">Speiseplan</string>
+    <string name="canteen_dish">%1$s&lt;sup&gt;&lt;small&gt;%2$s&lt;/small&gt;&lt;/sup&gt;
+    </string>
+    <!--DayPagerFragment-->
+    <string name="time_pattern">yyyy-MM-dd\'T\'HH:mm:ss</string>
+    <string-array name="week_days">
+      <!--<item>Sunday</item>-->
+      <item>Montag</item>
+      <item>Dienstag</item>
+      <item>Mittwoch</item>
+      <item>Donnerstag</item>
+      <item>Freitag</item>
+      <!--<item>Saturday</item>-->
+    </string-array>
+    
+    
+    <!--UNIVERSITY LIST--> 
+    <string name="university_list_header">Universitäten</string>
+    <!--Main courses category pager-->
+    <string-array name="courses_content_pages">
+      <item>Studiengänge</item>
+      <item>Kurse</item>
+    </string-array>
+    <!--CourseCategoryList-->
+    <string name="course_category_list_section_header">Studiengänge</string>
+    <!--Course list-->
+    <string name="course_list_section_header">Kurse</string>
+</resources>
