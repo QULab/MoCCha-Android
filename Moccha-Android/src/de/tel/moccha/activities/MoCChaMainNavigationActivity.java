@@ -76,7 +76,7 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
    * The available fragments which can be selected, the names are shown in the
    * left menu of the navigation drawer.
    */
-  private final String[] fragmentNames = {"Welcome", "Canteens", "Courses"};
+  private String[] fragmentNames;
 
   /**
    * Creates a fragment object for the canteen list fragment, with the
@@ -113,7 +113,9 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
 
   @Override
   protected String[] getNavigationFragmentNames() {
-    return fragmentNames;
+    if (fragmentNames == null)
+      fragmentNames = getResources().getStringArray(R.array.applications);
+   return fragmentNames;
   }
 
   @Override
