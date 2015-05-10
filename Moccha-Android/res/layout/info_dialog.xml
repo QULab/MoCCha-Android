@@ -24,7 +24,7 @@ limitations under the License.
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:scaleType="center"
-            android:background="@color/gray"
+            android:background="?divSectionColor"
             android:contentDescription="@string/app_name"/>
     <TextView
             android:id="@+id/alert_info_header"
@@ -40,7 +40,7 @@ limitations under the License.
             android:id="@+id/canteen_header_info_sep"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="@color/light_gray"/>
+            android:background="?divSectionColor"/>
     <TextView
             android:id="@+id/canteen_address"
             android:layout_width="match_parent"

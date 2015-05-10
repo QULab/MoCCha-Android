@@ -55,10 +55,10 @@ limitations under the License.
             android:id="@+id/course_responsibilities"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/light_gray"
             android:textSize="24sp"
+            android:background="?divSectionColor"
+            android:textColor="?divSectionTextColor"
             android:text="@string/canteen_header_diet" 
-            android:textColor="@color/black"
             android:paddingLeft="5sp">
     </TextView>
     <FrameLayout
