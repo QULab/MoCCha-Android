@@ -47,7 +47,14 @@ public class WeekCanteenPagerFragment extends EntityViewPagerFragment {
 
   @Override
   protected void loadEntity() {
-    //nothing todo
+    //nothing todo    
+  }
+  
+  @Override
+  protected int getFirstPosition() {
+    // Calendar starts with Sunday 1 - so minus 2 to get monday as 0
+    int weekDay = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+    return (weekDay - 2) % 5;
   }
 
   @Override
