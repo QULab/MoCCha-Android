@@ -32,6 +32,11 @@
             android:textColor="?divSectionTextColor"
             android:paddingLeft="5sp">
     </TextView>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="5dip"
+        android:background="@drawable/drop_shadow"
+    />
     <FrameLayout
             android:id="@+id/canteen_diet"
             android:layout_width="match_parent"

@@ -31,6 +31,12 @@ limitations under the License.
             android:textSize="24sp"
             android:textColor="@color/black"
             android:paddingLeft="5sp"/>
+    
+    <View
+      android:layout_width="fill_parent"
+      android:layout_height="5dip"
+      android:background="@drawable/drop_shadow"
+    />
     <TextView
             android:id="@+id/course_content"
             android:layout_width="match_parent"
@@ -61,6 +67,11 @@ limitations under the License.
             android:text="@string/canteen_header_diet" 
             android:paddingLeft="5sp">
     </TextView>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="5dip"
+        android:background="@drawable/drop_shadow"
+     />
     <FrameLayout
             android:id="@+id/canteen_diet"
             android:layout_width="match_parent"
