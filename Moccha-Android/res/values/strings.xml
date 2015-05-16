@@ -72,4 +72,11 @@
     <string name="course_category_list_section_header">Course of studies</string>
     <!--Course list-->
     <string name="course_list_section_header">Courses</string>
+    
+    <string name="course_kind">Kind</string>
+    <string name="course_info">Info</string>
+    <string name="course_responsibilities">Responsibilities</string>
+    <string name="course_comment">Comment</string>
+    
+    
 </resources>

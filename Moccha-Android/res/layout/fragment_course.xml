@@ -27,9 +27,9 @@ limitations under the License.
             android:id="@+id/course_header_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/light_gray"
+            android:background="?divSectionColor"
+            android:textColor="?divSectionTextColor"
             android:textSize="24sp"
-            android:textColor="@color/black"
             android:paddingLeft="5sp"/>
     
     <View
@@ -42,42 +42,63 @@ limitations under the License.
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"/>
-    <TextView
-            android:id="@+id/course_kind"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"/>
-    <TextView
-            android:id="@+id/course_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"/>
-    <TextView
-            android:id="@+id/course_comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-<!--    responsibilities SECTION-->
-    <TextView
-            android:id="@+id/course_responsibilities"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:background="?divSectionColor"
-            android:textColor="?divSectionTextColor"
-            android:text="@string/canteen_header_diet" 
-            android:paddingLeft="5sp">
-    </TextView>
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="5dip"
-        android:background="@drawable/drop_shadow"
-     />
-    <FrameLayout
-            android:id="@+id/canteen_diet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"/>
+
+  <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:stretchColumns="1">
+      <!--    Kind of course-->
+      <TableRow> 
+          <TextView
+              android:text="@string/course_kind"
+              android:padding="3dip" />
+          <TextView
+              android:id="@+id/course_kind"
+              android:gravity="right"
+              android:padding="3dip" />
+      </TableRow>
+      <!--INFO-->
+      <View
+          android:layout_height="2dip"
+          android:background="#FF909090" />
+      <TableRow>
+          <TextView
+              android:text="@string/course_info"
+              android:padding="3dip" />
+          <TextView
+              android:id="@+id/course_info"
+              android:gravity="right"
+              android:padding="3dip" 
+              android:maxLines="4"/>
+      </TableRow>
+      <!--RESPONSIBILITIES-->
+      <View
+          android:layout_height="2dip"
+          android:background="#FF909090" />
+      <TableRow>
+          <TextView
+              android:text="@string/course_responsibilities"
+              android:padding="3dip" />
+          <TextView
+              android:id="@+id/course_responsibilities"
+              android:gravity="right"
+              android:padding="3dip" />
+      </TableRow>
+      <!--COMMENT-->
+      <View
+          android:layout_height="2dip"
+          android:background="#FF909090" />
+      <TableRow>
+          <TextView
+              android:text="@string/course_comment"
+              android:padding="3dip" />
+          <TextView
+              android:id="@+id/course_comment"
+              android:gravity="right"
+              android:padding="3dip" 
+              android:maxLines="4"/>
+      </TableRow>
+  </TableLayout>
 
 
 </LinearLayout> 
