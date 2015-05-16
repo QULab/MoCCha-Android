@@ -89,7 +89,8 @@ public class CanteenListFragment extends EntityListFragment {
       }
 
       public void doExeptionHandling(Throwable t) {
-        Log.e(CanteenListFragment.class.getName(), t.getMessage(), t);
+        if (t != null)
+          Log.e(CanteenListFragment.class.getName(), t.getMessage(), t);
       }
 
       public void handleNewEtag(String url, String newEtag) {
