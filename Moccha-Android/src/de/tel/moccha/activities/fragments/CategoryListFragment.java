@@ -92,7 +92,8 @@ public abstract class CategoryListFragment extends EntityListFragment {
       }
 
       public void doExeptionHandling(Throwable t) {
-        Log.e(CategoryListFragment.class.getName(), t.getMessage(), t);
+        if (t != null)
+          Log.e(CategoryListFragment.class.getName(), t.getMessage(), t);
       }
 
       public void handleNewEtag(String url, String newEtag) {
