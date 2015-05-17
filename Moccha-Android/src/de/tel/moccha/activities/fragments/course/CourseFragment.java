@@ -23,11 +23,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.course.Course;
+import de.tel.moccha.entities.course.Person;
+import de.tel.moccha.entities.course.Responsibility;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
 import de.zell.android.util.fragments.EntityFragment;
 import de.zell.android.util.json.JSONUnmarshaller;
+import java.util.List;
 import org.json.JSONObject;
 
 /**
@@ -75,12 +78,37 @@ public class CourseFragment extends EntityFragment {
             .setText(c.getKindOfEvent());
     
     
-    //respon
-    
+    showCourseResponsibilities(c, root);
     showCourseInfo(c, root);
     getTextView(root, R.id.course_comment)
             .setText(c.getComment());
     
+  }
+  
+  /**
+   * The course responsibilities are added to the corresponding text view
+   * and showed to the user.
+   * 
+   * @param course the course which contains the information
+   * @param root the root view which contains the text views
+   */
+  private void showCourseResponsibilities(Course course, View root) {
+    List<Responsibility> responsibilities = course.getResponsibilities();
+    StringBuilder responsibilitiesBuilder = new StringBuilder();
+    for (Responsibility responsibility : responsibilities) {
+      Person person = responsibility.getPerson();
+      if (person != null ) {
+        StringBuilder personBuilder = new StringBuilder();
+        addContentToStringBuilder(person.getTitle(), personBuilder);
+        personBuilder.append(" ");
+        addContentToStringBuilder(person.getPrename(), personBuilder);
+        personBuilder.append(" ");
+        addContentToStringBuilder(person.getLastname(), personBuilder);
+        addContentToStringBuilder(personBuilder.toString(), responsibilitiesBuilder);
+        responsibilitiesBuilder.append("\n");
+      }
+    }
+    getTextView(root, R.id.course_responsibilities).setText(responsibilitiesBuilder.toString());
   }
   
   /**
@@ -93,8 +121,11 @@ public class CourseFragment extends EntityFragment {
   private void showCourseInfo(Course course , View root) {
     StringBuilder builder = new StringBuilder();
     addContentToStringBuilder(course.getHyperlink(), builder);
+    builder.append("\n");
     addContentToStringBuilder(course.getSemester(), builder);
+    builder.append("\n");
     addContentToStringBuilder(course.getRhythmus(), builder);
+    builder.append("\n");
     getTextView(root, R.id.course_info)
             .setText(builder.toString());
   }
@@ -109,7 +140,7 @@ public class CourseFragment extends EntityFragment {
    */
   private void addContentToStringBuilder(String content, StringBuilder builder) {
     if (content != null && !content.isEmpty())
-      builder.append(content).append("\n");
+      builder.append(content);
   }
   
   /**
