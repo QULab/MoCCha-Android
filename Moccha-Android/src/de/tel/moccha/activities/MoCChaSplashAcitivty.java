@@ -15,6 +15,7 @@
  */
 package de.tel.moccha.activities;
 
+import android.graphics.drawable.Drawable;
 import android.view.animation.Animation;
 import de.zell.android.util.activities.SplashActivity;
 
@@ -49,5 +50,9 @@ public class MoCChaSplashAcitivty extends SplashActivity {
     return SPLASH_TIME;
   }
 
+  @Override
+  protected Drawable getDrawable() {
+    return getResources().getDrawable(R.drawable.splash_moccha);
+  }
 
 }
