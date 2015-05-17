@@ -72,4 +72,10 @@
     <string name="course_category_list_section_header">Studiengänge</string>
     <!--Course list-->
     <string name="course_list_section_header">Kurse</string>
+    
+    <string name="course_kind">Kursart</string>
+    <string name="course_info">Info</string>
+    <string name="course_responsibilities">Verantwortlichen</string>
+    <string name="course_comment">Kommentar</string>
+    
 </resources>
