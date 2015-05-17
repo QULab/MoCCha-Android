@@ -17,6 +17,7 @@ package de.tel.moccha.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.widget.ListAdapter;
 import de.tel.moccha.activities.fragments.canteen.CanteenListFragment;
 import de.tel.moccha.activities.fragments.WelcomeFragment;
 import de.tel.moccha.activities.fragments.CategoryListFragment;
@@ -69,8 +70,10 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
    * The fragments which should be placed in the center if selected the
    * corresponding name is selected in the navigation drawer.
    */
-  private final Fragment[] fragments = {new WelcomeFragment(), createCanteenListFragment(),
+  private static final Fragment[] fragments = {new WelcomeFragment(), createCanteenListFragment(),
                                         createUniversityFragment()};
+  
+  private static final int[] fragmentIcons = {};
 
   /**
    * The available fragments which can be selected, the names are shown in the
@@ -84,7 +87,7 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
    * 
    * @return the canteen list fragment
    */
-  protected Fragment createCanteenListFragment() {
+  private static Fragment createCanteenListFragment() {
     Fragment fragment = new CanteenListFragment();
     Bundle args = new Bundle();
     args.putString(EntityListFragment.ARG_ENTITIES_URL, propProvider.getProperty(PROP_KEY_CANTEEN_URL));
@@ -98,14 +101,14 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
    * 
    * @return the university list fragment
    */
-  protected Fragment createUniversityFragment() {
+  private static Fragment createUniversityFragment() {
     Fragment fragment = new UniversityListFragment();
     Bundle args = new Bundle();
     args.putString(EntityListFragment.ARG_ENTITIES_URL, propProvider.getProperty(PROP_KEY_COURSE_URL));
     fragment.setArguments(args);
     return fragment;
   }
-  
+
   @Override
   protected Fragment[] getNavigationFragments() {
     return fragments;
