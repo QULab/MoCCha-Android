@@ -25,6 +25,9 @@ import de.zell.android.util.json.JSONElement;
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class Person implements Entity<Integer> {
+  
+  @JSONElement(name = "title")
+  private String title;
   @JSONElement(name = "email")
   private String email;
   @JSONElement(name = "id")
@@ -43,6 +46,14 @@ public class Person implements Entity<Integer> {
 
   public String getTableName() {
     return Person.class.getName();
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
   }
   
   public String getEmail() {
