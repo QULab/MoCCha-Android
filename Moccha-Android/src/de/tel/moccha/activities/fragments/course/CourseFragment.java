@@ -69,19 +69,48 @@ public class CourseFragment extends EntityFragment {
     View root = this.getView();
     getTextView(root, R.id.course_header_info)
             .setText(c.getTitle());
-    getTextView(root, R.id.course_comment)
-            .setText(c.getComment());
     getTextView(root, R.id.course_content)
             .setText(c.getContent());
     getTextView(root, R.id.course_kind)
             .setText(c.getKindOfEvent());
     
+    
+    //respon
+    
+    showCourseInfo(c, root);
+    getTextView(root, R.id.course_comment)
+            .setText(c.getComment());
+    
+  }
+  
+  /**
+   * The course informations are added to the corresponding information text view
+   * and are shown to the user.
+   * 
+   * @param course the course which contains the information
+   * @param root the root view which contains the info text view
+   */
+  private void showCourseInfo(Course course , View root) {
     StringBuilder builder = new StringBuilder();
-    builder.append(c.getHyperlink()).append(" ").append(c.getSemester()).append(" ").append(c.getRhythmus());
+    addContentToStringBuilder(course.getHyperlink(), builder);
+    addContentToStringBuilder(course.getSemester(), builder);
+    addContentToStringBuilder(course.getRhythmus(), builder);
     getTextView(root, R.id.course_info)
             .setText(builder.toString());
   }
   
+  /**
+   * Adds the content to the builder.
+   * Before adding it checks the content if its not null and not empty the content will be added to
+   * the string builder.
+   * 
+   * @param content the content which should be added
+   * @param builder 
+   */
+  private void addContentToStringBuilder(String content, StringBuilder builder) {
+    if (content != null && !content.isEmpty())
+      builder.append(content).append("\n");
+  }
   
   /**
    * Returns the text view for the given id from the root view.
