@@ -25,6 +25,7 @@
     </string-array>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="drawer_icon">Icon</string>
     <string name="action_websearch">Search</string>
     <string name="progress">Please wait&#8230;</string>
 
