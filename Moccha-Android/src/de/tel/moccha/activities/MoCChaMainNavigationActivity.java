@@ -73,7 +73,7 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
   private static final Fragment[] fragments = {new WelcomeFragment(), createCanteenListFragment(),
                                         createUniversityFragment()};
   
-  private static final int[] fragmentIcons = {};
+  private static final int[] fragmentIcons = {R.drawable.ic_launcher, R.drawable.ic_fork_knife, R.drawable.ic_book};
 
   /**
    * The available fragments which can be selected, the names are shown in the
@@ -109,6 +109,11 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
     return fragment;
   }
 
+  @Override
+  protected ListAdapter getNavigationListAdapter() {
+    return new NavigationListAdapter(fragmentNames, fragmentIcons, this);
+  }
+  
   @Override
   protected Fragment[] getNavigationFragments() {
     return fragments;
