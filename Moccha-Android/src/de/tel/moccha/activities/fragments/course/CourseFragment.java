@@ -34,7 +34,8 @@ import java.util.List;
 import org.json.JSONObject;
 
 /**
- *
+ * Represents the course fragment which shows the details of a course.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class CourseFragment extends EntityFragment {
