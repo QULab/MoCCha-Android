@@ -80,5 +80,6 @@
     <string name="course_responsibilities">Responsibilities</string>
     <string name="course_comment">Comment</string>
     
-    
+    <!--EVENT LIST-->
+    <string name="event_category_list_header">Event categories</string>
 </resources>

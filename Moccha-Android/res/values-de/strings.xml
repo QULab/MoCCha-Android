@@ -79,4 +79,6 @@
     <string name="course_responsibilities">Verantwortlichen</string>
     <string name="course_comment">Kommentar</string>
     
+    <!--EVENT LIST-->
+    <string name="event_category_list_header">Eventkategorien</string>
 </resources>

@@ -18,8 +18,9 @@ package de.tel.moccha.activities.fragments.event;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import de.tel.moccha.activities.R;
 import de.tel.moccha.activities.fragments.CategoryListFragment;
-import de.tel.moccha.activities.fragments.adapters.course.UniversityListAdapter;
+import de.tel.moccha.activities.fragments.adapters.CategoryListAdapter;
 import de.tel.moccha.entities.Category;
 import de.zell.android.util.adapters.EntityListAdapter;
 
@@ -43,7 +44,7 @@ public class EventCategoryListFragment extends CategoryListFragment {
   
   @Override
   protected EntityListAdapter getEntityListAdapter(Context ctx) {
-    return new UniversityListAdapter(ctx);
+    return new CategoryListAdapter(ctx, getString(R.string.event_category_list_header));
   }
   
 }

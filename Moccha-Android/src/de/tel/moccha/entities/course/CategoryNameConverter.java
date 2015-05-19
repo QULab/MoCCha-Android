@@ -23,7 +23,7 @@ import java.util.HashMap;
  * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class UniversityNameConverter {
+public class CategoryNameConverter {
   
   public static final String KEY_TUB = "tub";
   public static final String VALUE_TUB = "Technische Universitaet Berlin";
