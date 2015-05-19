@@ -49,18 +49,20 @@ public abstract class CategoryListFragment extends EntityListFragment {
    */
   public static final String JSON_CATEGORY_KEY = "categories";
   
+  public abstract Bundle getArgumentsForFragment(Category c);
+  public abstract Fragment getOnClickFragment();
+  
   @Override
   protected void onEntityClick(Entity e) {
     Category c = (Category) e;
-    Bundle b = new Bundle();
-    b.putString(MainCourseCategoryFragment.ARG_ENTITY_URL, c.getUrl());
-    Fragment frg = new MainCourseCategoryFragment();
-    frg.setArguments(b);
-    FragmentReplacer.replace(getActivity().getSupportFragmentManager(),
-                             frg,
-                             FragmentReplacer.MAIN_CONTENT);
-    Toast.makeText(getActivity(), e.getID().toString(), Toast.LENGTH_LONG).show();
     
+    Fragment frg = getOnClickFragment();
+    if (frg != null) {
+      frg.setArguments(getArgumentsForFragment(c));
+      FragmentReplacer.replace(getActivity().getSupportFragmentManager(),
+                              frg,
+                               FragmentReplacer.MAIN_CONTENT);
+    }
   }
 
   @Override

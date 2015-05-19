@@ -16,8 +16,11 @@
 package de.tel.moccha.activities.fragments.course;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import de.tel.moccha.activities.fragments.CategoryListFragment;
 import de.tel.moccha.activities.fragments.adapters.course.UniversityListAdapter;
+import de.tel.moccha.entities.Category;
 import de.zell.android.util.adapters.EntityListAdapter;
 
 /**
@@ -25,6 +28,20 @@ import de.zell.android.util.adapters.EntityListAdapter;
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class UniversityListFragment extends CategoryListFragment {
+
+  @Override
+  public Bundle getArgumentsForFragment(Category c) {
+    Bundle b = new Bundle();
+    b.putString(MainCourseCategoryFragment.ARG_ENTITY_URL, c.getUrl());
+    return b;
+  }
+
+  @Override
+  public Fragment getOnClickFragment() {
+    return new MainCourseCategoryFragment();
+  }
+  
+  
   
   @Override
   protected EntityListAdapter getEntityListAdapter(Context ctx) {
