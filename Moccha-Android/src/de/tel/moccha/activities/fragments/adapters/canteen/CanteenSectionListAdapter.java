@@ -53,10 +53,6 @@ public class CanteenSectionListAdapter extends EntityListAdapter {
       TextView title = (TextView) row.findViewById(R.id.entity_title);
       title.setText(c.getTitle());
       title.setVisibility(View.VISIBLE);
-      TextView desc = (TextView) row.findViewById(R.id.entity_description);
-      desc.setText(c.getUri());
-      desc.setVisibility(View.VISIBLE);
     }
-
   }
 }
