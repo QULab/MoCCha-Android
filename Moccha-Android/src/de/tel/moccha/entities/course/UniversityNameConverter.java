@@ -29,7 +29,8 @@ public class UniversityNameConverter {
   public static final String VALUE_TUB = "Technische Universitaet Berlin";
   public static final String KEY_UDK = "udk";
   public static final String VALUE_UDK = "Universitaet der Kuenste";
-  
+  public static final String KEY_STAATSOPER = "staatsoper";
+  public static final String VALUE_STAATSOPER = "Staatsoper";
   /**
    * Key is the short version of the name, value is 
    * the long name.
@@ -40,6 +41,7 @@ public class UniversityNameConverter {
   static {
     NAMES.put(KEY_TUB, VALUE_TUB);
     NAMES.put(KEY_UDK, VALUE_UDK);
+    NAMES.put(KEY_STAATSOPER, VALUE_STAATSOPER);
   }
   
   /**
