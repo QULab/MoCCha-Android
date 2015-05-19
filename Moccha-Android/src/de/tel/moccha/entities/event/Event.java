@@ -45,7 +45,7 @@ public class Event implements Entity<Integer>{
   }
   
   public Integer getID() {
-    return getID();
+    return ID;
   }
 
   public String getTableName() {
