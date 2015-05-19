@@ -44,11 +44,13 @@ public class UniversityNameConverter {
   
   /**
    * Returns for the given key (short name) the long name version.
+   * If the key doesn't exists in the map the key is returned.
    * 
    * @param key the key in the map
-   * @return the value
+   * @return the value if not null otherwise the key
    */
   public static String getLongName(String key) {
-    return NAMES.get(key);
+    String value = NAMES.get(key);
+    return value == null ? key : value;
   }
 }
