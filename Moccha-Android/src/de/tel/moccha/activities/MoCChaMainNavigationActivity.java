@@ -79,7 +79,10 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
   private static final Fragment[] fragments = {new WelcomeFragment(), createCanteenListFragment(),
                                         createUniversityFragment(), createEventCategoryListFragment()};
   
-  private static final int[] fragmentIcons = {R.drawable.ic_launcher, R.drawable.ic_fork_knife, R.drawable.ic_book, R.drawable.ic_launcher};
+  private static final int[] fragmentIcons = {R.drawable.ic_launcher,
+                                              R.drawable.ic_canteen,
+                                              R.drawable.ic_course,
+                                              R.drawable.ic_launcher};
 
   /**
    * The available fragments which can be selected, the names are shown in the
