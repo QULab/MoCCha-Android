@@ -20,7 +20,6 @@ import android.support.v4.app.Fragment;
 import android.widget.ListAdapter;
 import de.tel.moccha.activities.fragments.canteen.CanteenListFragment;
 import de.tel.moccha.activities.fragments.WelcomeFragment;
-import de.tel.moccha.activities.fragments.CategoryListFragment;
 import de.tel.moccha.activities.fragments.course.UniversityListFragment;
 import de.tel.moccha.activities.fragments.event.EventCategoryListFragment;
 import de.zell.android.util.PropertiesProvider;
@@ -148,7 +147,7 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
       fragmentNames = getResources().getStringArray(R.array.applications);
    return fragmentNames;
   }
-
+  
   @Override
   protected void startSearch(String query) {
   }
