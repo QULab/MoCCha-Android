@@ -21,6 +21,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import de.tel.moccha.activities.R;
 
 /**
@@ -35,6 +37,17 @@ public class WelcomeFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
           Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_welcome, container, false);
+    LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.welcome_main_ll);
+    addTextViewToLayout(getString(R.string.info_publisher), ll);
+    addTextViewToLayout(getString(R.string.info_questions), ll);
+    addTextViewToLayout(getString(R.string.info_developer), ll);
     return rootView;
+  }
+  
+  
+  private void addTextViewToLayout(String content, LinearLayout ll) {
+    TextView text = new TextView(getActivity());
+    text.setText(content);
+    ll.addView(text);
   }
 }
