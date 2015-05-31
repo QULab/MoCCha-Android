@@ -23,10 +23,10 @@ import java.util.List;
  *
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class JobCategory implements Entity<Integer> {
+public class JobCategory implements Entity<String> {
 
   @JSONElement(name = "id")
-  private Integer id;
+  private String id;
   
   @JSONElement(name = "name")
   private String name;
@@ -40,7 +40,7 @@ public class JobCategory implements Entity<Integer> {
   public JobCategory() {
   }
   
-  public Integer getID() {
+  public String getID() {
     return id;
   }
 
@@ -48,11 +48,7 @@ public class JobCategory implements Entity<Integer> {
     return JobCategory.class.getName();
   }
 
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
+  public void setID(String id) {
     this.id = id;
   }
 
