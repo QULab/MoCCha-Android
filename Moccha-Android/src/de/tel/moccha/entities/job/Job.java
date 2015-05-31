@@ -40,6 +40,23 @@ public class Job implements Entity<Integer> {
   
   @JSONElement(name = "tags")
   private List<String> tags;
+  
+  //DETAIL
+  @JSONElement(name = "description")
+  private String descrp;
+  
+  @JSONElement(name = "user")
+  private JobCreator jobCreator;
+  
+  @JSONElement(name = "pdfs")
+  private List<String> pdfs;
+  
+  
+  @JSONElement(name = "edited")
+  private Long edited;
+  
+  @JSONElement(name = "contact")
+  private String contact;
 
   public Job() {
   }
@@ -91,4 +108,46 @@ public class Job implements Entity<Integer> {
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
+
+  public String getDescrp() {
+    return descrp;
+  }
+
+  public void setDescrp(String descrp) {
+    this.descrp = descrp;
+  }
+
+  public JobCreator getJobCreator() {
+    return jobCreator;
+  }
+
+  public void setJobCreator(JobCreator jobCreator) {
+    this.jobCreator = jobCreator;
+  }
+
+  public List<String> getPdfs() {
+    return pdfs;
+  }
+
+  public void setPdfs(List<String> pdfs) {
+    this.pdfs = pdfs;
+  }
+
+  public Long getEdited() {
+    return edited;
+  }
+
+  public void setEdited(Long edited) {
+    this.edited = edited;
+  }
+
+  public String getContact() {
+    return contact;
+  }
+
+  public void setContact(String contact) {
+    this.contact = contact;
+  }
+  
+  
 }
