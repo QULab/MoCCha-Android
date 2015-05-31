@@ -22,6 +22,7 @@ import de.tel.moccha.activities.fragments.canteen.CanteenListFragment;
 import de.tel.moccha.activities.fragments.WelcomeFragment;
 import de.tel.moccha.activities.fragments.course.UniversityListFragment;
 import de.tel.moccha.activities.fragments.event.EventCategoryListFragment;
+import de.tel.moccha.activities.fragments.job.JobCategoryListFragment;
 import de.zell.android.util.PropertiesProvider;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.fragments.EntityListFragment;
@@ -64,6 +65,18 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
   public static final String PROP_KEY_EVENTS_URL = "events.url";
   
   /**
+   * The property key for the jobs url.
+   */
+  public static final String PROP_KEY_JOBS_URL = "jobs.url";
+  
+  /**
+   * The property key for the jobs detail url.
+   */
+  public static final String PROP_KEY_JOBS_DETAIL_URL = "jobs.detail.url";
+  
+  
+  
+  /**
    * Static initializer to initialize the properties provider with the moccha
    * properties file.
    */
@@ -76,12 +89,14 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
    * corresponding name is selected in the navigation drawer.
    */
   private static final Fragment[] fragments = {new WelcomeFragment(), createCanteenListFragment(),
-                                        createUniversityFragment(), createEventCategoryListFragment()};
+                                        createUniversityFragment(), createEventCategoryListFragment(),
+                                        createJobCategoryListFragment()};
   
   private static final int[] fragmentIcons = {R.drawable.ic_launcher,
                                               R.drawable.ic_canteen,
                                               R.drawable.ic_course,
-                                              R.drawable.ic_launcher};
+                                              R.drawable.ic_launcher,
+                                              R.drawable.ic_jobs};
 
   /**
    * The available fragments which can be selected, the names are shown in the
@@ -118,8 +133,8 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
   }
   
   /**
-   * Creates a fragment object for the university list fragment, with the
-   * correct university URL as argument.
+   * Creates a fragment object for the event category list fragment, with the
+   * correct event URL as argument.
    * 
    * @return the university list fragment
    */
@@ -127,6 +142,20 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
     Fragment fragment = new EventCategoryListFragment();
     Bundle args = new Bundle();
     args.putString(EntityListFragment.ARG_ENTITIES_URL, propProvider.getProperty(PROP_KEY_EVENTS_URL));
+    fragment.setArguments(args);
+    return fragment;
+  }
+  
+  
+  /**
+   * Creates a fragment object for the job categories. 
+   * 
+   * @return the job category list fragment
+   */
+  private static Fragment createJobCategoryListFragment() {
+    Fragment fragment = new JobCategoryListFragment();
+    Bundle args = new Bundle();
+    args.putString(EntityListFragment.ARG_ENTITIES_URL, propProvider.getProperty(PROP_KEY_JOBS_URL));
     fragment.setArguments(args);
     return fragment;
   }
