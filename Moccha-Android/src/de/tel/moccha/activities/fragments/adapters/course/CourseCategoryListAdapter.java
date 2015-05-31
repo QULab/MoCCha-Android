@@ -27,7 +27,7 @@ import de.zell.android.util.db.Entity;
 
 /**
  * The entity list adapter to show the course category list.
- * 
+ *
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class CourseCategoryListAdapter extends EntityListAdapter {
@@ -55,5 +55,5 @@ public class CourseCategoryListAdapter extends EntityListAdapter {
   protected String getSection(Entity e) {
     return context.getString(R.string.course_category_list_section_header);
   }
-  
+
 }
