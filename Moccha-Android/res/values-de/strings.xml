@@ -90,6 +90,6 @@
     <string name="info_questions">Für Fragen und Anmerkungen Mailen Sie bitte Tilo Westermann. &lt;tilo.westermann@tu-berlin.de&gt;</string>
     
     <!--JOB SECTION-->
-    <string name="job_list_tags">Tags: </string>
-    <string name="job_list_tag_seperator">, </string>
+    <string name="job_list_tags">Tags:&#160;</string>
+    <string name="job_list_tag_seperator">,&#160;</string>
 </resources>
