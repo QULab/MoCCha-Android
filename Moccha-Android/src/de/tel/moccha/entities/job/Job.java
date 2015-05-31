@@ -39,7 +39,7 @@ public class Job implements Entity<String> {
   private String created;
   
   @JSONElement(name = "tags")
-  private List<String> tags;
+  private List<JobTag> tags;
   
   //DETAIL
   @JSONElement(name = "description")
@@ -93,11 +93,11 @@ public class Job implements Entity<String> {
     this.created = created;
   }
 
-  public List<String> getTags() {
+  public List<JobTag> getTags() {
     return tags;
   }
 
-  public void setTags(List<String> tags) {
+  public void setTags(List<JobTag> tags) {
     this.tags = tags;
   }
 
