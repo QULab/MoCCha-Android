@@ -88,4 +88,9 @@
     <string name="info_publisher">Published and developed by the Quality and Usability Lab.</string>
     <string name="info_developer">Developed by Christopher Zell &lt;zelldon91@gmail.com&gt;</string>
     <string name="info_questions">For questions or suggestion please mail Tilo Westermann. &lt;tilo.westermann@tu-berlin.de&gt;</string>
+    
+    
+    <!--JOB SECTION-->
+    <string name="job_list_tags">Tags: </string>
+    <string name="job_list_tag_seperator">, </string>
 </resources>
