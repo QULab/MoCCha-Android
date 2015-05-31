@@ -23,6 +23,7 @@
         <item>Kantinen</item>
         <item>Kurse</item>
         <item>Events</item>
+        <item>Jobs</item>
     </string-array>
     <string name="drawer_open">Öffne Navigator</string>
     <string name="drawer_close">Schliesse Navigator</string>
