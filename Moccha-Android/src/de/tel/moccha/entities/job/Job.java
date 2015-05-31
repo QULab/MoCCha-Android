@@ -24,10 +24,10 @@ import java.util.List;
  *
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class Job implements Entity<Integer> {
+public class Job implements Entity<String> {
 
   @JSONElement(name = "id")
-  private Integer id;
+  private String id;
   
   @JSONElement(name = "title")
   private String title;
@@ -36,7 +36,7 @@ public class Job implements Entity<Integer> {
   private String img;
   
   @JSONElement(name = "created")
-  private Long created;
+  private String created;
   
   @JSONElement(name = "tags")
   private List<String> tags;
@@ -53,30 +53,22 @@ public class Job implements Entity<Integer> {
   
   
   @JSONElement(name = "edited")
-  private Long edited;
+  private String edited;
   
   @JSONElement(name = "contact")
   private String contact;
 
   public Job() {
   }
-  
-  public Integer getID() {
+
+  public String getID() {
     return id;
   }
 
   public String getTableName() {
     return Job.class.getName();
-  }
-
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
+  } 
+  
   public String getTitle() {
     return title;
   }
@@ -93,11 +85,11 @@ public class Job implements Entity<Integer> {
     this.img = img;
   }
 
-  public Long getCreated() {
+  public String getCreated() {
     return created;
   }
 
-  public void setCreated(Long created) {
+  public void setCreated(String created) {
     this.created = created;
   }
 
@@ -133,11 +125,11 @@ public class Job implements Entity<Integer> {
     this.pdfs = pdfs;
   }
 
-  public Long getEdited() {
+  public String getEdited() {
     return edited;
   }
 
-  public void setEdited(Long edited) {
+  public void setEdited(String edited) {
     this.edited = edited;
   }
 
@@ -148,6 +140,4 @@ public class Job implements Entity<Integer> {
   public void setContact(String contact) {
     this.contact = contact;
   }
-  
-  
 }
