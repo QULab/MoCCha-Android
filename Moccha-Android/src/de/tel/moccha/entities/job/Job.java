@@ -56,6 +56,9 @@ public class Job implements Entity<String> {
   
   @JSONElement(name = "contact")
   private String contact;
+  
+  @JSONElement(name = "hits")
+  private String hits;
 
   public Job() {
   }
@@ -67,6 +70,15 @@ public class Job implements Entity<String> {
   public String getTableName() {
     return Job.class.getName();
   } 
+
+  public String getHits() {
+    return hits;
+  }
+
+  public void setHits(String hits) {
+    this.hits = hits;
+  }
+  
   
   public String getTitle() {
     return title;
