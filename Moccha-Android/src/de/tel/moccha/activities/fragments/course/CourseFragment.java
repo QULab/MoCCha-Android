@@ -67,10 +67,11 @@ public class CourseFragment extends EntityFragment {
   }
 
   private void showCourse(Course c) {
-    if (c == null)
-      return;
+    if (c == null) return;
     
     View root = this.getView();
+    if (root == null) return;
+    
     getTextView(root, R.id.course_header_info)
             .setText(c.getTitle());
     getTextView(root, R.id.course_content)
@@ -143,17 +144,6 @@ public class CourseFragment extends EntityFragment {
     if (content != null && !content.isEmpty())
       builder.append(content);
   }
-  
-  /**
-   * Returns the text view for the given id from the root view.
-   * 
-   * @param root the root view
-   * @param id the id which identifies the view
-   * @return the corresponding view
-   */
-  private TextView getTextView(View root, int id) {
-    return ((TextView) root.findViewById(id));
-  } 
   
   @Override
   protected void postRestore() {
