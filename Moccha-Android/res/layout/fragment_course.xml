@@ -15,22 +15,25 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp">165597
+  
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:orientation="vertical"
-              android:layout_margin="15dp">
+              android:orientation="vertical">
 
     <!--INFO SECTION-->
     <TextView
-            android:id="@+id/course_header_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?divSectionColor"
-            android:textColor="?divSectionTextColor"
-            android:textSize="24sp"
-            android:paddingLeft="5sp"/>
+      android:id="@+id/course_header_info"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="?divSectionColor"
+      android:textColor="?divSectionTextColor"
+      android:textSize="24sp"
+      android:paddingLeft="5sp"/>
     
     <View
       android:layout_width="fill_parent"
@@ -38,68 +41,67 @@ limitations under the License.
       android:background="@drawable/drop_shadow"
     />
     <TextView
-            android:id="@+id/course_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"/>
-
-  <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:id="@+id/course_content"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:stretchColumns="0"
-      android:shrinkColumns="1">
+      android:layout_height="wrap_content"
+      android:textStyle="bold"/>
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:stretchColumns="0"
+               android:shrinkColumns="1">
       <!--    Kind of course-->
       <TableRow> 
-          <TextView
-              android:text="@string/course_kind"
-              android:padding="3dip" />
-          <TextView
-              android:id="@+id/course_kind"
-              android:gravity="right"
-              android:padding="3dip" />
+        <TextView
+          android:text="@string/course_kind"
+          android:padding="3dip" />
+        <TextView
+          android:id="@+id/course_kind"
+          android:gravity="right"
+          android:padding="3dip" />
       </TableRow>
       <!--INFO-->
       <View
-          android:layout_height="2dip"
-          android:background="#FF909090" />
+        android:layout_height="2dip"
+        android:background="#FF909090" />
       <TableRow>
-          <TextView
-              android:text="@string/course_info"
-              android:padding="3dip" />
-          <TextView
-              android:id="@+id/course_info"
-              android:gravity="right"
-              android:padding="3dip" 
-              android:maxLines="4"/>
+        <TextView
+          android:text="@string/course_info"
+          android:padding="3dip" />
+        <TextView
+          android:id="@+id/course_info"
+          android:gravity="right"
+          android:padding="3dip" 
+          android:maxLines="4"/>
       </TableRow>
       <!--RESPONSIBILITIES-->
       <View
-          android:layout_height="2dip"
-          android:background="#FF909090" />
+        android:layout_height="2dip"
+        android:background="#FF909090" />
       <TableRow>
-          <TextView
-              android:text="@string/course_responsibilities"
-              android:padding="3dip" />
-          <TextView
-              android:id="@+id/course_responsibilities"
-              android:gravity="right"
-              android:padding="3dip" />
+        <TextView
+          android:text="@string/course_responsibilities"
+          android:padding="3dip" />
+        <TextView
+          android:id="@+id/course_responsibilities"
+          android:gravity="right"
+          android:padding="3dip" />
       </TableRow>
       <!--COMMENT-->
       <View
-          android:layout_height="2dip"
-          android:background="#FF909090" />
+        android:layout_height="2dip"
+        android:background="#FF909090" />
       <TableRow>
-          <TextView
-              android:text="@string/course_comment"
-              android:padding="3dip" />
-          <TextView
-              android:id="@+id/course_comment"
-              android:gravity="right"
-              android:padding="3dip" 
-              android:maxLines="4"/>
+        <TextView
+          android:text="@string/course_comment"
+          android:padding="3dip" />
+        <TextView
+          android:id="@+id/course_comment"
+          android:gravity="right"
+          android:padding="3dip" 
+          android:maxLines="4"/>
       </TableRow>
-  </TableLayout>
-
-
-</LinearLayout> 
+    </TableLayout>
+  </LinearLayout> 
+</ScrollView>
