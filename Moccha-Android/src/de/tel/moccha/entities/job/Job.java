@@ -51,8 +51,7 @@ public class Job implements Entity<String> {
   @JSONElement(name = "pdfs")
   private List<String> pdfs;
   
-  
-  @JSONElement(name = "edited")
+//  @JSONElement(name = "edited")
   private String edited;
   
   @JSONElement(name = "contact")
