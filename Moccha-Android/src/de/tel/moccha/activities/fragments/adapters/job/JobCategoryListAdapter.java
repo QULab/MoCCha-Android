@@ -55,24 +55,9 @@ public class JobCategoryListAdapter extends EntityListAdapter {
       title.setVisibility(View.VISIBLE);
       
       TextView description = (TextView) row.findViewById(de.zell.android.util.R.id.entity_description);
-      description.setText(createJobDescription(job));
+      description.setText(job.getTagsAsString(context));
       description.setVisibility(View.VISIBLE);
     }
-  }
-
-  private String createJobDescription(Job job) {
-    StringBuilder builder = new StringBuilder(context.getString(R.string.job_list_tags));
-    String sep = context.getString(R.string.job_list_tag_seperator);
-    List<JobTag> tags = job.getTags();
-    if (tags != null) {
-      int len = tags.size();
-      for (int i = 0; i < len; i++) {
-        builder.append(tags.get(i).getTag());
-        if (i+1 < len)
-          builder.append(sep);
-      }
-    }
-    return builder.toString();
   }
   
   @Override
