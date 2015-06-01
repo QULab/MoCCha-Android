@@ -15,6 +15,8 @@
  */
 package de.tel.moccha.entities.job;
 
+import android.content.Context;
+import de.tel.moccha.activities.R;
 import de.zell.android.util.db.Entity;
 import de.zell.android.util.json.JSONElement;
 import java.util.List;
@@ -150,5 +152,19 @@ public class Job implements Entity<String> {
 
   public void setContact(String contact) {
     this.contact = contact;
+  }
+  
+  public String getTagsAsString(Context context) {
+    StringBuilder builder = new StringBuilder(context.getString(R.string.job_list_tags));
+    String sep = context.getString(R.string.job_list_tag_seperator);
+    if (tags != null) {
+      int len = tags.size();
+      for (int i = 0; i < len; i++) {
+        builder.append(tags.get(i).getTag());
+        if (i+1 < len)
+          builder.append(sep);
+      }
+    }
+    return builder.toString();
   }
 }
