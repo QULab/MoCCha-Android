@@ -155,7 +155,7 @@ public class Job implements Entity<String> {
   }
   
   public String getTagsAsString(Context context) {
-    StringBuilder builder = new StringBuilder(context.getString(R.string.job_list_tags));
+    StringBuilder builder = new StringBuilder();
     String sep = context.getString(R.string.job_list_tag_seperator);
     if (tags != null) {
       int len = tags.size();
