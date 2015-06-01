@@ -22,20 +22,19 @@ import de.zell.android.util.json.JSONElement;
  *
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class JobCreator implements Entity<Integer> {
+public class JobCreator implements Entity<String> {
   
   @JSONElement(name = "id")
-  private Integer id;
-  
+  private String id;
   
   @JSONElement(name = "name")
   private String name;
 
-  public Integer getID() {
+  public String getID() {
     return id;
   }
 
-  public void setID(Integer id) {
+  public void setID(String id) {
     this.id = id;
   }
 
