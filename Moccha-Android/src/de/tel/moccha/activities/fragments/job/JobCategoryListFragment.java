@@ -29,7 +29,6 @@ import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
 import de.zell.android.util.db.Entity;
-import de.zell.android.util.fragments.EntityFragment;
 import de.zell.android.util.fragments.EntityListFragment;
 import de.zell.android.util.fragments.FragmentReplacer;
 import de.zell.android.util.json.JSONUnmarshaller;
@@ -52,13 +51,13 @@ public class JobCategoryListFragment extends EntityListFragment {
     if (provider != null) {
       String jobDetailUrl = provider.getProperty(MoCChaMainNavigationActivity.PROP_KEY_JOBS_DETAIL_URL);
       jobDetailUrl = String.format(jobDetailUrl, e.getID());
-      args.putCharSequence(EntityFragment.ARG_ENTITY_URL, jobDetailUrl);
+      args.putCharSequence(JobDetailFragment.ARG_ENTITY_URL, jobDetailUrl);
     }
     return args;
   }
 
   public Fragment getOnClickFragment() {
-    return null; //TODO job detail fragment
+    return new JobDetailFragment(); //TODO job detail fragment
   }
 
   @Override
