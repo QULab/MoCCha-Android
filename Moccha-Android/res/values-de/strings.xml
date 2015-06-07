@@ -92,4 +92,11 @@
     <!--JOB SECTION-->
     <string name="job_list_tags">Tags:&#160;</string>
     <string name="job_list_tag_seperator">,&#160;</string>
+    
+    <!--JOB SECTION TABLE-->
+    <string name="job_row_contact">Kontakt:&#160;</string>
+    <string name="job_row_hits">Aufrufe:&#160;</string>
+    <string name="job_row_tags">Tags:&#160;</string>
+    <string name="job_row_created">Erstellt:&#160;</string>
+    <string name="job_row_edited">Bearbeitet:&#160;</string>
 </resources>
