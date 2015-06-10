@@ -99,4 +99,5 @@
     <string name="job_row_tags">Tags:&#160;</string>
     <string name="job_row_created">Erstellt:&#160;</string>
     <string name="job_row_edited">Bearbeitet:&#160;</string>
+    <string name="job_btn_detail">Detail</string>
 </resources>
