@@ -34,6 +34,7 @@ import de.zell.android.util.PropertiesProvider;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
+import de.zell.android.util.db.Entity;
 import de.zell.android.util.fragments.EntityFragment;
 import de.zell.android.util.fragments.FragmentReplacer;
 import de.zell.android.util.fragments.WebviewFragment;
@@ -72,7 +73,7 @@ public class JobDetailFragment extends EntityFragment {
           Log.e(JobDetailFragment.class.getName(), ex.getMessage(), ex);
         }
         entity = JSONUnmarshaller.unmarshall(response, Job.class);
-        showJobDetails((Job) entity);
+        showEntity(entity);
       }
 
       public void doExeptionHandling(Throwable t) {
@@ -88,7 +89,10 @@ public class JobDetailFragment extends EntityFragment {
     request.execute(info);
   }
 
-  private void showJobDetails(Job job) {
+  
+  @Override
+  protected void showEntity(Entity entity) {
+    Job job = (Job) entity;
     View root = this.getView();
     if (root == null || job == null) {
       return;
@@ -124,7 +128,7 @@ public class JobDetailFragment extends EntityFragment {
         public void onClick(View v) {
           WebviewFragment pdfView = new WebviewFragment();
           pdfView.setArguments(args);
-          FragmentReplacer.replace(getActivity().getSupportFragmentManager(), pdfView, FragmentReplacer.MAIN_CONTENT, true);
+          FragmentReplacer.replace(getActivity().getSupportFragmentManager(), pdfView, FragmentReplacer.MAIN_CONTENT);
         }
       });
     }    
@@ -176,7 +180,7 @@ public class JobDetailFragment extends EntityFragment {
 
   @Override
   protected void postRestore() {
-    //nothing to do
+    // do nothing
   }
 
   @Override

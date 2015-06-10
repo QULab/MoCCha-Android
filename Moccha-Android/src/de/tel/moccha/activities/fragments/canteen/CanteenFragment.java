@@ -166,5 +166,10 @@ public class CanteenFragment extends InfoMenuFragment {
       info = new CanteenInfoDialogFragment();
     return info;
   }
-  
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    showCanteen(c);
+  }
 }

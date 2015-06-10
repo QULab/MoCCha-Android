@@ -20,7 +20,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.course.Course;
 import de.tel.moccha.entities.course.Person;
@@ -28,6 +27,7 @@ import de.tel.moccha.entities.course.Responsibility;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
+import de.zell.android.util.db.Entity;
 import de.zell.android.util.fragments.EntityFragment;
 import de.zell.android.util.json.JSONUnmarshaller;
 import java.util.List;
@@ -50,7 +50,7 @@ public class CourseFragment extends EntityFragment {
     AsyncGETRequester request = new AsyncGETRequester(new AsyncGETRequester.PostExecuteJob() {
       public void doJob(JSONObject response) {
           entity = JSONUnmarshaller.unmarshall(response, Course.class);
-          showCourse((Course) entity);
+          showEntity(entity);
       }
 
       public void doExeptionHandling(Throwable t) {
@@ -66,7 +66,9 @@ public class CourseFragment extends EntityFragment {
     request.execute(info);
   }
 
-  private void showCourse(Course c) {
+  @Override
+  protected void showEntity(Entity entity) {
+    Course c = (Course) entity;
     if (c == null) return;
     
     View root = this.getView();
@@ -144,7 +146,7 @@ public class CourseFragment extends EntityFragment {
     if (content != null && !content.isEmpty())
       builder.append(content);
   }
-  
+
   @Override
   protected void postRestore() {
     //do nothing
