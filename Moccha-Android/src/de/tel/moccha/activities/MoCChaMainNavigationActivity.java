@@ -80,6 +80,12 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
    */
   public static final String PROP_KEY_JOBS_PDF_PREFIX = "jobs.pdf.prefix";
   
+  
+  /**
+   * The property key for the google pdf viewer url.
+   */
+  public static final String PROP_KEY_GOOGLE_PDF_VIEWER_URL = "google.pdf.viewer.url";
+  
   /**
    * Static initializer to initialize the properties provider with the moccha
    * properties file.
