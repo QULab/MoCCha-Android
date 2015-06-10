@@ -75,6 +75,10 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
   public static final String PROP_KEY_JOBS_DETAIL_URL = "jobs.detail.url";
   
   
+  /**
+   * The property key for the jobs pdf prefix url.
+   */
+  public static final String PROP_KEY_JOBS_PDF_PREFIX = "jobs.pdf.prefix";
   
   /**
    * Static initializer to initialize the properties provider with the moccha
