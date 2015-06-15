@@ -21,6 +21,9 @@ import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -57,6 +60,46 @@ public class JobDetailFragment extends EntityFragment {
   public static final String UTF_8_ENCODING = "UTF-8";
   public static final String JSON_JOB_DETAIL_KEY = "job";
   private static final int TABLE_COLUMNS_PADDING = 3;
+  
+  /**
+   * The info menu item.
+   */
+  protected MenuItem item;
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setHasOptionsMenu(true);
+  }
+  
+  @Override
+  public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    super.onCreateOptionsMenu(menu, inflater);
+    inflater.inflate(R.menu.job_pdf_detail, menu);
+    item = menu.findItem(R.id.action_job_pdf_detail);
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    getActivity().invalidateOptionsMenu();
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem favItem) {
+    if (favItem.getItemId() == R.id.action_job_pdf_detail) {
+      Job job = (Job) entity;
+      List<String> pdfs = job.getPdfs();
+      final Bundle args = new Bundle();
+      args.putString(WebviewFragment.ARG_WEBVIEW_FRAGMENT_URL, createPDFDetaillURL(pdfs != null ? pdfs.get(0) : null));
+      args.putString(WebviewFragment.ARG_WEBVIEW_FRAGMENT_TITLE, job.getTitle());
+      WebviewFragment pdfView = new WebviewFragment();
+      pdfView.setArguments(args);
+      FragmentReplacer.replace(getActivity().getSupportFragmentManager(), pdfView, FragmentReplacer.MAIN_CONTENT);
+      return true;
+    }
+    return super.onOptionsItemSelected(favItem);
+  }
 
   @Override
   protected void restoreInstance(Bundle values) {
