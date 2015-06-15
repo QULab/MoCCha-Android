@@ -26,7 +26,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -155,27 +154,8 @@ public class JobDetailFragment extends EntityFragment {
     if (edited != null) {
       table.addView(createTableRow(R.string.job_row_edited, getDateFromString(edited)));
     }
-    setPDFDetailButton(job, root);
   }
-  
-  private void setPDFDetailButton(Job job, View root) {
-    final List<String> pdfs = job.getPdfs();
-    if (pdfs != null && pdfs.size() > 0) {
-      Button pdfDetail = (Button) root.findViewById(R.id.job_pdf_detail);
-      pdfDetail.setVisibility(View.VISIBLE);
-      final Bundle args = new Bundle();
-      args.putString(WebviewFragment.ARG_WEBVIEW_FRAGMENT_URL, createPDFDetaillURL(pdfs.get(0)));
-      args.putString(WebviewFragment.ARG_WEBVIEW_FRAGMENT_TITLE, job.getTitle());
-      pdfDetail.setOnClickListener(new Button.OnClickListener() {
 
-        public void onClick(View v) {
-          WebviewFragment pdfView = new WebviewFragment();
-          pdfView.setArguments(args);
-          FragmentReplacer.replace(getActivity().getSupportFragmentManager(), pdfView, FragmentReplacer.MAIN_CONTENT);
-        }
-      });
-    }    
-  }
   
   private String createPDFDetaillURL(String pdfUrl) {
     if (pdfUrl == null)
