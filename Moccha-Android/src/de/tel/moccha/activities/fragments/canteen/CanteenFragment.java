@@ -21,10 +21,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.canteen.Canteen;
-import de.tel.moccha.util.StringFormatter;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
@@ -66,15 +64,9 @@ public class CanteenFragment extends InfoMenuFragment {
    */
   private CanteenInfoDialogFragment info;
   
-  /**
-   * The formatter which will be used to format the strings given by id.
-   */
-  private StringFormatter formatter;
-  
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    formatter = new StringFormatter(getActivity());
     
     if (savedInstanceState == null) {
       savedInstanceState = getArguments();
