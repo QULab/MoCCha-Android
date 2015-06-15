@@ -42,17 +42,13 @@ public class CourseListAdapter extends EntityListAdapter {
   }
 
   @Override
-  protected void setEntityView(View row, int pos) {
-    Course course = (Course) entities.get(pos);
-    if (course != null) {
-      TextView title = (TextView) row.findViewById(de.zell.android.util.R.id.entity_title);
-      title.setText(course.getTitle());
-      title.setVisibility(View.VISIBLE);
-      
-      TextView descrp = (TextView) row.findViewById(de.zell.android.util.R.id.entity_description);
-      descrp.setText(course.getKindOfEvent());
-      descrp.setVisibility(View.VISIBLE);
-    }
+  protected CharSequence getEntityTitle(Entity e) {
+    return ((Course) e).getTitle();
+  }
+
+  @Override
+  protected CharSequence getEntityDescription(Entity e) {
+    return ((Course) e).getKindOfEvent();
   }
 
   @Override

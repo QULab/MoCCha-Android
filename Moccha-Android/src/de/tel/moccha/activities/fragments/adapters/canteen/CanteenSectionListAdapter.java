@@ -47,12 +47,7 @@ public class CanteenSectionListAdapter extends EntityListAdapter {
   }
 
   @Override
-  protected void setEntityView(View row, int pos) {
-    Canteen c = (Canteen) entities.get(pos);
-    if (c != null) {
-      TextView title = (TextView) row.findViewById(R.id.entity_title);
-      title.setText(c.getTitle());
-      title.setVisibility(View.VISIBLE);
-    }
+  protected String getEntityTitle(Entity e) {
+    return ((Canteen) e).getTitle();
   }
 }

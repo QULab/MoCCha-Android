@@ -16,6 +16,7 @@
 package de.tel.moccha.activities.fragments.adapters.canteen;
 
 import android.content.Context;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.TextView;
 import de.tel.moccha.entities.canteen.Additive;
@@ -45,11 +46,10 @@ public class DishListAdapter extends EntityListAdapter {
   }
 
   @Override
-  protected void setEntityView(View row, int pos) {
-    Dish d = (Dish) entities.get(pos);
+  protected CharSequence getEntityTitle(Entity e) {
+    Dish d = (Dish) e;
+    
     if (d != null) {
-      
-      TextView title = (TextView) row.findViewById(R.id.entity_title);
       List<Additive> additives = d.getAdditives();
       if (additives != null && !additives.isEmpty()) {
         StringBuilder builder = new StringBuilder();
@@ -59,18 +59,20 @@ public class DishListAdapter extends EntityListAdapter {
           if (i+1 != len) 
             builder.append(',');
         }
-        title.setText(formatter.getFormatedHTMLString(R.string.canteen_dish, d.getName(), builder.toString()));
+        return formatter.getFormatedHTMLString(R.string.canteen_dish, d.getName(), builder.toString());
       } else {
-        title.setText(d.getName());
+        return d.getName();
       }
-      
-      title.setVisibility(View.VISIBLE);
-      TextView desc = (TextView) row.findViewById(R.id.entity_description);
-      desc.setText(d.getPrice());
-      desc.setVisibility(View.VISIBLE);
     }
-
+    return null;
   }
+
+  @Override
+  protected CharSequence getEntityDescription(Entity e) {
+    return ((Dish) e).getPrice();
+  }
+  
+
 
   @Override
   protected EntityComparator getComparator() {

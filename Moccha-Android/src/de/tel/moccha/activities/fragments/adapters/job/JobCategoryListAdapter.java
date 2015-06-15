@@ -45,19 +45,15 @@ public class JobCategoryListAdapter extends EntityListAdapter {
   protected EntityComparator getComparator() {
     return new JobCategoryComparator();
   }
+  
+  @Override
+  protected CharSequence getEntityTitle(Entity e) {
+    return ((Job) e).getTitle();
+  }
 
   @Override
-  protected void setEntityView(View row, int pos) {
-    Job job = (Job) entities.get(pos);
-    if (job != null) {
-      TextView title = (TextView) row.findViewById(de.zell.android.util.R.id.entity_title);
-      title.setText(job.getTitle());
-      title.setVisibility(View.VISIBLE);
-      
-      TextView description = (TextView) row.findViewById(de.zell.android.util.R.id.entity_description);
-      description.setText(job.getTagsAsString(context));
-      description.setVisibility(View.VISIBLE);
-    }
+  protected CharSequence getEntityDescription(Entity e) {
+    return ((Job) e).getTagsAsString(context);
   }
   
   @Override

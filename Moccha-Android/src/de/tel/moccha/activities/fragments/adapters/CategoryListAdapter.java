@@ -50,15 +50,10 @@ public class CategoryListAdapter extends EntityListAdapter {
   }
 
   @Override
-  protected void setEntityView(View row, int pos) {
-    Category category = (Category) entities.get(pos);
-    if (category != null) {
-      TextView title = (TextView) row.findViewById(de.zell.android.util.R.id.entity_title);
-      title.setText(CategoryNameConverter.getLongName(category.getName()));
-      title.setVisibility(View.VISIBLE);
-    }
+  protected String getEntityTitle(Entity e) {
+    return CategoryNameConverter.getLongName(((Category) e).getName());
   }
-
+  
   @Override
   protected String getSection(Entity e) {
     return sectionTitle;

@@ -42,13 +42,8 @@ public class CourseCategoryListAdapter extends EntityListAdapter {
   }
 
   @Override
-  protected void setEntityView(View row, int pos) {
-    CourseCategory category = (CourseCategory) entities.get(pos);
-    if (category != null) {
-      TextView title = (TextView) row.findViewById(de.zell.android.util.R.id.entity_title);
-      title.setText(category.getName());
-      title.setVisibility(View.VISIBLE);
-    }
+  protected CharSequence getEntityTitle(Entity e) {
+    return ((CourseCategory) e).getName();
   }
 
   @Override
