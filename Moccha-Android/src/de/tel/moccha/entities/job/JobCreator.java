@@ -19,7 +19,8 @@ import de.zell.android.util.db.Entity;
 import de.zell.android.util.json.JSONElement;
 
 /**
- *
+ * Represents the job creator entity which has created a job.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class JobCreator implements Entity<String> {

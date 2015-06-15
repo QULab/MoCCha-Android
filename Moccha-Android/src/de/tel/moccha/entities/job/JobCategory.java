@@ -20,7 +20,9 @@ import de.zell.android.util.json.JSONElement;
 import java.util.List;
 
 /**
- *
+ * Represents the job category which contains a name, description
+ * and a job list.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class JobCategory implements Entity<String> {

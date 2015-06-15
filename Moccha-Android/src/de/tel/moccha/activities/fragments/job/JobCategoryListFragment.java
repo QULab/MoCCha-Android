@@ -38,14 +38,26 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- *
+ * Represents the job category fragment list.
+ * Which contains the categories for the different jobs.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class JobCategoryListFragment extends EntityListFragment {
 
+  /**
+   * The JSON key for the job database value.
+   */
   public static final String JSON_JOB_DATABASE_KEY = "jobDatabase";
 
-  public Bundle getArgumentsForFragment(Entity e) {
+  /**
+   * Returns for the given entity the arguments for the fragment which should
+   * be displayed. The arguments contains the job details url.
+   * 
+   * @param e the entity which contains the information
+   * @return the arguments for the fragment
+   */
+  protected Bundle getArgumentsForFragment(Entity e) {
     Bundle args = new Bundle();
     PropertiesProvider provider = MoCChaMainNavigationActivity.propProvider;
     if (provider != null) {
@@ -56,8 +68,13 @@ public class JobCategoryListFragment extends EntityListFragment {
     return args;
   }
 
-  public Fragment getOnClickFragment() {
-    return new JobDetailFragment(); //TODO job detail fragment
+  /**
+   * Returns the fragment which should be used if an on click event happens.
+   * 
+   * @return the fragment which is used
+   */
+  protected Fragment getOnClickFragment() {
+    return new JobDetailFragment(); 
   }
 
   @Override
@@ -124,7 +141,4 @@ public class JobCategoryListFragment extends EntityListFragment {
   protected void onSectionClick(Object o) {
     //nothing to do
   }
-  
-  
-
 }

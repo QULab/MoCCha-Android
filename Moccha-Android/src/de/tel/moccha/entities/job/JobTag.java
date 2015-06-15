@@ -19,7 +19,8 @@ import de.zell.android.util.json.JSONElement;
 import java.io.Serializable;
 
 /**
- *
+ * Represents a job tag which categorized a job.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class JobTag implements Serializable {

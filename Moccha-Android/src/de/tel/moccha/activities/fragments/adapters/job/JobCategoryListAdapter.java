@@ -16,12 +16,8 @@
 package de.tel.moccha.activities.fragments.adapters.job;
 
 import android.content.Context;
-import android.view.View;
-import android.widget.TextView;
-import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.job.Job;
 import de.tel.moccha.entities.job.JobCategory;
-import de.tel.moccha.entities.job.JobTag;
 import de.tel.moccha.util.JobCategoryComparator;
 import de.zell.android.util.EntityComparator;
 import de.zell.android.util.adapters.EntityListAdapter;
@@ -30,7 +26,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- *
+ * Represents the job category list adapter for the job category list.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class JobCategoryListAdapter extends EntityListAdapter {
@@ -38,8 +35,6 @@ public class JobCategoryListAdapter extends EntityListAdapter {
   public JobCategoryListAdapter(Context c) {
     super(c);
   }
-
-  
   
   @Override
   protected EntityComparator getComparator() {
@@ -83,6 +78,14 @@ public class JobCategoryListAdapter extends EntityListAdapter {
     }
   }
 
+  /**
+   * Adds the jobs from the given category to the entity list.
+   * The currentCount parameter represents the current entity count.
+   * 
+   * @param category the category which contains the jobs
+   * @param currentCount the count of the entity list
+   * @return the current count
+   */
   private int addJobsToEntityList(JobCategory category, int currentCount) {
     List<Job> jobs = category.getJobs();
     for (Job job : jobs) {

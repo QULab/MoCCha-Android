@@ -23,7 +23,9 @@ import java.util.List;
 
 
 /**
- *
+ * Represents a job entity with title, tags, description,
+ * creators and etc.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class Job implements Entity<String> {

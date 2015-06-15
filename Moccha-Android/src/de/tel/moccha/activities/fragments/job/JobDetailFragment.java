@@ -51,13 +51,26 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- *
+ * Represents the job detail fragment.
+ * Contains all necessary details about the job for the user.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class JobDetailFragment extends EntityFragment {
 
+  /**
+   * The UTF-8 encoding key.
+   */
   public static final String UTF_8_ENCODING = "UTF-8";
+  
+  /**
+   * The JSON key for the job details.
+   */
   public static final String JSON_JOB_DETAIL_KEY = "job";
+  
+  /**
+   * The padding for the job detail table layout.
+   */
   private static final int TABLE_COLUMNS_PADDING = 3;
   
   /**
@@ -156,7 +169,13 @@ public class JobDetailFragment extends EntityFragment {
     }
   }
 
-  
+  /**
+   * Creates for the given PDF URL a correct URI which points to the PDF
+   * of the current job.
+   * 
+   * @param pdfUrl the PDF URL which contains the necessary informations
+   * @return the correct PDF URL
+   */
   private String createPDFDetaillURL(String pdfUrl) {
     if (pdfUrl == null)
       return null;
@@ -176,12 +195,25 @@ public class JobDetailFragment extends EntityFragment {
     return String.format(googlePDFViewerPrefix, encodedURL);
   }
 
+  /**
+   * Converts a timestamp as String to a valid date string.
+   * @param dateString the timestamp
+   * @return the valid date string
+   */
   private String getDateFromString(String dateString) {
     Long timestamp = Long.parseLong(dateString) * 1000;
     Date date = new Date(timestamp);
     return date.toString();
   }
 
+  /**
+   * Creates a table row with the given head string which is identified with the
+   * given id and the row content string.
+   * 
+   * @param rowHeadStringID the id which identifies the head string
+   * @param rowContentString the row content string
+   * @return the created table row
+   */
   private TableRow createTableRow(int rowHeadStringID, String rowContentString) {
     Context ctx = getActivity();
     TableRow row = new TableRow(ctx);
