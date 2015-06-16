@@ -17,7 +17,7 @@ package de.tel.moccha.activities.fragments.adapters;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.TextView;
+import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.Category;
 import de.tel.moccha.entities.course.CategoryNameConverter;
 import de.tel.moccha.util.CategoryComparator;
@@ -50,8 +50,12 @@ public class CategoryListAdapter extends EntityListAdapter {
   }
 
   @Override
-  protected String getEntityTitle(Entity e) {
-    return CategoryNameConverter.getLongName(((Category) e).getName());
+  protected void setEntityView(View row, int pos) {
+    Category category = (Category) entities.get(pos);
+    if (category != null) {
+      setTextViewVisible(row, R.id.entity_row_title,
+                         CategoryNameConverter.getLongName(category.getName()));
+    }
   }
   
   @Override
