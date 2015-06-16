@@ -66,10 +66,8 @@
     <!--UNIVERSITY LIST--> 
     <string name="university_list_header">Universitäten</string>
     <!--Main courses category pager-->
-    <string-array name="courses_content_pages">
-      <item>Studiengänge</item>
-      <item>Kurse</item>
-    </string-array>
+    <string name="course_category_course_of_studies">Studiengänge</string>
+    <string name="course_category_courses">Kurse</string>
     <!--CourseCategoryList-->
     <string name="course_category_list_section_header">Studiengänge</string>
     <!--Course list-->

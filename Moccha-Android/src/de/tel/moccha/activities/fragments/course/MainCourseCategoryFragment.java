@@ -112,7 +112,7 @@ public class MainCourseCategoryFragment extends EntityViewPagerFragment {
 
     @Override
     public CharSequence getPageTitle(int position) {
-      return content.get(position).getCategory().toString();
+      return getString(content.get(position).getCategory().getStringID());
     }
   }
 

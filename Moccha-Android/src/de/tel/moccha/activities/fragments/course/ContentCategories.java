@@ -15,6 +15,8 @@
  */
 package de.tel.moccha.activities.fragments.course;
 
+import de.tel.moccha.activities.R;
+
 /**
  * Represents the content categories for which the list view fragments
  * can be created.
@@ -22,18 +24,16 @@ package de.tel.moccha.activities.fragments.course;
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public enum ContentCategories {
-  CourseOfStudies("Course of studies"), Courses("Courses");
+  CourseOfStudies(R.string.course_category_course_of_studies),
+  Courses(R.string.course_category_courses);
   
-  private final String name;
+  private final int strID;
 
-  private ContentCategories(String name) {
-    this.name = name;
+  private ContentCategories(int name) {
+    this.strID = name;
   }
-  
-  @Override
-  public String toString() {
-    return name;
+ 
+  public int getStringID() {
+    return strID;
   }
-  
-  
 }
