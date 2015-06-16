@@ -17,11 +17,10 @@ package de.tel.moccha.activities.fragments.adapters.canteen;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.TextView;
+import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.canteen.Canteen;
 import de.tel.moccha.util.CanteenComparator;
 import de.zell.android.util.EntityComparator;
-import de.zell.android.util.R;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
 
@@ -47,7 +46,11 @@ public class CanteenSectionListAdapter extends EntityListAdapter {
   }
 
   @Override
-  protected String getEntityTitle(Entity e) {
-    return ((Canteen) e).getTitle();
+  protected void setEntityView(View row, int pos) {
+    Canteen c = (Canteen) entities.get(pos);
+    if (c != null) {
+      setTextViewVisible(row, R.id.entity_row_title, c.getTitle());
+    }
   }
+
 }
