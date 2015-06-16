@@ -26,9 +26,9 @@ import java.util.HashMap;
 public class CategoryNameConverter {
   
   public static final String KEY_TUB = "tub";
-  public static final String VALUE_TUB = "Technische Universitaet Berlin";
+  public static final String VALUE_TUB = "Technische Universität Berlin";
   public static final String KEY_UDK = "udk";
-  public static final String VALUE_UDK = "Universitaet der Kuenste";
+  public static final String VALUE_UDK = "Universität der Künste";
   public static final String KEY_STAATSOPER = "staatsoper";
   public static final String VALUE_STAATSOPER = "Staatsoper";
   /**
