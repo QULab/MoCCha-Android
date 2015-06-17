@@ -17,6 +17,6 @@ limitations under the License.
 
 
 <resources>
-  <color name="moccha_blue_dark">#285fbf</color>
-  <color name="moccha_blue_light">#2881ba</color>
+  <color name="moccha_blue_dark">#27408B</color>
+  <color name="moccha_blue_light">#4876FF</color>
 </resources>
