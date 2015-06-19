@@ -38,9 +38,12 @@ public class WelcomeFragment extends Fragment {
           Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_welcome, container, false);
     LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.welcome_main_ll);
+    
+    addTextViewToLayout(getString(R.string.welcome_intro_description), ll);
     addTextViewToLayout(getString(R.string.info_publisher), ll);
     addTextViewToLayout(getString(R.string.info_questions), ll);
     addTextViewToLayout(getString(R.string.info_developer), ll);
+    
     return rootView;
   }
   

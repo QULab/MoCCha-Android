@@ -39,7 +39,11 @@
     <!--WELCOME SCREEN-->
     <string name="welcome_text">Willkommen zur MoCCha Anwendung.</string>
     <string name="welcome_intro">Kurze Einführung</string>
-    
+    <string name="welcome_intro_description">
+      MoCCha steht für Mobiler Campus Charlottenburg. 
+      Die App bietet eine Reihe von Funktionalitäten an,  
+      die das Leben auf dem Campus erleichtern und bereichern sollen.
+    </string>
     <!--CANTEEN FRAG-->
     <string name="canteen_header_info">Info</string>
     <string name="canteen_address">Adresse: %1$s</string>

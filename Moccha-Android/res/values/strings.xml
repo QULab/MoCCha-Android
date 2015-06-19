@@ -40,7 +40,11 @@
     <!--WELCOME SCREEN-->
     <string name="welcome_text">Welcome to the MoCCha application.</string>
     <string name="welcome_intro">Short Introduction</string>
-    
+    <string name="welcome_intro_description">
+      MoCCha stays for Mobiler Campus Charlottenburg.
+      The application provides some functionality which should makes
+      the life on campus easier for you.
+    </string>
     <!--CANTEEN FRAG-->
     <string name="canteen_header_info">Info</string>
     <string name="canteen_address">Address: %1$s</string>
