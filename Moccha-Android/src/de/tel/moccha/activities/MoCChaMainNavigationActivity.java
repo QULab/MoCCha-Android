@@ -171,6 +171,11 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
   }
 
   @Override
+  protected int getActionBarIcon() {
+    return R.drawable.ic_moccha_white;
+  }
+  
+  @Override
   protected ListAdapter getNavigationListAdapter() {
     return new NavigationListAdapter(fragmentNames, fragmentIcons, this);
   }
