@@ -18,7 +18,6 @@ package de.tel.moccha.activities.fragments.course;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.widget.Toast;
 import de.tel.moccha.activities.fragments.adapters.course.CourseListAdapter;
 import de.tel.moccha.entities.course.Course;
 import de.zell.android.util.adapters.EntityListAdapter;
@@ -44,7 +43,6 @@ public class CourseListFragment extends EntityListFragment {
     FragmentReplacer.replace(getActivity().getSupportFragmentManager(),
                              frg,
                              FragmentReplacer.MAIN_CONTENT);
-    Toast.makeText(getActivity(), e.getID().toString(), Toast.LENGTH_LONG).show();
   }
 
   @Override

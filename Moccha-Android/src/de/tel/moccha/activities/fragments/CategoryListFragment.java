@@ -18,8 +18,6 @@ package de.tel.moccha.activities.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.widget.Toast;
-import de.tel.moccha.activities.fragments.course.MainCourseCategoryFragment;
 import de.tel.moccha.entities.Category;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.adapters.EntityListAdapter;
