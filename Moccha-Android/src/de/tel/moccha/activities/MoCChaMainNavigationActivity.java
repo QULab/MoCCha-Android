@@ -102,7 +102,7 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
                                         createUniversityFragment(), createEventCategoryListFragment(),
                                         createJobCategoryListFragment()};
   
-  private static final int[] fragmentIcons = {R.drawable.ic_launcher,
+  private static final int[] fragmentIcons = {R.drawable.ic_moccha_white,
                                               R.drawable.ic_canteen,
                                               R.drawable.ic_course,
                                               R.drawable.ic_launcher,
