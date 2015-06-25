@@ -32,7 +32,7 @@
     <string name="progress">Please wait&#8230;</string>
 
     <string name="ok">OK</string>
-
+    <string name="until">&#160;-&#160;</string>
     <!--SPLASH SCREEN-->
     <string name="splash_descr">The splash screen.</string>
     
@@ -83,7 +83,9 @@
     <string name="course_responsibilities">Responsibilities</string>
     <string name="course_comment">Comment</string>
     <string name="course_group_dates">Group dates</string>
-    
+    <string name="course_max_members">Max. members:&#160;</string>
+    <string name="course_max_members_no_value">-</string>
+    <string name="course_iteration">Iteration:&#160;</string>
     <!--EVENT LIST-->
     <string name="event_category_list_header">Event categories</string>
     

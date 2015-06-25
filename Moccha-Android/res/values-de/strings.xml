@@ -31,6 +31,7 @@
     <string name="progress">Bitte warten&#8230;</string>
 
     <string name="ok">OK</string>
+    <string name="until">&#160;-&#160;</string>
 
     <!--SPLASH SCREEN-->
     <string name="splash_descr">Der Splash-screen.</string>
@@ -82,6 +83,9 @@
     <string name="course_responsibilities">Verantwortlichen</string>
     <string name="course_comment">Kommentar</string>
     <string name="course_group_dates">Termine</string>
+    <string name="course_max_members">Max. Teilnehmer&#160;</string>
+    <string name="course_max_members_no_value">-</string>
+    <string name="course_iteration">Wiederholung:&#160;</string>
     <!--EVENT LIST-->
     <string name="event_category_list_header">Eventkategorien</string>
     
