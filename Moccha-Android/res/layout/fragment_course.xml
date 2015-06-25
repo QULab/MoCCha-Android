@@ -102,6 +102,20 @@ limitations under the License.
           android:padding="3dip" 
           android:maxLines="4"/>
       </TableRow>
+      <!--COMMENT-->
+      <View
+        android:layout_height="2dip"
+        android:background="?tableRowSeparationColor" />
+      <TableRow>
+        <TextView
+          android:text="@string/course_group_dates"
+          android:padding="3dip" />
+        <TextView
+          android:id="@+id/course_group_dates"
+          android:gravity="right"
+          android:padding="3dip" 
+          android:maxLines="4"/>
+      </TableRow>
     </TableLayout>
   </LinearLayout> 
 </ScrollView>

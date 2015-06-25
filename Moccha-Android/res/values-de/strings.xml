@@ -81,7 +81,7 @@
     <string name="course_info">Info</string>
     <string name="course_responsibilities">Verantwortlichen</string>
     <string name="course_comment">Kommentar</string>
-    
+    <string name="course_group_dates">Termine</string>
     <!--EVENT LIST-->
     <string name="event_category_list_header">Eventkategorien</string>
     
