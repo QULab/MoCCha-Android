@@ -19,8 +19,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:orientation="vertical"
-              android:layout_margin="15dp">
+              android:orientation="vertical">
     <!--DIET SECTION-->
     <TextView
             android:id="@+id/canteen_header_diet"
