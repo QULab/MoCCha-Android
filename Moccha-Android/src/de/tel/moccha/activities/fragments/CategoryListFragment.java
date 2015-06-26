@@ -24,6 +24,7 @@ import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
 import de.zell.android.util.db.Entity;
+import de.zell.android.util.fragments.ActionBarTitleManager;
 import de.zell.android.util.fragments.EntityListFragment;
 import de.zell.android.util.fragments.FragmentReplacer;
 import de.zell.android.util.json.JSONUnmarshaller;
@@ -56,7 +57,9 @@ public abstract class CategoryListFragment extends EntityListFragment {
     
     Fragment frg = getOnClickFragment();
     if (frg != null) {
-      frg.setArguments(getArgumentsForFragment(c));
+      Bundle bundle = getArgumentsForFragment(c);
+      bundle.putString(ActionBarTitleManager.ARG_ACTION_BAR_TITLE, c.getName());
+      frg.setArguments(bundle);
       FragmentReplacer.replace(getActivity().getSupportFragmentManager(),
                               frg,
                                FragmentReplacer.MAIN_CONTENT);

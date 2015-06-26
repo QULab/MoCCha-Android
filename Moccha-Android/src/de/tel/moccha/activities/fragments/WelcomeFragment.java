@@ -17,13 +17,13 @@
 package de.tel.moccha.activities.fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import de.tel.moccha.activities.R;
+import de.zell.android.util.fragments.ActionBarManagerFragment;
 
 /**
  * Represents the Fragment for the welcome page.
@@ -31,7 +31,7 @@ import de.tel.moccha.activities.R;
  * Created by deLaczkovich on 26-Aug-14.
  * @author deLaczkovich, Christopher Zell <zelldon91@googlemail.com>
  */
-public class WelcomeFragment extends Fragment {
+public class WelcomeFragment extends ActionBarManagerFragment {
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
