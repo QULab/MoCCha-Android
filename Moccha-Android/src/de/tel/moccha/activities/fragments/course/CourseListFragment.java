@@ -22,6 +22,7 @@ import de.tel.moccha.activities.fragments.adapters.course.CourseListAdapter;
 import de.tel.moccha.entities.course.Course;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
+import de.zell.android.util.fragments.ActionBarTitleManager;
 import de.zell.android.util.fragments.EntityListFragment;
 import de.zell.android.util.fragments.FragmentReplacer;
 
@@ -37,7 +38,7 @@ public class CourseListFragment extends EntityListFragment {
     Course course = (Course) e;
     Bundle b = new Bundle();
     b.putString(MainCourseCategoryFragment.ARG_ENTITY_URL, course.getUrl());
-    b.putString(MainCourseCategoryFragment.ARG_FRG_TITLE, course.getTitle());
+    b.putString(ActionBarTitleManager.ARG_ACTION_BAR_TITLE, course.getTitle());
     Fragment frg = new CourseFragment();
     frg.setArguments(b);
     FragmentReplacer.replace(getActivity().getSupportFragmentManager(),
