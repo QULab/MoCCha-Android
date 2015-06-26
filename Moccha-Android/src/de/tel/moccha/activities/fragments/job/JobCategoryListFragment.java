@@ -22,6 +22,7 @@ import android.util.Log;
 import de.tel.moccha.activities.MoCChaMainNavigationActivity;
 import de.tel.moccha.activities.fragments.CategoryListFragment;
 import de.tel.moccha.activities.fragments.adapters.job.JobCategoryListAdapter;
+import de.tel.moccha.entities.job.Job;
 import de.tel.moccha.entities.job.JobCategory;
 import de.zell.android.util.PropertiesProvider;
 import de.zell.android.util.activities.MainNavigationActivity;
@@ -29,6 +30,7 @@ import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.async.AsyncGETRequester;
 import de.zell.android.util.async.GetRequestInfo;
 import de.zell.android.util.db.Entity;
+import de.zell.android.util.fragments.ActionBarTitleManager;
 import de.zell.android.util.fragments.EntityListFragment;
 import de.zell.android.util.fragments.FragmentReplacer;
 import de.zell.android.util.json.JSONUnmarshaller;
@@ -64,6 +66,7 @@ public class JobCategoryListFragment extends EntityListFragment {
       String jobDetailUrl = provider.getProperty(MoCChaMainNavigationActivity.PROP_KEY_JOBS_DETAIL_URL);
       jobDetailUrl = String.format(jobDetailUrl, e.getID());
       args.putCharSequence(JobDetailFragment.ARG_ENTITY_URL, jobDetailUrl);
+      args.putString(ActionBarTitleManager.ARG_ACTION_BAR_TITLE, ((Job) e).getTitle());
     }
     return args;
   }
