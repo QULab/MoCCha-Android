@@ -187,7 +187,7 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
   private static Fragment createExaminationOffice() {
     Fragment fragment = new ExaminationOfficeFragment();
     Bundle args = new Bundle();
-    args.putString(EntityListFragment.ARG_ENTITIES_URL, propProvider.getProperty(PROP_KEY_OFFICE_EXAMINATION_URL));
+    args.putString(ExaminationOfficeFragment.ARG_EXAMINATION_OFFICE_URL, propProvider.getProperty(PROP_KEY_OFFICE_EXAMINATION_URL));
     fragment.setArguments(args);
     return fragment;
   }
