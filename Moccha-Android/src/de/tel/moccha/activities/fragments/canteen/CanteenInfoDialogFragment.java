@@ -89,7 +89,7 @@ public class CanteenInfoDialogFragment extends DialogFragment {
    * @return the id of the layout
    */
   protected int getDialogLayout() {
-    return R.layout.info_dialog;
+    return R.layout.canteen_info_dialog;
   }
   
   /**
