@@ -25,36 +25,36 @@ import de.zell.android.util.json.JSONElement;
  */
 public class OpeningHours implements Entity<Integer> {
   @JSONElement(name = "weekday")
-  private int weekDay;
+  private Integer weekDay;
   @JSONElement(name = "begin")
-  private int begin;
+  private Integer begin;
   @JSONElement(name = "end")
-  private int end;
+  private Integer end;
 
   public OpeningHours() {
   }
 
-  public int getWeekDay() {
+  public Integer getWeekDay() {
     return weekDay;
   }
 
-  public void setWeekDay(int weekDay) {
+  public void setWeekDay(Integer weekDay) {
     this.weekDay = weekDay;
   }
 
-  public int getBegin() {
+  public Integer getBegin() {
     return begin;
   }
 
-  public void setBegin(int begin) {
+  public void setBegin(Integer begin) {
     this.begin = begin;
   }
 
-  public int getEnd() {
+  public Integer getEnd() {
     return end;
   }
 
-  public void setEnd(int end) {
+  public void setEnd(Integer end) {
     this.end = end;
   }
 

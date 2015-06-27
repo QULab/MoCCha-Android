@@ -26,11 +26,11 @@ import de.zell.android.util.json.JSONElement;
 public class WaitingNumber implements Entity<String> {
   
   @JSONElement(name = "date")
-  private long date;
+  private Integer date;
   @JSONElement(name = "src")
   private String table;
   @JSONElement(name = "num")
-  private int currentNumber;
+  private Integer currentNumber;
 //TODO ask tilo for usage
 //  @JSONElement(name = "avg") 
 //  private double avg;
@@ -38,11 +38,11 @@ public class WaitingNumber implements Entity<String> {
   public WaitingNumber() {
   }
 
-  public long getDate() {
+  public Integer getDate() {
     return date;
   }
 
-  public void setDate(long date) {
+  public void setDate(Integer date) {
     this.date = date;
   }
 
@@ -54,11 +54,11 @@ public class WaitingNumber implements Entity<String> {
     this.table = table;
   }
 
-  public int getCurrentNumber() {
+  public Integer getCurrentNumber() {
     return currentNumber;
   }
 
-  public void setCurrentNumber(int currentNumber) {
+  public void setCurrentNumber(Integer currentNumber) {
     this.currentNumber = currentNumber;
   }
 

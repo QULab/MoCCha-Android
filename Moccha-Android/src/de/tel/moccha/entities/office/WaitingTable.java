@@ -28,28 +28,28 @@ import java.util.List;
 public class WaitingTable implements Entity<Integer> {
   
   @JSONElement(name = "date")
-  private long date;
+  private Integer date;
   @JSONElement(name = "src")
-  private int table;
+  private Integer table;
   @JSONElement(name = "numbers")
   private List<WaitingNumber> waitingNumbers;
 
   public WaitingTable() {
   }
 
-  public long getDate() {
+  public Integer getDate() {
     return date;
   }
 
-  public void setDate(long date) {
+  public void setDate(Integer date) {
     this.date = date;
   }
 
-  public int getTable() {
+  public Integer getTable() {
     return table;
   }
 
-  public void setTable(int table) {
+  public void setTable(Integer table) {
     this.table = table;
   }
 
