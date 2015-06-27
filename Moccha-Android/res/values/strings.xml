@@ -107,4 +107,6 @@
     <string name="job_row_edited">Edited:&#160;</string>
     <string name="job_btn_detail">Detail</string>
     
+    <!--EXAMINATION OFFICE-->
+    <string name="examination_office_opening_header">Opening hours</string>
 </resources>
