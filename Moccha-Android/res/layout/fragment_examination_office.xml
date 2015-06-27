@@ -22,13 +22,13 @@
               android:orientation="vertical">
     <!--OPENING hOURS SECTION-->
     <TextView
-      android:id="@+id/examination_office_opening_header"
+      android:id="@+id/examination_office_table_header"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:background="?divSectionColor"
       android:textColor="?divSectionTextColor"
       android:textSize="24sp"
-      android:text="@string/examination_office_opening_header"
+      android:text="@string/examination_office_table_header"
       android:paddingLeft="5sp"/>
     
     <View
@@ -36,11 +36,6 @@
       android:layout_height="5dip"
       android:background="@drawable/drop_shadow"
     />
-    <TextView
-      android:id="@+id/examination_office_opening_hours"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:textStyle="bold"/>
     <FrameLayout
             android:id="@+id/examination_office_tables"
             android:layout_width="match_parent"

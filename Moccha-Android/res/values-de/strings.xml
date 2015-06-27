@@ -108,5 +108,7 @@
     <string name="job_btn_detail">Detail</string>
     
     <!--EXAMINATION OFFICE-->
+    <string name="examination_office">Prüfungsamt</string>
     <string name="examination_office_opening_header">Öffnungszeiten</string>
+    <string name="examination_office_table_header">Tabellen</string>
 </resources>
