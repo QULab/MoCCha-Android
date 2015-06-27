@@ -24,6 +24,7 @@
         <item>Courses</item>
         <item>Events</item>
         <item>Jobs</item>
+        <item>Examination Office</item>
     </string-array>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
@@ -111,5 +112,6 @@
     <string name="examination_office">Examination Office</string>
     <string name="examination_office_opening_header">Opening hours</string>
     <string name="examination_office_table_header">Tables</string>
-    
+    <string name="examination_office_table_pager_header">Table: %1$d</string>
+    <string name="opening_string_format">%1$s: %2$d - %3$d\n</string>
 </resources>

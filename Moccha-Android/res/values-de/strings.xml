@@ -24,6 +24,7 @@
         <item>Kurse</item>
         <item>Events</item>
         <item>Jobs</item>
+        <item>Prüfungsamt</item>
     </string-array>
     <string name="drawer_open">Öffne Navigator</string>
     <string name="drawer_close">Schliesse Navigator</string>
@@ -111,4 +112,6 @@
     <string name="examination_office">Prüfungsamt</string>
     <string name="examination_office_opening_header">Öffnungszeiten</string>
     <string name="examination_office_table_header">Tabellen</string>
+    <string name="examination_office_table_pager_header">Tabelle: %1$d</string>
+    <string name="opening_string_format">%1$s: %2$d - %3$d\n</string>
 </resources>
