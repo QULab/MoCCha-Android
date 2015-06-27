@@ -22,6 +22,7 @@ import de.tel.moccha.activities.fragments.canteen.CanteenListFragment;
 import de.tel.moccha.activities.fragments.WelcomeFragment;
 import de.tel.moccha.activities.fragments.course.UniversityListFragment;
 import de.tel.moccha.activities.fragments.event.EventCategoryListFragment;
+import de.tel.moccha.activities.fragments.examination.ExaminationOfficeFragment;
 import de.tel.moccha.activities.fragments.job.JobCategoryListFragment;
 import de.zell.android.util.PropertiesProvider;
 import de.zell.android.util.activities.MainNavigationActivity;
@@ -86,6 +87,13 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
    */
   public static final String PROP_KEY_GOOGLE_PDF_VIEWER_URL = "google.pdf.viewer.url";
   
+  
+  
+  /**
+   * The property key for the google pdf viewer url.
+   */
+  public static final String PROP_KEY_OFFICE_EXAMINATION_URL = "office.examination.url";
+  
   /**
    * Static initializer to initialize the properties provider with the moccha
    * properties file.
@@ -100,13 +108,14 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
    */
   private static final Fragment[] fragments = {new WelcomeFragment(), createCanteenListFragment(),
                                         createUniversityFragment(), createEventCategoryListFragment(),
-                                        createJobCategoryListFragment()};
+                                        createJobCategoryListFragment(), createExaminationOffice()};
   
   private static final int[] fragmentIcons = {R.drawable.ic_moccha_white,
                                               R.drawable.ic_canteen,
                                               R.drawable.ic_course,
                                               R.drawable.ic_launcher,
-                                              R.drawable.ic_jobs};
+                                              R.drawable.ic_jobs,
+                                              R.drawable.ic_waiting};
 
   /**
    * The available fragments which can be selected, the names are shown in the
@@ -169,7 +178,19 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
     fragment.setArguments(args);
     return fragment;
   }
-
+  
+  /**
+   * Creates a fragment object for the examination office.
+   * 
+   * @return the examination office fragment
+   */
+  private static Fragment createExaminationOffice() {
+    Fragment fragment = new ExaminationOfficeFragment();
+    Bundle args = new Bundle();
+    args.putString(EntityListFragment.ARG_ENTITIES_URL, propProvider.getProperty(PROP_KEY_OFFICE_EXAMINATION_URL));
+    fragment.setArguments(args);
+    return fragment;
+  }
   @Override
   protected int getActionBarIcon() {
     return R.drawable.ic_moccha_white;
@@ -195,4 +216,5 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
   @Override
   protected void startSearch(String query) {
   }
+
 }
