@@ -15,6 +15,7 @@
  */
 package de.tel.moccha.entities.event;
 
+import de.zell.android.util.db.Entity;
 import de.zell.android.util.json.JSONElement;
 import java.util.List;
 
@@ -22,7 +23,38 @@ import java.util.List;
  *
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class Events {
-    @JSONElement(name = "events")
-    private List<Events> events;
+public class Events implements Entity<String>{
+  
+  private String key;
+  
+  @JSONElement(name = "events")
+  private List<Event> events;
+
+  public Events() {
+  }
+
+  public String getID() {
+    return key;
+  }
+
+  public String getTableName() {
+    return Events.class.getName();
+  }
+
+  public String getKey() {
+    return key;
+  }
+
+  public void setKey(String key) {
+    this.key = key;
+  }
+
+  public List<Event> getEvents() {
+    return events;
+  }
+
+  public void setEvents(List<Event> events) {
+    this.events = events;
+  }
+    
 }

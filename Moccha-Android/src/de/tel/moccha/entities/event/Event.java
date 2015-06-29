@@ -22,23 +22,20 @@ import de.zell.android.util.json.JSONElement;
  *
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class Event implements Entity<Integer>{
-    
+public class Event implements Entity<Integer> {
   @JSONElement(name="id")
   private Integer ID;    
   @JSONElement(name="title")
   private String title;    
-  @JSONElement(name="location")
-  private String location;    
+  @JSONElement(name = "uri")
+  private String uri;
   @JSONElement(name = "description")
   private String description;    
   @JSONElement(name = "startDate")
   private String start;
-  @JSONElement(name = "endDate")
-  private String end;
-  @JSONElement(name = "website")
-  private String website;
-  @JSONElement(name = "Organizer")
+  @JSONElement(name = "period")
+  private String period;
+  @JSONElement(name = "organizer")
   private String organizer;
 
   public Event() {
@@ -60,12 +57,12 @@ public class Event implements Entity<Integer>{
     this.title = title;
   }
 
-  public String getLocation() {
-    return location;
+  public String getUri() {
+    return uri;
   }
 
-  public void setLocation(String location) {
-    this.location = location;
+  public void setUri(String uri) {
+    this.uri = uri;
   }
 
   public String getDescription() {
@@ -84,22 +81,14 @@ public class Event implements Entity<Integer>{
     this.start = start;
   }
 
-  public String getEnd() {
-    return end;
+  public String getPeriod() {
+    return period;
   }
 
-  public void setEnd(String end) {
-    this.end = end;
+  public void setPeriod(String period) {
+    this.period = period;
   }
-
-  public String getWebsite() {
-    return website;
-  }
-
-  public void setWebsite(String website) {
-    this.website = website;
-  }
-
+  
   public String getOrganizer() {
     return organizer;
   }
@@ -107,8 +96,4 @@ public class Event implements Entity<Integer>{
   public void setOrganizer(String organizer) {
     this.organizer = organizer;
   }
-  
-  
-    
-    
 }
