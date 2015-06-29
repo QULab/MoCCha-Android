@@ -16,11 +16,17 @@
 package de.tel.moccha.activities.fragments.adapters.event;
 
 import android.content.Context;
+import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.event.Event;
 import de.tel.moccha.util.EventComparator;
 import de.zell.android.util.EntityComparator;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -39,7 +45,17 @@ public class EventListAdapter extends EntityListAdapter {
 
   @Override
   protected CharSequence getEntityDescription(Entity e) {
-    return ((Event) e).getStart();
+    String timePattern = this.context.getString(R.string.time_pattern);
+    SimpleDateFormat sdf = new SimpleDateFormat(timePattern);
+    Date d = new Date();
+    try {
+      d = sdf.parse(((Event) e).getStart());
+    } catch (ParseException ex) {
+      Logger.getLogger(EventListAdapter.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    String datePattern = this.context.getString(R.string.date_pattern);
+    SimpleDateFormat ddf = new SimpleDateFormat(datePattern);
+    return ddf.format(d);
   }
 
   @Override
@@ -49,7 +65,7 @@ public class EventListAdapter extends EntityListAdapter {
 
   @Override
   protected String getSection(Entity e) {
-    return e.getTableName();
+    return this.context.getString(R.string.events);
   }
   
   
