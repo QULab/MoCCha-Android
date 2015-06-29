@@ -16,9 +16,11 @@
 package de.tel.moccha.activities.fragments.adapters.examination;
 
 import android.content.Context;
+import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.office.WaitingNumber;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
+import java.util.Date;
 
 /**
  *
@@ -39,7 +41,14 @@ public class WaitingNumberListAdapter extends EntityListAdapter {
   protected CharSequence getEntityDescription(Entity e) {
     WaitingNumber number = (WaitingNumber) e;
     StringBuilder builder = new StringBuilder();
-    builder.append(number.getDate()).append("\n").append(number.getCurrentNumber());
+    long timestamp = ((long) number.getDate()) * 1000;
+    String currNum = String.format(this.context.getString(R.string.examination_current_nr), 
+                                    number.getCurrentNumber());
+    String lastUpdate = String.format(this.context.getString(R.string.examination_last_update),
+                                      new Date(timestamp).toString());
+    builder.append(currNum)
+           .append("\n")
+           .append(lastUpdate);
     return builder.toString();
   }
 
