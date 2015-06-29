@@ -113,7 +113,7 @@ public class MoCChaMainNavigationActivity extends MainNavigationActivity {
   private static final int[] fragmentIcons = {R.drawable.ic_moccha_white,
                                               R.drawable.ic_canteen,
                                               R.drawable.ic_course,
-                                              R.drawable.ic_launcher,
+                                              R.drawable.ic_event,
                                               R.drawable.ic_jobs,
                                               R.drawable.ic_waiting};
 
