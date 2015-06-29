@@ -21,7 +21,6 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import de.tel.moccha.activities.fragments.CategoryListFragment;
 import de.tel.moccha.activities.fragments.adapters.event.EventListAdapter;
-import de.tel.moccha.activities.fragments.course.CourseFragment;
 import de.tel.moccha.entities.event.Event;
 import de.tel.moccha.entities.event.Events;
 import de.zell.android.util.activities.MainNavigationActivity;
@@ -35,6 +34,7 @@ import de.zell.android.util.fragments.EntityListFragment;
 import de.zell.android.util.fragments.FragmentReplacer;
 import de.zell.android.util.json.JSONUnmarshaller;
 import java.util.ArrayList;
+import java.util.List;
 import org.json.JSONObject;
 
 /**
@@ -70,7 +70,9 @@ public class EventListFragment extends EntityListFragment {
           entities = new ArrayList<Entity>();
         
         Events events = JSONUnmarshaller.unmarshall(response, Events.class);
-        entities.addAll(events.getEvents());
+        List<Event> e = events.getEvents();
+        if (e != null)
+          entities.addAll(e);
         
         EntityListAdapter adapter = (EntityListAdapter) getListAdapter();
         adapter.setEntities(entities);
