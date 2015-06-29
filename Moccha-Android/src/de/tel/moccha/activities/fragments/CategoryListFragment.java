@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import de.tel.moccha.entities.Category;
+import de.tel.moccha.entities.course.CategoryNameConverter;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.async.AsyncGETRequester;
@@ -58,7 +59,7 @@ public abstract class CategoryListFragment extends EntityListFragment {
     Fragment frg = getOnClickFragment();
     if (frg != null) {
       Bundle bundle = getArgumentsForFragment(c);
-      bundle.putString(ActionBarTitleManager.ARG_ACTION_BAR_TITLE, c.getName());
+      bundle.putString(ActionBarTitleManager.ARG_ACTION_BAR_TITLE, CategoryNameConverter.getLongName(c.getName()));
       frg.setArguments(bundle);
       FragmentReplacer.replace(getActivity().getSupportFragmentManager(),
                               frg,
