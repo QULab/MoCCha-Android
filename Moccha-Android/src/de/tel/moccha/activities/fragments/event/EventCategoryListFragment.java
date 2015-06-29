@@ -32,15 +32,15 @@ public class EventCategoryListFragment extends CategoryListFragment {
 
   @Override
   public Bundle getArgumentsForFragment(Category c) {
-    return null;
+    Bundle b = new Bundle();
+    b.putString(EventListFragment.ARG_ENTITIES_URL, c.getUrl());
+    return b;
   }
 
   @Override
   public Fragment getOnClickFragment() {
-    return null;
+    return new EventListFragment();
   }
-
-  
   
   @Override
   protected EntityListAdapter getEntityListAdapter(Context ctx) {
