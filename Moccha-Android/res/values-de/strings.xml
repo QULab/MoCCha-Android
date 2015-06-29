@@ -58,6 +58,7 @@
     </string>
     <!--DayPagerFragment-->
     <string name="time_pattern">yyyy-MM-dd\'T\'HH:mm:ss</string>
+    <string name="date_pattern">yyyy-MM-dd</string>
     <string-array name="week_days">
       <!--<item>Sunday</item>-->
       <item>Montag</item>
@@ -89,7 +90,10 @@
     <string name="course_iteration">Wiederholung:&#160;</string>
     <!--EVENT LIST-->
     <string name="event_category_list_header">Eventkategorien</string>
-    
+    <string name="event_organizer">Organisator</string>
+    <string name="event_start">Start</string>
+    <string name="event_period">Periode</string>
+    <string name="events">Events</string>
     
     <!--DEVELOPER INFO-->
     <string name="info_publisher">Publiziert und Entwickelt von den Quality and Usability Lab.</string>

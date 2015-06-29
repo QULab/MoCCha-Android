@@ -58,6 +58,7 @@
     </string>
     <!--DayPagerFragment-->
     <string name="time_pattern">yyyy-MM-dd\'T\'HH:mm:ss</string>
+    <string name="date_pattern">yyyy-MM-dd</string>
     <string-array name="week_days">
       <!--<item>Sunday</item>-->
       <item>Monday</item>
@@ -89,6 +90,10 @@
     <string name="course_iteration">Iteration:&#160;</string>
     <!--EVENT LIST-->
     <string name="event_category_list_header">Event categories</string>
+    <string name="event_organizer">Organizer</string>
+    <string name="event_start">Start</string>
+    <string name="event_period">Period</string>
+    <string name="events">Events</string>
     
     <!--DEVELOPER INFO-->
     <string name="info_publisher">Published and developed by the Quality and Usability Lab.</string>
@@ -114,4 +119,6 @@
     <string name="examination_office_table_header">Tables</string>
     <string name="examination_office_table_pager_header">Table: %1$d</string>
     <string name="opening_string_format">%1$s: %2$d - %3$d\n</string>
+    
+    <!--EVENT SECTION-->
 </resources>
