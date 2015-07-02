@@ -20,7 +20,7 @@ limitations under the License.
     <item android:id="@+id/action_job_pdf_detail"
           android:showAsAction="ifRoom|withText"
           android:title="Info"
-          android:icon="@drawable/ic_info"
+          android:icon="@drawable/ic_download"
           android:clickable="true"
           android:checked="false"/>
 </menu>
