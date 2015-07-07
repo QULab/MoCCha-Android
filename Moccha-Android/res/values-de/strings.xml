@@ -51,6 +51,7 @@
     <string name="canteen_address">Adresse: %1$s</string>
     <string name="canteen_phone">Telefon: %1$s</string>
     <string name="canteen_fax">Fax: %1$s</string>
+    <string name="canteen_map_zoom">14.0</string>
     
     <string name="canteen_opening_hours">Öffnungszeiten: %1$s</string>
     <string name="canteen_header_diet">Speiseplan</string>

@@ -167,9 +167,10 @@ public class CanteenInfoDialogFragment extends DialogFragment implements OnMapRe
                           .position(latlng)
                           .title(canteen.getTitle()));
 
+      float zoom = Float.parseFloat(getString(R.string.canteen_map_zoom));
       CameraPosition cameraPosition = new CameraPosition.Builder()
                                                         .target(latlng)
-                                                        .zoom(14.0f)
+                                                        .zoom(zoom )
                                                         .build();
       CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
       map.moveCamera(cameraUpdate);
