@@ -26,13 +26,17 @@ import android.widget.TextView;
 import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.canteen.Canteen;
 import de.tel.moccha.util.StringFormatter;
-
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 /**
  * Represents the class for a info dialog fragment.
  * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class CanteenInfoDialogFragment extends DialogFragment {
+public class CanteenInfoDialogFragment extends DialogFragment implements OnMapReadyCallback {
   
   /**
    * The argument key for the canteen as argument.
@@ -71,6 +75,11 @@ public class CanteenInfoDialogFragment extends DialogFragment {
     setDialogContent(v);
     setOnPositiveClickListener(v);
     setOnNegativeClickListener(v);
+    
+    
+    SupportMapFragment mapFragment =
+            (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.canteen_dialog_map);
+    mapFragment.getMapAsync(this);
     
     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
     return builder.setView(v).create();
@@ -145,4 +154,18 @@ public class CanteenInfoDialogFragment extends DialogFragment {
   private TextView getTextView(View root, int id) {
     return ((TextView) root.findViewById(id));
   } 
+  
+  
+     /**
+     * This is where we can add markers or lines, add listeners or move the camera. In this case, we
+     * just add a marker near Africa.
+     */
+    @Override
+    public void onMapReady(GoogleMap map) {
+      if (canteen != null)
+        map.addMarker(new MarkerOptions()
+                            .position(new LatLng(canteen.getLatitude(),
+                                                  canteen.getLongitude()))
+                            .title(canteen.getTitle()));
+    }
 }
