@@ -15,12 +15,15 @@
  */
 package de.tel.moccha.activities.fragments.canteen;
 
+import static android.R.attr.fragment;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import com.google.android.gms.maps.CameraUpdate;
@@ -34,6 +37,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import de.zell.android.util.fragments.FragmentReplacer;
 
 /**
  * Represents the class for a info dialog fragment.
@@ -89,6 +93,12 @@ public class CanteenInfoDialogFragment extends DialogFragment implements OnMapRe
   }
 
   @Override
+  public void onDetach() {
+    super.onDetach();
+    removeMapFragment();
+  }
+  
+  @Override
   public void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
     outState.putSerializable(TAG_INFO_CANTEEN, canteen);
@@ -140,6 +150,20 @@ public class CanteenInfoDialogFragment extends DialogFragment implements OnMapRe
   }
 
   /**
+   * Removes the current map fragment via the supported fragment manager.
+   * The method is called after the dialog is detached, because otherwise
+   * the application will crash. If the dialog is showed again the map is new created
+   * and without the removing a fragment already exits with the same id.
+   */
+  private void removeMapFragment() {
+    SupportMapFragment mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager()
+            .findFragmentById(R.id.canteen_dialog_map);
+    if (mapFragment != null) {
+      getActivity().getSupportFragmentManager().beginTransaction().remove(mapFragment).commit();
+    }
+  }
+
+  /**
    * Sets the negative click listener for the dialog fragment.
    *
    * @param root the root view
@@ -164,14 +188,14 @@ public class CanteenInfoDialogFragment extends DialogFragment implements OnMapRe
     if (canteen != null) {
       LatLng latlng = new LatLng(canteen.getLatitude(), canteen.getLongitude());
       map.addMarker(new MarkerOptions()
-                          .position(latlng)
-                          .title(canteen.getTitle()));
+              .position(latlng)
+              .title(canteen.getTitle()));
 
       float zoom = Float.parseFloat(getString(R.string.canteen_map_zoom));
       CameraPosition cameraPosition = new CameraPosition.Builder()
-                                                        .target(latlng)
-                                                        .zoom(zoom )
-                                                        .build();
+              .target(latlng)
+              .zoom(zoom)
+              .build();
       CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
       map.moveCamera(cameraUpdate);
     }
