@@ -15,15 +15,12 @@
  */
 package de.tel.moccha.activities.fragments.canteen;
 
-import static android.R.attr.fragment;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import com.google.android.gms.maps.CameraUpdate;
@@ -37,7 +34,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import de.zell.android.util.fragments.FragmentReplacer;
 
 /**
  * Represents the class for a info dialog fragment.
@@ -87,11 +83,11 @@ public class CanteenInfoDialogFragment extends DialogFragment implements OnMapRe
     SupportMapFragment mapFragment
             = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.canteen_dialog_map);
     mapFragment.getMapAsync(this);
-
+  
     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
     return builder.setView(v).create();
   }
-
+  
   @Override
   public void onDetach() {
     super.onDetach();
