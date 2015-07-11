@@ -19,6 +19,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import de.tel.moccha.activities.R;
 import de.tel.moccha.activities.fragments.adapters.canteen.CanteenSectionListAdapter;
 import de.tel.moccha.entities.canteen.Canteen;
 import de.zell.android.util.activities.MainNavigationActivity;
@@ -41,6 +45,57 @@ import org.json.JSONObject;
  */
 public class CanteenListFragment extends EntityListFragment {
 
+  
+  /**
+   * The map menu item.
+   */
+  protected MenuItem mapMenuItem;
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setHasOptionsMenu(true);
+  }
+  
+  
+  @Override
+  public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    super.onCreateOptionsMenu(menu, inflater);
+    inflater.inflate(R.menu.canteens_list_map, menu);
+    mapMenuItem = menu.findItem(R.id.action_canteens_list_map);
+  }
+
+  
+  @Override
+  public void onResume() {
+    super.onResume();
+    getActivity().invalidateOptionsMenu();
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem favItem) {
+    if (favItem.getItemId() == R.id.action_canteens_list_map && entities != null) {
+      int len = entities.size();
+      MarkerMapFragment frg = new MarkerMapFragment();
+      if (len > 0) {
+        Marking locs[] = new Marking[len];
+        for(int i = 0; i < len; i++) {
+          locs[i] = (Canteen) entities.get(i);
+        }
+        final Bundle args = new Bundle();
+        args.putSerializable(MarkerMapFragment.ARG_Marker_LIST, locs);
+        frg.setArguments(args);
+      }
+      frg.getMapAsync(frg);
+      FragmentReplacer.replace(getActivity().getSupportFragmentManager(),
+                               frg,
+                               FragmentReplacer.MAIN_CONTENT);
+      return true;
+    }
+    return super.onOptionsItemSelected(favItem);
+  }
+
+  
   /**
    * The json key to extract the canteens json array.
    */
