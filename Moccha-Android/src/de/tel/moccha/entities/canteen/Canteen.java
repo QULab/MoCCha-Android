@@ -15,6 +15,8 @@
  */
 package de.tel.moccha.entities.canteen;
 
+import com.google.android.gms.maps.model.LatLng;
+import de.tel.moccha.activities.fragments.canteen.Marking;
 import de.zell.android.util.db.Entity;
 import de.zell.android.util.json.JSONElement;
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ import java.util.List;
  * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class Canteen implements Entity<Integer> {
+public class Canteen implements Entity<Integer>, Marking {
 
   @JSONElement(name="id")
   private Integer ID;
@@ -159,6 +161,12 @@ public class Canteen implements Entity<Integer> {
     
     categories.add(c);
   }
-  
-  
+
+  public LatLng getMarkingPos() {
+    return new LatLng(latitude, longitude);
+  }
+
+  public String getMarkingTitle() {
+    return title;
+  }
 }
