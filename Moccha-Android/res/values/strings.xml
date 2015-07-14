@@ -51,12 +51,17 @@
     <string name="canteen_address">Address: %1$s</string>
     <string name="canteen_phone">Phone: %1$s</string>
     <string name="canteen_fax">Fax: %1$s</string>
-    <string name="canteen_map_zoom">14.0</string>
     
     <string name="canteen_opening_hours">Opening hours: %1$s</string>
     <string name="canteen_header_diet">Diet</string>
     <string name="canteen_dish">%1$s&lt;sup&gt;&lt;small&gt;%2$s&lt;/small&gt;&lt;/sup&gt;
     </string>
+    
+    <!--MAP FRAG-->
+    <string name="map_default_zoom">14.0</string>
+    <string name="map_default_lat">52.512493</string>
+    <string name="map_default_long">13.321757</string>
+    
     <!--DayPagerFragment-->
     <string name="time_pattern">yyyy-MM-dd\'T\'HH:mm:ss</string>
     <string name="date_pattern">yyyy-MM-dd</string>
