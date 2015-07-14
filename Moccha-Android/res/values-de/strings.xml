@@ -100,6 +100,7 @@
     <string name="event_start">Start</string>
     <string name="event_period">Periode</string>
     <string name="events">Events</string>
+    <string name="event_time_pattern">dd. MMM yyyy HH:mm</string>
     
     <!--DEVELOPER INFO-->
     <string name="info_publisher">Publiziert und Entwickelt von den Quality and Usability Lab.</string>

@@ -22,7 +22,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import de.tel.moccha.activities.R;
 import de.tel.moccha.activities.fragments.course.CourseFragment;
-import de.tel.moccha.entities.course.Course;
 import de.tel.moccha.entities.event.Event;
 import de.zell.android.util.activities.MainNavigationActivity;
 import de.zell.android.util.async.AsyncGETRequester;
@@ -30,6 +29,11 @@ import de.zell.android.util.async.GetRequestInfo;
 import de.zell.android.util.db.Entity;
 import de.zell.android.util.fragments.EntityFragment;
 import de.zell.android.util.json.JSONUnmarshaller;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.JSONObject;
 
 /**
@@ -58,11 +62,26 @@ public class EventFragment extends EntityFragment {
             .setText(event.getOrganizer());
     
     getTextView(root, R.id.event_start)
-            .setText(event.getStart());
+            .setText(formatDateString(event.getStart()));
     getTextView(root, R.id.event_period)
             .setText(event.getPeriod());
   }
 
+  private String formatDateString(String dateStr) {
+    if (dateStr == null)
+      return dateStr;
+    
+    SimpleDateFormat parsedFormat = new SimpleDateFormat(getString(R.string.time_pattern));
+    Date d = null;
+    try {
+      d = parsedFormat.parse(dateStr);
+    } catch (ParseException ex) {
+      Logger.getLogger(EventFragment.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    SimpleDateFormat sdf = new SimpleDateFormat(getString(R.string.event_time_pattern));
+    return sdf.format(d);
+  }
+  
   @Override
   protected void restoreInstance(Bundle values) {
     //do nothing
