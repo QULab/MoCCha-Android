@@ -18,6 +18,7 @@ package de.tel.moccha.activities.fragments.job;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -43,6 +44,7 @@ import de.zell.android.util.fragments.WebviewFragment;
 import de.zell.android.util.json.JSONUnmarshaller;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -226,6 +228,7 @@ public class JobDetailFragment extends EntityFragment {
 
     TextView columnContent = new TextView(ctx);
     columnContent.setGravity(Gravity.RIGHT);
+    columnContent.setAutoLinkMask(Linkify.EMAIL_ADDRESSES | Linkify.WEB_URLS);
     columnContent.setText(rowContentString);
     columnContent.setPadding(TABLE_COLUMNS_PADDING, TABLE_COLUMNS_PADDING,
       TABLE_COLUMNS_PADDING, TABLE_COLUMNS_PADDING);
