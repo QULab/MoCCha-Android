@@ -53,9 +53,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Represents the job detail fragment.
- * Contains all necessary details about the job for the user.
- * 
+ * Represents the job detail fragment. Contains all necessary details about the
+ * job for the user.
+ *
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
 public class JobDetailFragment extends EntityFragment {
@@ -64,17 +64,17 @@ public class JobDetailFragment extends EntityFragment {
    * The UTF-8 encoding key.
    */
   public static final String UTF_8_ENCODING = "UTF-8";
-  
+
   /**
    * The JSON key for the job details.
    */
   public static final String JSON_JOB_DETAIL_KEY = "job";
-  
+
   /**
    * The padding for the job detail table layout.
    */
   private static final int TABLE_COLUMNS_PADDING = 3;
-  
+
   /**
    * The info menu item.
    */
@@ -85,7 +85,7 @@ public class JobDetailFragment extends EntityFragment {
     super.onCreate(savedInstanceState);
     setHasOptionsMenu(true);
   }
-  
+
   @Override
   public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     super.onCreateOptionsMenu(menu, inflater);
@@ -146,7 +146,6 @@ public class JobDetailFragment extends EntityFragment {
     request.execute(info);
   }
 
-  
   @Override
   protected void showEntity(Entity entity) {
     Job job = (Job) entity;
@@ -156,34 +155,37 @@ public class JobDetailFragment extends EntityFragment {
     }
 
     getTextView(root, R.id.job_title)
-      .setText(job.getTitle());
+            .setText(job.getTitle());
     getTextView(root, R.id.job_description)
-      .setText(Html.fromHtml(job.getDescrp()));
+            .setText(Html.fromHtml(job.getDescrp()));
 
     TableLayout table = (TableLayout) root.findViewById(R.id.job_detail_table);
-    table.addView(createTableRow(R.string.job_row_contact, job.getContact()));
-    table.addView(createTableRow(R.string.job_row_hits, job.getHits()));
-    table.addView(createTableRow(R.string.job_row_tags, job.getTagsAsString(getActivity())));
-    table.addView(createTableRow(R.string.job_row_created, getDateFromString(job.getCreated())));
-    String edited = job.getEdited();
-    if (edited != null) {
-      table.addView(createTableRow(R.string.job_row_edited, getDateFromString(edited)));
+    if (table.getChildCount() == 0) {
+      table.addView(createTableRow(R.string.job_row_contact, job.getContact()));
+      table.addView(createTableRow(R.string.job_row_hits, job.getHits()));
+      table.addView(createTableRow(R.string.job_row_tags, job.getTagsAsString(getActivity())));
+      table.addView(createTableRow(R.string.job_row_created, getDateFromString(job.getCreated())));
+      String edited = job.getEdited();
+      if (edited != null) {
+        table.addView(createTableRow(R.string.job_row_edited, getDateFromString(edited)));
+      }
     }
   }
 
   /**
-   * Creates for the given PDF URL a correct URI which points to the PDF
-   * of the current job.
-   * 
+   * Creates for the given PDF URL a correct URI which points to the PDF of the
+   * current job.
+   *
    * @param pdfUrl the PDF URL which contains the necessary informations
    * @return the correct PDF URL
    */
   private String createPDFDetaillURL(String pdfUrl) {
-    if (pdfUrl == null)
+    if (pdfUrl == null) {
       return null;
-    
+    }
+
     PropertiesProvider propProv = MoCChaMainNavigationActivity.propProvider;
-    
+
     String pdfPrefix = propProv.getProperty(MoCChaMainNavigationActivity.PROP_KEY_JOBS_PDF_PREFIX);
     pdfUrl = String.format(pdfPrefix, pdfUrl);
     String encodedURL = null;
@@ -192,13 +194,14 @@ public class JobDetailFragment extends EntityFragment {
     } catch (UnsupportedEncodingException ex) {
       Logger.getLogger(JobDetailFragment.class.getName()).log(Level.SEVERE, null, ex);
     }
-    
+
     String googlePDFViewerPrefix = propProv.getProperty(MoCChaMainNavigationActivity.PROP_KEY_GOOGLE_PDF_VIEWER_URL);
     return String.format(googlePDFViewerPrefix, encodedURL);
   }
 
   /**
    * Converts a timestamp as String to a valid date string.
+   *
    * @param dateString the timestamp
    * @return the valid date string
    */
@@ -212,7 +215,7 @@ public class JobDetailFragment extends EntityFragment {
   /**
    * Creates a table row with the given head string which is identified with the
    * given id and the row content string.
-   * 
+   *
    * @param rowHeadStringID the id which identifies the head string
    * @param rowContentString the row content string
    * @return the created table row
@@ -224,7 +227,7 @@ public class JobDetailFragment extends EntityFragment {
     TextView columnHead = new TextView(ctx);
     columnHead.setText(ctx.getString(rowHeadStringID));
     columnHead.setPadding(TABLE_COLUMNS_PADDING, TABLE_COLUMNS_PADDING,
-      TABLE_COLUMNS_PADDING, TABLE_COLUMNS_PADDING);
+            TABLE_COLUMNS_PADDING, TABLE_COLUMNS_PADDING);
     row.addView(columnHead);
 
     TextView columnContent = new TextView(ctx);
@@ -232,7 +235,7 @@ public class JobDetailFragment extends EntityFragment {
     columnContent.setAutoLinkMask(Linkify.EMAIL_ADDRESSES | Linkify.WEB_URLS);
     columnContent.setText(rowContentString);
     columnContent.setPadding(TABLE_COLUMNS_PADDING, TABLE_COLUMNS_PADDING,
-      TABLE_COLUMNS_PADDING, TABLE_COLUMNS_PADDING);
+            TABLE_COLUMNS_PADDING, TABLE_COLUMNS_PADDING);
     row.addView(columnContent);
     return row;
   }
