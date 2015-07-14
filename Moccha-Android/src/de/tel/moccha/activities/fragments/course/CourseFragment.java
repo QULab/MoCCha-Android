@@ -147,7 +147,10 @@ public class CourseFragment extends EntityFragment {
 
   private void showCourseGroupDates(Course course, View root) {
     StringBuilder grpDatesBuilder = new StringBuilder();
-    List<GroupDate> groupDates = course.getGroupDates();
+    List<GroupDate> groupDates = course.getGroupDates();    
+    if (groupDates == null)
+      return;
+    
     for (GroupDate groupDate : groupDates) {
       List<CourseDate> courseDates = groupDate.getDates();
       addContentToStringBuilder(groupDate.getName(), grpDatesBuilder);
