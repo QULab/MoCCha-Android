@@ -21,7 +21,7 @@ limitations under the License.
     <item android:id="@+id/action_canteens_list_map"
           android:showAsAction="ifRoom|withText"
           android:title="Map"
-          android:icon="@drawable/ic_launcher"
+          android:icon="@drawable/ic_loc"
           android:clickable="true"
           android:checked="false"/>
 </menu>
