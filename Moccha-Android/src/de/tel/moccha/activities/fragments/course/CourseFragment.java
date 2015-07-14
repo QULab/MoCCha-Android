@@ -109,6 +109,8 @@ public class CourseFragment extends EntityFragment {
    */
   private void showCourseResponsibilities(Course course, View root) {
     List<Responsibility> responsibilities = course.getResponsibilities();
+    if (responsibilities == null) return;
+    
     StringBuilder responsibilitiesBuilder = new StringBuilder();
     for (Responsibility responsibility : responsibilities) {
       Person person = responsibility.getPerson();
