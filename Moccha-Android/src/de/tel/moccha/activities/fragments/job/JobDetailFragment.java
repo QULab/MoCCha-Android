@@ -205,7 +205,8 @@ public class JobDetailFragment extends EntityFragment {
   private String getDateFromString(String dateString) {
     Long timestamp = Long.parseLong(dateString) * 1000;
     Date date = new Date(timestamp);
-    return date.toString();
+    SimpleDateFormat sdf = new SimpleDateFormat(getString(R.string.date_pattern));
+    return sdf.format(date);
   }
 
   /**
