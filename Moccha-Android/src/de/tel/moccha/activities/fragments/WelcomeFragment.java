@@ -17,6 +17,7 @@
 package de.tel.moccha.activities.fragments;
 
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,7 @@ public class WelcomeFragment extends ActionBarManagerFragment {
   
   private void addTextViewToLayout(String content, LinearLayout ll) {
     TextView text = new TextView(getActivity());
+    text.setAutoLinkMask(Linkify.ALL);
     text.setText(content);
     ll.addView(text);
   }
