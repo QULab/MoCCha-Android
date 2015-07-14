@@ -181,7 +181,7 @@ public class CourseFragment extends EntityFragment {
     if (date != null && !date.isEmpty()) {
       try {
         Date d = sdf.parse(date);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(getString(R.string.date_pattern));
         if (d != null) {
           dateStr = dateFormat.format(d);
         }
