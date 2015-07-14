@@ -72,7 +72,8 @@ limitations under the License.
           android:id="@+id/course_info"
           android:gravity="right"
           android:padding="3dip" 
-          android:maxLines="4"/>
+          android:maxLines="4"
+          android:autoLink="all"/>
       </TableRow>
       <!--RESPONSIBILITIES-->
       <View
@@ -99,7 +100,8 @@ limitations under the License.
           android:id="@+id/course_comment"
           android:gravity="right"
           android:padding="3dip" 
-          android:maxLines="4"/>
+          android:maxLines="4"
+          android:autoLink="all"/>
       </TableRow>
       <!--COMMENT-->
       <View

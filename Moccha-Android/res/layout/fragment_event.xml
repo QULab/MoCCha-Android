@@ -42,7 +42,8 @@ limitations under the License.
       android:id="@+id/event_description"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:textStyle="bold"/>
+      android:textStyle="bold"
+      android:autoLink="all"/>
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
                android:layout_width="match_parent"
@@ -57,7 +58,8 @@ limitations under the License.
         <TextView
           android:id="@+id/event_organizer"
           android:gravity="right"
-          android:padding="3dip" />
+          android:padding="3dip" 
+          android:autoLink="all"/>
       </TableRow>
       <!--INFO-->
       <View
