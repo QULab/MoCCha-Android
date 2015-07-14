@@ -15,8 +15,8 @@
  */
 package de.tel.moccha.activities.fragments.canteen;
 
+import android.location.Location;
 import android.os.Bundle;
-import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -24,32 +24,36 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import de.tel.moccha.activities.R;
 
 /**
- *
+ * Represents the MarkerMapFragment which shows the given marker and the current 
+ * location on the google map.
+ * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class MarkerMapFragment extends SupportMapFragment implements OnMapReadyCallback {
+public class MarkerMapFragment extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
+
   public static final String ARG_Marker_LIST = "arg.marker.list";
   private static final String TAG_MARKER_LIST = "tag.marker.list";
-  
-  private Marking locs[];
 
+  private Marking locs[];
+  
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    
-    
+
     if (savedInstanceState == null) {
       savedInstanceState = getArguments();
     }
-    
+
     if (savedInstanceState != null) {
       locs = (Marking[]) savedInstanceState.getSerializable(TAG_MARKER_LIST);
-      if (locs == null)
+      if (locs == null) {
         locs = (Marking[]) savedInstanceState.getSerializable(ARG_Marker_LIST);
+      }
     }
   }
 
@@ -59,31 +63,68 @@ public class MarkerMapFragment extends SupportMapFragment implements OnMapReadyC
     outState.putSerializable(TAG_MARKER_LIST, locs);
   }
 
-  
-  
-  
   /**
-   * impl OnMapReadyCallback interface
-   * @param map
+   * Represents the implementation of the  OnMapReadyCallback interface.
+   *
+   * @param map the map which is used
    */
   public void onMapReady(GoogleMap map) {
+    map.setMyLocationEnabled(true);
+    map.setOnInfoWindowClickListener(this);
     if (locs != null && locs.length > 0) {
-      for(Marking loc : locs) {
+      for (Marking loc : locs) {
         map.addMarker(new MarkerOptions()
-                            .position(loc.getMarkingPos())
-                            .title(loc.getMarkingTitle()));
+                .position(loc.getMarkingPos())
+                .title(loc.getMarkingTitle()));
       }
-      
-      float zoom = Float.parseFloat(getString(R.string.canteen_map_zoom));
+      Location loc = map.getMyLocation();
+      LatLng currentLatLong;
+      if (loc != null) {
+        currentLatLong = new LatLng(loc.getLatitude(), loc.getLongitude());
+      } else {
+        currentLatLong = readLatLongFromStringXML(R.string.map_default_lat,
+                                                  R.string.map_default_long);
+      }   
+      setCameraPosition(map, currentLatLong);
+    }
+  }
+  
+  /**
+   * Is called if the info window of the markers are clicked.
+   * @TODO add connection to detail
+   * @param marker marker which was clicked
+   */
+  public void onInfoWindowClick(Marker marker) {
+    
+  }
+
+  /**
+   * Sets the camera position to the given LatLng object which contains
+   * the latitude and longitude.
+   * @param map the map on which the camera is set
+   * @param currentLatLong the current lat and long values
+   */
+  private void setCameraPosition(GoogleMap map, LatLng currentLatLong) {
+      float zoom = Float.parseFloat(getString(R.string.map_default_zoom));
       CameraPosition cameraPosition = new CameraPosition.Builder()
-              .target(new LatLng(52.5, 13.5))
+              .target(currentLatLong)
               .zoom(zoom)
               .build();
       CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
       map.moveCamera(cameraUpdate);
-    }
   }
   
   
-  
+  /**
+   * Reads from the string xml the lat and long value and returns
+   * the corresponding LatLng object.
+   * @param latID the string id of the latitude value
+   * @param longID the string if of the longitude value
+   * @return the corresponding latlng value
+   */
+  private LatLng readLatLongFromStringXML(int latID, int longID) {
+    double lat = Double.parseDouble(getString(latID));
+    double longitude = Double.parseDouble(getString(longID));
+    return new LatLng(lat, longitude);
+  }
 }
