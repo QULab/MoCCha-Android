@@ -57,6 +57,9 @@
     <string name="canteen_dish">%1$s&lt;sup&gt;&lt;small&gt;%2$s&lt;/small&gt;&lt;/sup&gt;
     </string>
     
+    <string name="alert_dish_info_price">Preis: %1$s</string>
+    <string name="alert_dish_info_additive">Zusatz: %1$s</string>
+    
     <!--MAP FRAG-->
     <string name="map_default_zoom">14.0</string>
     <string name="map_default_lat">52.512493</string>
