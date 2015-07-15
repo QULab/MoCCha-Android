@@ -16,9 +16,6 @@
 package de.tel.moccha.activities.fragments.adapters.canteen;
 
 import android.content.Context;
-import android.text.Spanned;
-import android.view.View;
-import android.widget.TextView;
 import de.tel.moccha.entities.canteen.Additive;
 import de.tel.moccha.entities.canteen.Dish;
 import de.tel.moccha.util.StringFormatter;
@@ -44,7 +41,7 @@ public class DishListAdapter extends EntityListAdapter {
     super(c);
     formatter = new StringFormatter(c);
   }
-
+  
   @Override
   protected CharSequence getEntityTitle(Entity e) {
     Dish d = (Dish) e;

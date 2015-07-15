@@ -16,6 +16,7 @@
 package de.tel.moccha.activities.fragments.canteen;
 
 import android.content.Context;
+import android.os.Bundle;
 import de.tel.moccha.activities.fragments.adapters.canteen.DishListAdapter;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
@@ -31,6 +32,11 @@ public class DishListFragment extends EntityListFragment {
   @Override
   protected void onEntityClick(Entity e) {
     //entity
+    Bundle b = new Bundle();
+    b.putSerializable(DishInfoDialogFragment.ARG_DISH_INFO, e);
+    DishInfoDialogFragment info = new DishInfoDialogFragment();
+    info.setArguments(b);
+    info.show(getActivity().getSupportFragmentManager(), ARG_ENTITIES);
   }
 
   @Override
