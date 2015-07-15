@@ -28,6 +28,12 @@ public class Additive implements Entity<Integer> {
   private Integer ID;
   @JSONElement(name="name")
   private String name;
+  
+  @JSONElement(name = "image")
+  private String image;
+  
+  @JSONElement(name = "information")
+  private String information;
 
   public Additive() {
   }
@@ -50,5 +56,21 @@ public class Additive implements Entity<Integer> {
 
   public String getTableName() {
     return Additive.class.getName();
+  }
+
+  public String getImage() {
+    return image;
+  }
+
+  public void setImage(String image) {
+    this.image = image;
+  }
+
+  public String getInformation() {
+    return information;
+  }
+
+  public void setInformation(String information) {
+    this.information = information;
   }
 }
