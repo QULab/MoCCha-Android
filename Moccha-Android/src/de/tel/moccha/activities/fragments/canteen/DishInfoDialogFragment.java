@@ -46,6 +46,11 @@ public class DishInfoDialogFragment extends DialogFragment {
   private static final String TAG_DISH_INFO = "tag.dish.info";
 
   /**
+   * The padding for the text views.
+   */
+  private static final int PADDING = 3;
+
+  /**
    * The dish which contains the necessary informations.
    */
   private Dish dish;
@@ -89,10 +94,10 @@ public class DishInfoDialogFragment extends DialogFragment {
     String additiveID = String.format(getString(R.string.alert_dish_info_additive), content.getID());
     row.addView(createTextViewWithContent(additiveID));
     row.addView(createTextViewWithContent(content.getName()));
-    row.addView(createTextViewWithContent(content.getInformation()));
+//    row.addView(createTextViewWithContent(content.getInformation()));
     return row;
   }
-
+  
   private TextView createTextViewWithContent(String content) {
     TextView view = new TextView(getActivity());
     view.setText(content);
