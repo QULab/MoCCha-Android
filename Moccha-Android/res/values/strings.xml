@@ -129,7 +129,8 @@
     <string name="examination_office_opening_header">Opening hours</string>
     <string name="examination_office_table_header">Boards</string>
     <string name="examination_office_table_pager_header">Board: %1$d</string>
-    <string name="opening_string_format">%1$s: %2$d - %3$d\n</string>
+    <string name="opening_string_format">%1$02d:%2$02d</string>
+    <string name="examination_office_closed">Closed</string>
     <string name="examination_current_nr">Number:&#160;%1$d</string>
     <string name="examination_last_update">Updated:&#160;%1$s</string>
     <!--EVENT SECTION-->
