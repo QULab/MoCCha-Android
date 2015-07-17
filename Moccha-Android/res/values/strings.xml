@@ -133,5 +133,6 @@
     <string name="examination_office_closed">Closed</string>
     <string name="examination_current_nr">Number:&#160;%1$d</string>
     <string name="examination_last_update">Updated:&#160;%1$s</string>
+    <string name="examination_time_pattern">@string/time_pattern</string>
     <!--EVENT SECTION-->
 </resources>

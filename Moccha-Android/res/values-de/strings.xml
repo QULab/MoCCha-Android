@@ -133,4 +133,5 @@
     <string name="examination_office_closed">Geschlossen</string>
     <string name="examination_current_nr">Nummer:&#160;%1$d</string>
     <string name="examination_last_update">Aktualisiert:&#160;%1$s</string>
+    <string name="examination_time_pattern">d. MMM HH:mm:ss</string>
 </resources>
