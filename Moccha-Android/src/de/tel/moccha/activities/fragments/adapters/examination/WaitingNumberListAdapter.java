@@ -16,10 +16,13 @@
 package de.tel.moccha.activities.fragments.adapters.examination;
 
 import android.content.Context;
+import android.text.Html;
+import android.text.SpannableString;
 import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.office.WaitingNumber;
 import de.zell.android.util.adapters.EntityListAdapter;
 import de.zell.android.util.db.Entity;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -34,7 +37,7 @@ public class WaitingNumberListAdapter extends EntityListAdapter {
 
   @Override
   protected CharSequence getEntityTitle(Entity e) {
-    return e.getID().toString();
+    return String.format(context.getString(R.string.examination_room), e.getID().toString());
   }
 
   @Override
@@ -42,14 +45,16 @@ public class WaitingNumberListAdapter extends EntityListAdapter {
     WaitingNumber number = (WaitingNumber) e;
     StringBuilder builder = new StringBuilder();
     long timestamp = ((long) number.getDate()) * 1000;
+    SimpleDateFormat sdf = new SimpleDateFormat(context.getString(R.string.examination_time_pattern));
+    
     String currNum = String.format(this.context.getString(R.string.examination_current_nr), 
                                     number.getCurrentNumber());
     String lastUpdate = String.format(this.context.getString(R.string.examination_last_update),
-                                      new Date(timestamp).toString());
+                                      sdf.format(new Date(timestamp)));
     builder.append(currNum)
            .append("\n")
            .append(lastUpdate);
-    return builder.toString();
+    return Html.fromHtml(builder.toString());
   }
 
   @Override
