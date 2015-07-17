@@ -20,6 +20,7 @@ import android.os.Bundle;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
@@ -34,12 +35,22 @@ import de.tel.moccha.activities.R;
  * 
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class MarkerMapFragment extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
+public class MarkerMapFragment extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener, GoogleMap.OnMyLocationChangeListener {
 
   public static final String ARG_Marker_LIST = "arg.marker.list";
   private static final String TAG_MARKER_LIST = "tag.marker.list";
 
   private Marking locs[];
+
+  /**
+   * The first location of the user to move the camera.
+   */
+  private Location firstLoc = null;
+  
+  /**
+   * The google map which is used to show the map to the user.
+   */
+  private GoogleMap map = null;
   
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +80,8 @@ public class MarkerMapFragment extends SupportMapFragment implements OnMapReadyC
    * @param map the map which is used
    */
   public void onMapReady(GoogleMap map) {
+    this.map = map;
+    map.setOnMyLocationChangeListener(this);
     map.setMyLocationEnabled(true);
     map.setOnInfoWindowClickListener(this);
     if (locs != null && locs.length > 0) {
@@ -96,6 +109,20 @@ public class MarkerMapFragment extends SupportMapFragment implements OnMapReadyC
    */
   public void onInfoWindowClick(Marker marker) {
     
+  }
+
+  /**
+   * Is called if the location changes, sets the location and camera zoom
+   * for the first time after that the camera is no more adjusted.
+   * 
+   * @param lctn the new location
+   */
+  public void onMyLocationChange(Location lctn) {
+    if (firstLoc == null && map != null) {
+      firstLoc = lctn;
+      LatLng latLng = new LatLng(lctn.getLatitude(), lctn.getLongitude());
+      setCameraPosition(map, latLng);
+    }
   }
 
   /**
