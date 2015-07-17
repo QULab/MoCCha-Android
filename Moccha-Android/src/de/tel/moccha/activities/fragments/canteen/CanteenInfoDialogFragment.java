@@ -106,7 +106,7 @@ public class CanteenInfoDialogFragment extends DialogFragment implements OnMapRe
    * @return the id of the layout
    */
   protected int getDialogLayout() {
-    return R.layout.canteen_info_dialog;
+    return R.layout.dialog_canteen_info;
   }
 
   /**

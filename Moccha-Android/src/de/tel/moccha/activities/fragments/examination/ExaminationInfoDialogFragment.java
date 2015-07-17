@@ -91,7 +91,7 @@ public class ExaminationInfoDialogFragment extends DialogFragment{
    * @return the id of the layout
    */
   protected int getDialogLayout() {
-    return R.layout.opening_info_dialog;
+    return R.layout.dialog_opening_info;
   }
   
   /**
