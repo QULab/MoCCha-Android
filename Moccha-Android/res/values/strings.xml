@@ -105,11 +105,12 @@
     <string name="event_time_pattern">yyyy-MM-dd HH:mm</string>
     
     
-    <!--DEVELOPER INFO-->
-    <string name="info_publisher">Published and developed by the Quality and Usability Lab.</string>
-    <string name="info_developer">Developed by Christopher Zell &lt;zelldon91@gmail.com&gt;</string>
-    <string name="info_questions">For questions or suggestion please mail Tilo Westermann. &lt;tilo.westermann@tu-berlin.de&gt;</string>
-    
+    <!--APP INFO-->
+    <string name="alert_application_info">
+      Published and developed by the Quality and Usability Lab.
+      For questions or suggestion please mail Tilo Westermann. &lt;tilo.westermann@tu-berlin.de&gt;
+      Developed by Christopher Zell &lt;zelldon91@gmail.com&gt;
+    </string>
     
     <!--JOB SECTION-->
     <string name="job_list_tags">Tags:&#160;</string>
