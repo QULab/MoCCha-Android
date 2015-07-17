@@ -21,8 +21,8 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import de.tel.moccha.activities.R;
 import de.tel.moccha.entities.office.ExaminationOffice;
@@ -30,117 +30,119 @@ import de.tel.moccha.entities.office.OpeningHours;
 import java.util.List;
 
 /**
- * Represents the examination office info dialog
- * which shows the opening hours.
- * 
+ * Represents the examination office info dialog which shows the opening hours.
+ *
  * @author Christopher Zell <zelldon91@googlemail.com>
  */
-public class ExaminationInfoDialogFragment extends DialogFragment{
+public class ExaminationInfoDialogFragment extends DialogFragment {
+
   /**
    * The argument key for the office as argument.
    */
   public static final String ARG_OFFICE_INFO = "office.examination.info";
-  
+
   /**
    * The tag key to save the office information.
    */
   private static final String TAG_INFO_OFFICE = "tag.office.info";
-  
+
   /**
    * The office which contains the information which should be shown.
    */
   private ExaminationOffice office;
-  
+
   /**
    * Contains the week days.
    */
   private String weekDays[];
+
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
     weekDays = getResources().getStringArray(R.array.week_days);
     if (savedInstanceState == null) {
       savedInstanceState = getArguments();
     }
-    
+
     if (savedInstanceState != null) {
       office = (ExaminationOffice) savedInstanceState.getSerializable(TAG_INFO_OFFICE);
-      if (office == null)
+      if (office == null) {
         office = (ExaminationOffice) savedInstanceState.getSerializable(ARG_OFFICE_INFO);
+      }
     }
 
     LayoutInflater inflater = getActivity().getLayoutInflater();
     View v = inflater.inflate(getDialogLayout(), null);
     setDialogContent(v);
-    setOnPositiveClickListener(v);
-    setOnNegativeClickListener(v);
-    
+
     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
     return builder.setView(v).create();
   }
-  
-  
+
   @Override
   public void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
     outState.putSerializable(TAG_INFO_OFFICE, office);
   }
-  
+
   /**
    * Returns the dialog layout id which should be shown by the dialog fragment.
-   * 
+   *
    * @return the id of the layout
    */
   protected int getDialogLayout() {
     return R.layout.dialog_opening_info;
   }
-  
+
   /**
    * Places the content into the root view.
-   * 
+   *
    * @param root the root view
    */
   protected void setDialogContent(View root) {
     if (office != null) {
       List<OpeningHours> openings = office.getOpenings();
-      LinearLayout openingsLayout = (LinearLayout) root.findViewById(R.id.opening_hours);
+      TableLayout openingsLayout = (TableLayout) root.findViewById(R.id.opening_hours);
       for (OpeningHours hours : openings) {
-        TextView textView = new TextView(getActivity());
-        textView.setText(getOpeningHour(hours));
-        openingsLayout.addView(textView);
+        openingsLayout.addView(createTableRowForOpening(hours));
       }
-      
+
       TextView header = (TextView) root.findViewById(R.id.alert_info_header);
       header.setText(getString(R.string.examination_office_opening_header));
     }
   }
-  
-  protected String getOpeningHour(OpeningHours hour) {
-    if (weekDays != null)
-      return String.format(getString(R.string.opening_string_format),
-                            weekDays[hour.getWeekDay()-1],
-                            hour.getBegin(), hour.getEnd());
-    return null;
-  }
-  
-  /**
-   * Sets the positive click listener for the dialog fragment.
-   * @param root the root view
-   */
-  protected void setOnPositiveClickListener(View root) {
-    Button okButton = (Button) root.findViewById(R.id.alert_info_ok);
-    okButton.setOnClickListener(new View.OnClickListener() {
 
-      public void onClick(View arg0) {
-        ExaminationInfoDialogFragment.this.dismiss();
-      }
-    });
+  private TableRow createTableRowForOpening(OpeningHours hours) {
+    TableRow row = new TableRow(getActivity());
+    row.addView(createTextViewWithContent(weekDays[hours.getWeekDay() - 1]));
+    if (isClosed(hours)) 
+      row.addView(createTextViewWithContent(getString(R.string.examination_office_closed)));
+    else {
+      row.addView(createTextViewWithContent(getIntTimeAsString(hours.getBegin())));
+      row.addView(createTextViewWithContent(getIntTimeAsString(hours.getEnd())));
+    }
+    return row;
   }
-  
-  /**
-   * Sets the negative click listener for the dialog fragment.
-   * @param root the root view
-   */
-  protected void setOnNegativeClickListener(View root) {
+
+  protected TextView createTextViewWithContent(String content) {
+    TextView view = new TextView(getActivity());
+    view.setText(content);
+    return view;
+  }
+
+  private boolean isClosed(OpeningHours hour) {
+    return (hour.getBegin() == null && hour.getEnd() == null)
+            || (hour.getBegin() == 0 && hour.getEnd() == 0);
+  }
+
+  private String getIntTimeAsString(Integer time) {
+    if (time == null) {
+      return null;
+    }
+
     
+    int hour = time / 100;
+    int min = time - hour * 100;
+    return String.format(getString(R.string.opening_string_format), hour, min);
   }
+
 }
