@@ -105,9 +105,6 @@ public class ExaminationInfoDialogFragment extends DialogFragment {
       for (OpeningHours hours : openings) {
         openingsLayout.addView(createTableRowForOpening(hours));
       }
-
-      TextView header = (TextView) root.findViewById(R.id.alert_info_header);
-      header.setText(getString(R.string.examination_office_opening_header));
     }
   }
 
