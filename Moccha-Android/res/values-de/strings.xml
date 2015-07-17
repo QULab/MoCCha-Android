@@ -127,11 +127,13 @@
     <!--EXAMINATION OFFICE-->
     <string name="examination_office">Prüfungsamt</string>
     <string name="examination_office_opening_header">Öffnungszeiten</string>
+    <string name="examination_office_info">Informationen geliefert von: http://pa.freitagsrunde.org/</string>
     <string name="examination_office_table_header">Tafeln</string>
     <string name="examination_office_table_pager_header">Tafel %1$d</string>
     <string name="opening_string_format">%1$02d:%2$02d</string>
+    <string name="examination_room">H %1$s</string>
     <string name="examination_office_closed">Geschlossen</string>
-    <string name="examination_current_nr">Nummer:&#160;%1$d</string>
-    <string name="examination_last_update">Aktualisiert:&#160;%1$s</string>
+    <string name="examination_current_nr">&lt;big&gt;Nummer:&#160;%1$d&lt;/big&gt;</string>
+    <string name="examination_last_update">&lt;br&gt;Aktualisiert:&#160;%1$s</string>
     <string name="examination_time_pattern">d. MMM HH:mm:ss</string>
 </resources>

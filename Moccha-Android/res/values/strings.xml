@@ -127,12 +127,14 @@
     <!--EXAMINATION OFFICE-->
     <string name="examination_office">Examination Office</string>
     <string name="examination_office_opening_header">Opening hours</string>
+    <string name="examination_office_info">Informations provided from: http://pa.freitagsrunde.org/</string>
     <string name="examination_office_table_header">Boards</string>
     <string name="examination_office_table_pager_header">Board: %1$d</string>
     <string name="opening_string_format">%1$02d:%2$02d</string>
+    <string name="examination_room">H %1$s</string>
     <string name="examination_office_closed">Closed</string>
-    <string name="examination_current_nr">Number:&#160;%1$d</string>
-    <string name="examination_last_update">Updated:&#160;%1$s</string>
+    <string name="examination_current_nr">&lt;big&gt;Number:&#160;%1$d&lt;/big&gt;</string>
+    <string name="examination_last_update">&lt;br&gt;Updated:&#160;%1$s</string>
     <string name="examination_time_pattern">@string/time_pattern</string>
     <!--EVENT SECTION-->
 </resources>
