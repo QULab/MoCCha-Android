@@ -74,13 +74,13 @@ public class CanteenFragment extends InfoMenuFragment {
 
     if (savedInstanceState != null) {
       c = (Canteen) savedInstanceState.getSerializable(TAG_CANTEEN);
-    }
 
-    if (c == null) {
-      url = savedInstanceState.getString(ARG_CANTEEN_URL);
-      loadCanteen();
-    } else
-      showCanteen(c);
+      if (c == null) {
+        url = savedInstanceState.getString(ARG_CANTEEN_URL);
+        loadCanteen();
+      } else
+        showCanteen(c);
+    }
   }
   
   /**

@@ -77,9 +77,7 @@ public class CanteenInfoDialogFragment extends DialogFragment implements OnMapRe
     LayoutInflater inflater = getActivity().getLayoutInflater();
     View v = inflater.inflate(getDialogLayout(), null);
     setDialogContent(v);
-    setOnPositiveClickListener(v);
-    setOnNegativeClickListener(v);
-
+    
     SupportMapFragment mapFragment
             = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.canteen_dialog_map);
     mapFragment.getMapAsync(this);
@@ -131,21 +129,6 @@ public class CanteenInfoDialogFragment extends DialogFragment implements OnMapRe
   }
 
   /**
-   * Sets the positive click listener for the dialog fragment.
-   *
-   * @param root the root view
-   */
-  protected void setOnPositiveClickListener(View root) {
-    Button okButton = (Button) root.findViewById(R.id.alert_info_ok);
-    okButton.setOnClickListener(new View.OnClickListener() {
-
-      public void onClick(View arg0) {
-        CanteenInfoDialogFragment.this.dismiss();
-      }
-    });
-  }
-
-  /**
    * Removes the current map fragment via the supported fragment manager.
    * The method is called after the dialog is detached, because otherwise
    * the application will crash. If the dialog is showed again the map is new created
@@ -158,16 +141,7 @@ public class CanteenInfoDialogFragment extends DialogFragment implements OnMapRe
       getActivity().getSupportFragmentManager().beginTransaction().remove(mapFragment).commit();
     }
   }
-
-  /**
-   * Sets the negative click listener for the dialog fragment.
-   *
-   * @param root the root view
-   */
-  protected void setOnNegativeClickListener(View root) {
-
-  }
-
+  
   /**
    * Returns the text view for the given id from the root view.
    *
