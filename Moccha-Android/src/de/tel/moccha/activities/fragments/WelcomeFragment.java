@@ -19,6 +19,9 @@ package de.tel.moccha.activities.fragments;
 import android.os.Bundle;
 import android.text.util.Linkify;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -34,6 +37,40 @@ import de.zell.android.util.fragments.ActionBarManagerFragment;
  */
 public class WelcomeFragment extends ActionBarManagerFragment {
 
+  /**
+   * The info menu item.
+   */
+  protected MenuItem infoMenuItem;
+  
+  
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setHasOptionsMenu(true);
+  }
+  
+  @Override
+  public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    super.onCreateOptionsMenu(menu, inflater);
+    inflater.inflate(R.menu.application_info, menu);
+    infoMenuItem = menu.findItem(R.id.action_app_info);
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    getActivity().invalidateOptionsMenu();
+  }
+  
+  
+  @Override
+  public boolean onOptionsItemSelected(MenuItem favItem) {
+    if (favItem.getItemId() == R.id.action_app_info) {
+      new ApplicationInfoDialog().show(getActivity().getSupportFragmentManager(), null);
+    }
+    return super.onOptionsItemSelected(favItem);
+  }
+  
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
           Bundle savedInstanceState) {
@@ -41,10 +78,6 @@ public class WelcomeFragment extends ActionBarManagerFragment {
     LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.welcome_main_ll);
     
     addTextViewToLayout(getString(R.string.welcome_intro_description), ll);
-    addTextViewToLayout(getString(R.string.info_publisher), ll);
-    addTextViewToLayout(getString(R.string.info_questions), ll);
-    addTextViewToLayout(getString(R.string.info_developer), ll);
-    
     return rootView;
   }
   
